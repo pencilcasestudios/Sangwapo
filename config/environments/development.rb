@@ -27,4 +27,8 @@ Sangwapo::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # Open email with letter_opener rather than sending them
+  # Messages are stored in tmp/letter_opener.
+  config.action_mailer.delivery_method = :letter_opener
 end
