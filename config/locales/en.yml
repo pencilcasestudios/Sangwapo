@@ -32,12 +32,20 @@ en:
 # Views
   views:
     application:
+      _footer:
+        links:
+          about: About
+          blog: Blog
+          contact: Contact
+          privacy: Privacy
+          terms: Terms
       _navigation:
         links:
           about: About
           sign_in: Sign in
           sign_out: Sign out
           sign_up: Sign up
+          create_a_listing: Create a listing
 
     sessions:
       _form:

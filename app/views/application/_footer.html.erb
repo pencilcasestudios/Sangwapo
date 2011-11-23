@@ -1,11 +1,11 @@
 <footer>
 	<div class="container">
 		<div class="right">
-			<%= link_to_unless_current t("views.application._footer.clickables.links.about"), "#" %>
-			| <%= link_to_unless_current t("views.application._footer.clickables.links.privacy"), "#" %>
-			| <%= link_to_unless_current t("views.application._footer.clickables.links.terms"), "#" %>
-			| <%= link_to_unless_current t("views.application._footer.clickables.links.contact"), "#" %>
-			| <%= link_to_unless_current t("views.application._footer.clickables.links.blog"), "#" %>
+			<%= link_to_unless_current t("views.application._footer.links.about"), about_path %>
+			| <%= link_to_unless_current t("views.application._footer.links.blog"), "http://blog.sangwapo.com" %>
+			| <%= link_to_unless_current t("views.application._footer.links.privacy"), privacy_path %>
+			| <%= link_to_unless_current t("views.application._footer.links.terms"), terms_path %>
+			| <%= link_to_unless_current t("views.application._footer.links.contact"), contact_path %>
 			| &copy; <%= Time.now.year %> <%= link_to t("application.name"), root_path %>
 		</div><!-- /.right -->
 	</div><!-- /.container -->
