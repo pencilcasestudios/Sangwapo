@@ -1,12 +1,12 @@
 <footer>
-	<div class="container">
-		<div class="right">
-			<%= link_to_unless_current t("views.application._footer.links.about"), about_path %>
-			| <%= link_to_unless_current t("views.application._footer.links.blog"), "http://blog.sangwapo.com" %>
-			| <%= link_to_unless_current t("views.application._footer.links.privacy"), privacy_path %>
-			| <%= link_to_unless_current t("views.application._footer.links.terms"), terms_path %>
-			| <%= link_to_unless_current t("views.application._footer.links.contact"), contact_path %>
-			| &copy; <%= Time.now.year %> <%= link_to t("application.name"), root_path %>
-		</div><!-- /.right -->
-	</div><!-- /.container -->
+	<p>
+		<%= link_to_unless_current t("views.application._footer.links.about"), about_path %>
+		| <%= link_to_unless_current t("views.application._footer.links.blog"), "http://blog.sangwapo.com" %>
+		| <%= link_to_unless_current t("views.application._footer.links.privacy"), privacy_path %>
+		| <%= link_to_unless_current t("views.application._footer.links.terms"), terms_path %>
+		| <%= link_to_unless_current t("views.application._footer.links.contact"), contact_path %>
+	</p>
+	<p>
+		&copy; <%= Time.now.year %> <%= link_to t("application.name"), root_path %>
+	</p>
 </footer>

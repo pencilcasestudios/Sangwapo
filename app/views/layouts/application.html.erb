@@ -21,27 +21,25 @@
   <div class="container">
 		<div class="row">
 
-			<div class="span6">
+			<div class="span8">
+				<section id="content_pane">
+					<%= yield %>
+				</section>
+			</div>
+
+			<div class="span4">
 				<section id="control_pane">
 					<%= render "notifications" %>
 					
 					<header>
 						<h1><%= t("application.name") %></h1>
 					</header>
-
+					
 					<%= render "footer" %>
-
-				</section>
-			</div>
-
-			<div class="span6">
-				<section id="content_pane">
-					<%= yield %>
 				</section>
 			</div>
 
 		</div><!-- /.row -->
 	</div><!-- /.container -->
-
 </body>
 </html>
