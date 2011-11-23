@@ -1,0 +1,10 @@
+<script type="text/javascript">
+	$( function() {
+	  $.vegas({
+	    src:'<%= image_path("backgrounds/background#{rand(3)}.jpg") %>',
+			fade:500 // milliseconds
+	  })('overlay', {
+	    src:'<%= image_path("overlays/05.png") %>'
+	  });
+	});
+</script>
