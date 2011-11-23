@@ -1,5 +1,74 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
+  application:
+    name: Sangwapo!
+    tagline: Zambia online classifieds
+
+
+
+
+# Helpers
+  helpers:
+    submit:
+      user_session:
+        create: "Sign in"
+      user:
+        create: "Sign up"
+        update: "Save"
+      create: "Create this %{model}"
+      update: "Save changes to this %{model}"
+
+
+
+
+# Models
+  models:
+    language:
+      names:
+        eng: English
+
+
+
+
+# Views
+  views:
+    application:
+      _navigation:
+        links:
+          sign_out: Sign out
+
+    sessions:
+      _form:
+        labels:
+          identifier: "Email or cell phone number"
+          password: Password
+        buttons:
+          submit: Sign in
+      new:
+        title: Sign in to your account
+
+    users:
+      _errors:
+        fields:
+          email: Email
+          cell_phone_number: Cell phone number
+          password: Password
+          terms_of_use: Terms of use
+        title: This account could not be created
+      _form:
+        labels:
+          first_name: First name
+          email: Email
+          cell_phone_number: Cell phone number
+          password: Password
+          password_confirmation: Password confirmation
+          language: Language
+          time_zone: Time zone
+          terms_of_use: Terms of use
+        legends:
+        copy:
+          accept_terms_of_use: I have read and accept the
+          terms_of_use: terms of use
+      new:
+        title: Sign up
+      edit:
+        title: Account settings
