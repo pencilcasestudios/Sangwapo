@@ -30,14 +30,17 @@ describe "Assets" do
       get "/assets/favicon.ico"
       response.status.should be(200)
 
-      get "/assets/backgrounds/background0.jpg"
+      get "/assets/Sangwapo-650x650.tiff"
       response.status.should be(200)
 
-      get "/assets/backgrounds/background1.jpg"
-      response.status.should be(200)
-
-      get "/assets/backgrounds/background2.jpg"
-      response.status.should be(200)
+      #get "/assets/backgrounds/background0.jpg"
+      #response.status.should be(200)
+      #
+      #get "/assets/backgrounds/background1.jpg"
+      #response.status.should be(200)
+      #
+      #get "/assets/backgrounds/background2.jpg"
+      #response.status.should be(200)
     end
   end
 
