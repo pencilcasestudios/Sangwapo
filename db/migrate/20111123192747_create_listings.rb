@@ -1,12 +1,16 @@
 class CreateListings < ActiveRecord::Migration
   def change
     create_table :listings do |t|
+      t.boolean :exclude_price, default: false
+      t.decimal :price, precision: 12, scale: 2, default: 0
       t.references :user
-      t.text :description
-      t.string :panel_size
+      t.string :currency
       t.string :listing_code
-      t.string :uuid
+      t.string :panel_size
+      t.string :price_option
       t.string :state
+      t.string :uuid
+      t.text :description
 
       t.timestamps
     end

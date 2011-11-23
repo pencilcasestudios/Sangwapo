@@ -14,12 +14,16 @@
 ActiveRecord::Schema.define(:version => 20111123192747) do
 
   create_table "listings", :force => true do |t|
+    t.boolean  "exclude_price",                                :default => false
+    t.decimal  "price",         :precision => 12, :scale => 2, :default => 0.0
     t.integer  "user_id"
-    t.text     "description"
-    t.string   "panel_size"
+    t.string   "currency"
     t.string   "listing_code"
-    t.string   "uuid"
+    t.string   "panel_size"
+    t.string   "price_option"
     t.string   "state"
+    t.string   "uuid"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

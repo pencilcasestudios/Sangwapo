@@ -22,9 +22,18 @@ en:
 
 # Models
   models:
+    currency:
+      codes:
+        cad: CAD
+        eur: EUR
+        gbp: GBP
+        usd: USD
+        zmk: ZMK
+
     language:
       names:
         eng: English
+
 
 
 
