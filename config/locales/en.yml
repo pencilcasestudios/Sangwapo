@@ -34,7 +34,10 @@ en:
     application:
       _navigation:
         links:
+          about: About
+          sign_in: Sign in
           sign_out: Sign out
+          sign_up: Sign up
 
     sessions:
       _form:
