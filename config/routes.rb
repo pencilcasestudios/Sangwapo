@@ -1,8 +1,4 @@
 Sangwapo::Application.routes.draw do
-  get "users/new"
-
-  get "sessions/new"
-
   get "welcome/about"
   get "welcome/contact"
   get "welcome/index"
@@ -24,11 +20,12 @@ Sangwapo::Application.routes.draw do
 
 
 
+  resources :listings
   resources :sessions
   resources :users
 
 
 
 
-  root :to => "welcome#index"
+  root :to => "listings#index"
 end
