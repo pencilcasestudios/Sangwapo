@@ -12,4 +12,6 @@ class User < ActiveRecord::Base
   validates :terms_of_use, :acceptance => true, :on => :create
   
   attr_accessor :terms_of_use
+
+  has_many :listings
 end
