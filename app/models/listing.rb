@@ -14,7 +14,7 @@ class Listing < ActiveRecord::Base
   validates :uuid, presence: true, uniqueness: true
   
   def self.generate_listing_code
-    Time.now.strftime("L%Y-%m-%d-%s")
+    Time.now.strftime("L%Y-%m-%d-%H%M%S-%L")
   end
 
   def self.generate_uuid
