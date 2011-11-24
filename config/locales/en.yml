@@ -1,7 +1,34 @@
 en:
   application:
-    name: Sangwapo
+    name: Sangwapo!
     tagline: Zambia online classifieds
+
+
+
+
+# Controllers
+  controllers:
+    application_controller:
+      flash:
+        sign_in_required: "Please sign in first and then we'll send you right along."
+
+    listings_controller:
+      actions:
+        create:
+          success: The listing was successfully created.
+
+    sessions_controller:
+      actions:
+        create:
+          success: Welcome
+          error: Sign in failed. Please check your details try again.
+        destroy:
+          success: You have successfully signed out.
+      
+    users_controller:
+      actions:
+        create:
+          success: Your account was successfully created. You may now sign in.
 
 
 
@@ -20,6 +47,16 @@ en:
 
 
 
+# Mailers
+  mailers:
+    emailer:
+      registration_confirmation:
+        subject: "Welcome to %{application_name}"
+        body: "Dear %{user_name},\n\nWelcome to %{application_name}!\n\nYour account is ready for you to use. You may sign in to create listings by visiting:\n%{sign_in_path}\n\nHope you like using %{application_name} as much as I'm enjoying making it.\n\nBest regards,\n\nSilumesii\n\n---\n%{application_name} is proudly Zambian and made by Pencil Case Studios.\n%{root_path}\nhttp://pencilcasestudios.com/"
+
+
+
+
 # Models
   models:
     currency:
@@ -33,6 +70,23 @@ en:
     language:
       names:
         eng: English
+
+    listing_state:
+      names:
+        unpublished: Unpublished
+        approved: Approved
+        published: Published
+
+    listing_type:
+      names:
+        offered: Offered
+        wanted: Wanted
+
+    panel_size:
+      names:
+        small: "Small (Text only)"
+        medium: Medium (Text and 1 picture)
+        large: Large (Text and 2 pictures)
 
 
 
@@ -51,18 +105,43 @@ en:
       _navigation:
         links:
           about: About
+          account_settings: Settings
+          create_a_listing: Create a listing
           sign_in: Sign in
           sign_out: Sign out
           sign_up: Sign up
-          create_a_listing: Create a listing
+      copy:
+        full_stop: "."
+
+    listings:
+      _errors:
+        title: This listing could not be created
+      _form:
+        labels:
+          description: Description
+          listing_code: Listing code
+          listing_type: Offered or Wanted
+          panel_size: Listing size
+          uuid: UUID
+        legends:
+          details: Details
+      index:
+        title: Listings
+      new:
+        title: New listing
+      show:
+        title: "Listing %{id}"
 
     sessions:
       _form:
+        buttons:
+          submit: Sign in
+        copy:
+          no_account: Would you like to create a free account?
+          sign_up_for_an_account: Take a few seconds and sign up for one
         labels:
           identifier: "Email or cell phone number"
           password: Password
-        buttons:
-          submit: Sign in
       new:
         title: Sign in to your account
 
@@ -85,6 +164,10 @@ en:
           time_zone: Time zone
           terms_of_use: Terms of use
         legends:
+          confirmation: Confirmation
+          contact_information: Contact information
+          localisation: Localisation
+          password: Password
         copy:
           accept_terms_of_use: I have read and accept the
           terms_of_use: terms of use
