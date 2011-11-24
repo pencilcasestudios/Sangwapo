@@ -9,6 +9,11 @@
 				<div class="controls"><%= password_field_tag :password, nil, class: "xlarge" %></div>
 			</fieldset>
 
+			<p>
+				<%= t("views.sessions._form.copy.no_account") %><br />
+				<%= link_to t("views.sessions._form.copy.sign_up_for_an_account"), sign_up_path %><%= t("views.application.copy.full_stop") %>
+			</p>
+			
 		  <div class="actions form-actions">
 				<%= submit_tag t("views.sessions._form.buttons.submit"), class: "btn large primary" %>
 			</div>
