@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20111123192747) do
     t.integer  "user_id"
     t.string   "currency"
     t.string   "listing_code"
+    t.string   "listing_type"
     t.string   "panel_size"
     t.string   "price_option"
     t.string   "state"
