@@ -1,0 +1,71 @@
+<% if @listing.errors.any? %>
+  <div id="error_explanation" class="alert-message block-message error">
+	  <a class="close" data-dismiss="alert" href="#">&times;</a>
+
+    <h2><%= t("views.listings._errors.title") %></h2>
+
+    <ul>
+			<% if @listing.errors[:state].present? %>
+				<% @listing.errors[:state].each do |message| %>
+					<li><%= t("views.listings._errors.fields.state") %> <%= message %></li>
+				<% end %>
+			<% end %>
+
+			<% if @listing.errors[:listing_type].present? %>
+				<% @listing.errors[:listing_type].each do |message| %>
+					<li><%= t("views.listings._errors.fields.listing_type") %> <%= message %></li>
+				<% end %>
+			<% end %>
+
+			<% if @listing.errors[:panel_size].present? %>
+				<% @listing.errors[:panel_size].each do |message| %>
+					<li><%= t("views.listings._errors.fields.panel_size") %> <%= message %></li>
+				<% end %>
+			<% end %>
+
+			<% if @listing.errors[:description].present? %>
+				<% @listing.errors[:description].each do |message| %>
+					<li><%= t("views.listings._errors.fields.description") %> <%= message %></li>
+				<% end %>
+			<% end %>
+
+			<% if @listing.errors[:exclude_price].present? %>
+				<% @listing.errors[:exclude_price].each do |message| %>
+					<li><%= t("views.listings._errors.fields.exclude_price") %> <%= message %></li>
+				<% end %>
+			<% end %>
+
+			<% if @listing.errors[:price].present? %>
+				<% @listing.errors[:price].each do |message| %>
+					<li><%= t("views.listings._errors.fields.price") %> <%= message %></li>
+				<% end %>
+			<% end %>
+
+			<% if @listing.errors[:currency].present? %>
+				<% @listing.errors[:currency].each do |message| %>
+					<li><%= t("views.listings._errors.fields.currency") %> <%= message %></li>
+				<% end %>
+			<% end %>
+
+			<% if @listing.errors[:price_option].present? %>
+				<% @listing.errors[:price_option].each do |message| %>
+					<li><%= t("views.listings._errors.fields.price_option") %> <%= message %></li>
+				<% end %>
+			<% end %>
+
+			<% if @listing.errors[:listing_code].present? %>
+				<% @listing.errors[:listing_code].each do |message| %>
+					<li><%= t("views.listings._errors.fields.listing_code") %> <%= message %></li>
+				<% end %>
+			<% end %>
+
+			<% if @listing.errors[:uuid].present? %>
+				<% @listing.errors[:uuid].each do |message| %>
+					<li><%= t("views.listings._errors.fields.uuid") %> <%= message %></li>
+				<% end %>
+			<% end %>
+
+
+		</ul>
+	</div>
+<% end %>

@@ -1,0 +1,45 @@
+<%= form_for(@listing, html: { class: "form-vertical" } ) do |f| %>
+		<%= render "errors", listing: @listing %>
+
+		<div class="row">
+			<div class="span4">
+				<fieldset class="control-group">
+			    <%= f.hidden_field :state %>
+
+			    <%= f.label :listing_type, t("views.listings._form.labels.listing_type"), class: "control-label" %>
+			    <div class="controls"><%= f.select :listing_type, ListingType::NAMES, { prompt: true }, { class: "span3" } %></div>
+				</fieldset>
+			</div>
+			<div class="span4">
+				<fieldset class="control-group">
+			    <%= f.label :panel_size, t("views.listings._form.labels.panel_size"), class: "control-label" %>
+			    <div class="controls"><%= f.select :panel_size, PanelSize::NAMES, { prompt: true }, { class: "span3" } %></div>
+				</fieldset>
+			</div>
+			<div class="span8">
+				<fieldset class="control-group">
+					<legend><%= t("views.listings._form.legends.details") %></legend>
+
+			    <%= f.label :description, t("views.listings._form.labels.description"), class: "control-label" %>
+			    <div class="controls"><%= f.text_area :description, { id: "listing_description", class: "span6",  rows: 5 } %></div>
+				</fieldset>
+			</div>
+			<div class="span4">
+				<fieldset class="control-group">
+			    <%= f.label :listing_code, t("views.listings._form.labels.listing_code"), class: "control-label" %>
+			    <div class="controls"><%= f.text_field :listing_code %></div>
+				</fieldset>
+			</div>
+			<div class="span4">
+				<fieldset class="control-group">
+			    <%= f.label :uuid, t("views.listings._form.labels.uuid"), class: "control-label" %>
+			    <div class="controls"><%= f.text_field :uuid %></div>
+				</fieldset>
+			</div>
+		</div><!-- /.row -->
+		
+	  <div class="actions form-actions">
+	    <%= f.submit class: "btn large primary" %>
+	  </div>
+	</fieldset>
+<% end %>

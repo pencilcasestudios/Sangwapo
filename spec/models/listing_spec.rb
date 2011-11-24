@@ -26,6 +26,12 @@ describe Listing do
       listing.errors[:panel_size].should == ["can't be blank"]
     end
 
+    it "fails validation with no listing_type" do
+      listing = Listing.new
+      listing.should have(1).error_on(:listing_type)
+      listing.errors[:listing_type].should == ["can't be blank"]
+    end
+
     it "fails validation with no state" do
       listing = Listing.new
       listing.should have(1).error_on(:state)

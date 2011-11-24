@@ -6,6 +6,7 @@ class CreateListings < ActiveRecord::Migration
       t.references :user
       t.string :currency
       t.string :listing_code
+      t.string :listing_type
       t.string :panel_size
       t.string :price_option
       t.string :state
