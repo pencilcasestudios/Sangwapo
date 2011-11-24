@@ -10,7 +10,7 @@ en:
   controllers:
     application_controller:
       flash:
-        sign_in_required: "Please sign in first and then we'll send you right along."
+        sign_in_required: "Please sign in first and then you will be sent right along."
 
     listings_controller:
       actions:
