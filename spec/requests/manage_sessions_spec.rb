@@ -6,10 +6,16 @@ describe "Session management" do
     describe "requesting sign in" do
       it "allows sign in with valid email and credentials" do
         sign_in_with_email
+
+        current_path.should eq(root_path)
+        page.should have_content(I18n.t("controllers.sessions_controller.actions.create.success"))
       end
 
       it "allows sign in with valid cell_phone_number and credentials" do
         sign_in_with_cell_phone_number
+
+        current_path.should eq(root_path)
+        page.should have_content(I18n.t("controllers.sessions_controller.actions.create.success"))
       end
 
       it "rejects sign in with an invalid email" do
