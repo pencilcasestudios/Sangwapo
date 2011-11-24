@@ -23,14 +23,14 @@
 
 			<div class="span8">
 				<section id="content_pane">
+					<%= render "notifications" %>
+
 					<%= yield %>
 				</section>
 			</div>
 
 			<div class="span4">
-				<section id="control_pane">
-					<%= render "notifications" %>
-					
+				<section id="control_pane">					
 					<header>
 						<h1><%= t("application.name") %></h1>
 					</header>
