@@ -1,5 +1,4 @@
 <%= form_for(@user, html: { class: "form-vertical" } ) do |f| %>
-	<fieldset class="control-group">
 
 		<%= render "errors", user: @user %>
 
@@ -16,9 +15,7 @@
 					<%= f.label :cell_phone_number, t("views.users._form.labels.cell_phone_number"), class: "control-label" %>
 					<div class="controls"><%= f.text_field :cell_phone_number %></div>
 				</fieldset>
-			</div>
 
-			<div class="span4">
 				<fieldset class="control-group">
 					<legend><%= t("views.users._form.legends.password") %></legend>
 					<%= f.label :password, t("views.users._form.labels.password"), class: "control-label" %>
@@ -38,16 +35,16 @@
 					<%= f.label :time_zone, t("views.users._form.labels.time_zone") %>
 					<div class="controls"><%= f.time_zone_select :time_zone, nil, default: "Africa/Lusaka" %></div>
 				</fieldset>
+
+				<% if new_or_create_action? %>
+					<fieldset class="control-group">
+						<legend><%= t("views.users._form.legends.confirmation") %></legend>
+				    <%= f.label :terms_of_use, t("views.users._form.labels.terms_of_use"), class: "control-label" %>
+				    <div class="controls terms_of_use"><%= f.check_box :terms_of_use %> <%= t("views.users._form.copy.accept_terms_of_use") %> <%= link_to t("views.users._form.copy.terms_of_use"), terms_path %><%= t("views.application.copy.full_stop") %></div>
+					</fieldset>
+				<% end %>
 			</div>
 		</div>
-
-		<% if new_or_create_action? %>
-			<fieldset class="control-group">
-				<legend><%= t("views.users._form.legends.confirmation") %></legend>
-		    <%= f.label :terms_of_use, t("views.users._form.labels.terms_of_use"), class: "control-label" %>
-		    <div class="controls terms_of_use"><%= f.check_box :terms_of_use %> <%= t("views.users._form.copy.accept_terms_of_use") %> <%= link_to t("views.users._form.copy.terms_of_use"), terms_path %><%= t("views.application.copy.full_stop") %></div>
-			</fieldset>
-		<% end %>
 
 	  <div class="actions form-actions">
 	    <%= f.submit class: "btn large primary" %>
