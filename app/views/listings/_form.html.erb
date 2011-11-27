@@ -1,11 +1,13 @@
 <%= form_for(@listing, html: { class: "form-vertical" } ) do |f| %>
 		<%= render "errors", listing: @listing %>
 
+    <%= f.hidden_field :state %>
+		<%= f.hidden_field :uuid %>
+		<%= f.hidden_field :listing_code %>
+
 		<div class="row">
 			<div class="span4">
 				<fieldset class="control-group">
-			    <%= f.hidden_field :state %>
-
 			    <%= f.label :listing_type, t("views.listings._form.labels.listing_type"), class: "control-label" %>
 			    <div class="controls"><%= f.select :listing_type, ListingType::NAMES, { prompt: true }, { class: "span3" } %></div>
 				</fieldset>
@@ -17,26 +19,24 @@
 				</fieldset>
 			</div>
 			<div class="span8">
+				<legend><%= t("views.listings._form.legends.details") %></legend>
 				<fieldset class="control-group">
-					<legend><%= t("views.listings._form.legends.details") %></legend>
-
 			    <%= f.label :description, t("views.listings._form.labels.description"), class: "control-label" %>
 			    <div class="controls"><%= f.text_area :description, { id: "listing_description", class: "span6",  rows: 5 } %></div>
 				</fieldset>
 			</div>
-			<div class="span4">
-				<fieldset class="control-group">
-			    <%= f.label :listing_code, t("views.listings._form.labels.listing_code"), class: "control-label" %>
-			    <div class="controls"><%= f.text_field :listing_code %></div>
-				</fieldset>
-			</div>
-			<div class="span4">
-				<fieldset class="control-group">
-			    <%= f.label :uuid, t("views.listings._form.labels.uuid"), class: "control-label" %>
-			    <div class="controls"><%= f.text_field :uuid %></div>
-				</fieldset>
-			</div>
 		</div><!-- /.row -->
+
+		<fieldset class="control-group">
+	    <%= f.label :display_for, t("views.listings._form.labels.display_for"), class: "control-label" %>
+	    <div class="controls"><%= f.select :display_for, Listing::PERIODS, { prompt: true }, { class: "span3" } %></div>
+		</fieldset>
+		<p>
+			<small>
+				<strong><%= t("views.listings._form.labels.listing_code") %></strong>:
+				<%= @listing.listing_code %><br />
+			</small>
+		</p>
 		
 	  <div class="actions form-actions">
 	    <%= f.submit class: "btn large primary" %>

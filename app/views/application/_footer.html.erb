@@ -7,6 +7,9 @@
 		| <%= link_to_unless_current t("views.application._footer.links.blog"), "http://blog.sangwapo.com" %>
 	</p>
 	<p>
-		&copy; <%= Time.now.year %> <%= link_to_unless_current t("application.name"), root_path %>
+		<small>
+			A creation of <a href="http://pencilcasestudios.com">Pencil Case Studios</a>.
+			&copy; <%= Time.now.year %>.
+		</small>
 	</p>
 </footer>

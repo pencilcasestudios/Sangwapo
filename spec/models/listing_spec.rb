@@ -8,6 +8,12 @@ describe Listing do
       listing.errors[:description].should == ["can't be blank"]
     end
 
+    it "fails validation with no display_for" do
+      listing = Listing.new(display_for: nil)
+      listing.should have(2).error_on(:display_for)
+      listing.errors[:display_for].should == ["can't be blank", "is not a number"]
+    end
+
     it "fails validation with no price" do
       listing = Listing.new(price: nil)
       listing.should have(2).error_on(:price)

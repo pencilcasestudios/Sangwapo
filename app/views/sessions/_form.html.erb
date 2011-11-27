@@ -1,22 +1,27 @@
-<div id="sign_in_form">
-	<%= form_tag sessions_path, class: "form-stacked" do %>
-		<fieldset class="control-group">
+<%= form_tag sessions_path, class: "form-stacked" do %>
+	<div class="row">
+		<div class="span5">
 			<fieldset class="control-group">
 				<%= label_tag :identifier, t("views.sessions._form.labels.identifier"), class: "control-label" %>
-				<div class="controls"><%= text_field_tag :identifier, params[:identifier], class: "xlarge" %></div>
-
-				<%= label_tag :password, t("views.sessions._form.labels.password"), class: "control-label" %>
-				<div class="controls"><%= password_field_tag :password, nil, class: "xlarge" %></div>
+				<div class="controls"><%= text_field_tag :identifier, params[:identifier], class: "span3" %></div>
 			</fieldset>
 
+			<fieldset class="control-group">
+				<%= label_tag :password, t("views.sessions._form.labels.password"), class: "control-label" %>
+				<div class="controls"><%= password_field_tag :password, nil, class: "span3" %></div>
+			</fieldset>
+		</div>
+
+		<div class="span3">
 			<p>
-				<%= t("views.sessions._form.copy.no_account") %><br />
+				<%=raw t("views.sessions._form.copy.no_account") %><br />
 				<%= link_to t("views.sessions._form.copy.sign_up_for_an_account"), sign_up_path %><%= t("views.application.copy.full_stop") %>
+				<%=raw t("views.sessions._form.copy.it_is_free") %>
 			</p>
-			
-		  <div class="actions form-actions">
-				<%= submit_tag t("views.sessions._form.buttons.submit"), class: "btn large primary" %>
-			</div>
-		</fieldset>
-	<% end %>
-</div>
+		</div>
+	</div><!-- /.row -->
+		
+  <div class="actions form-actions">
+		<%= submit_tag t("views.sessions._form.buttons.submit"), class: "btn large primary" %>
+	</div>
+<% end %>

@@ -1,7 +1,7 @@
 en:
   application:
     name: Sangwapo!
-    tagline: Zambia online classifieds
+    tagline: "Zambia&rsquo;s online classifieds"
 
 
 
@@ -52,7 +52,7 @@ en:
     emailer:
       registration_confirmation:
         subject: "Welcome to %{application_name}"
-        body: "Dear %{user_name},\n\nWelcome to %{application_name}!\n\nYour account is ready for you to use. You may sign in to create listings by visiting:\n%{sign_in_path}\n\nHope you like using %{application_name} as much as I'm enjoying making it.\n\nBest regards,\n\nSilumesii\n\n---\n%{application_name} is proudly Zambian and made by Pencil Case Studios.\n%{root_path}\nhttp://pencilcasestudios.com/"
+        body: "Hello %{user_name},\n\nWelcome to %{application_name}!\n\nYour account is ready for you to use. You may sign in to create listings by visiting:\n%{sign_in_path}\n\nHope you like using %{application_name} as much as I'm enjoying making it.\n\nTake care and and God bless,\n\nSilumesii\n\n---\n%{application_name} is proudly Zambian and made by Pencil Case Studios.\n%{root_path}\nhttp://pencilcasestudios.com/"
 
 
 
@@ -71,6 +71,18 @@ en:
       names:
         eng: English
 
+    listing:
+      periods:
+        one_day: "1 day"
+        two_days: "2 days"
+        three_days: "3 days"
+        four_days: "4 days"
+        five_days: "5 days"
+        six_days: "6 days"
+        seven_days: "7 days"
+        fourteen_days: "14 days"
+        twenty_one_days: "21 days"
+        twenty_eight_days: "28 days"
     listing_state:
       names:
         unpublished: Unpublished
@@ -109,7 +121,7 @@ en:
           create_a_listing: Create a listing
           sign_in: Sign in
           sign_out: Sign out
-          sign_up: Sign up
+          sign_up_for_an_account: Sign up for an account
       copy:
         full_stop: "."
 
@@ -119,12 +131,33 @@ en:
       _form:
         labels:
           description: Description
+          display_for: Display for
           listing_code: Listing code
           listing_type: Offered or Wanted
           panel_size: Listing size
           uuid: UUID
         legends:
           details: Details
+      _payment_instructions:
+        copy:
+          instructions: "To publish this listing, please send <strong>%{amount}</strong> %{carrier} talk time from your cell phone number <strong>%{sending_number}</strong> to <strong>%{receiving_number}</strong>."
+          enter:
+            airtel: "Enter"
+            mtn: "On your MTN phone, %{sending_number}, enter:"
+            zamtel: "Enter"
+          ussd_sequence:
+            airtel: "%{amount}%{receiving_number}"
+            mtn: "*224*%{amount}*%{receiving_number}#"
+            zamtel: "%{amount}%{receiving_number}"
+          send_to:
+            airtel: "%{amount}%{receiving_number}"
+            mtn: "Then send."
+            zamtel: "%{amount}%{receiving_number}"
+          cost_per_character: Cost per character
+          cost_per_day: Cost per day
+          cost_per_listing_size: Cost per listing size
+        titles:
+          pricing_summary: Pricing summary
       index:
         title: Listings
       new:
@@ -137,8 +170,9 @@ en:
         buttons:
           submit: Sign in
         copy:
-          no_account: Would you like to create a free account?
-          sign_up_for_an_account: Take a few seconds and sign up for one
+          no_account: "Don&rsquo;t have an account?"
+          it_is_free: "It&rsquo;s free!"
+          sign_up_for_an_account: "Take a moment and sign up for one"
         labels:
           identifier: "Email or cell phone number"
           password: Password
@@ -166,7 +200,7 @@ en:
         legends:
           confirmation: Confirmation
           contact_information: Contact information
-          localisation: Localisation
+          localisation: Preferences
           password: Password
         copy:
           accept_terms_of_use: I have read and accept the
@@ -175,3 +209,7 @@ en:
         title: Sign up
       edit:
         title: Account settings
+
+    welcome:
+      about:
+        title: About Sangwapo

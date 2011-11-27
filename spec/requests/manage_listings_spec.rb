@@ -8,7 +8,6 @@ describe "Listing management" do
         visit root_path
 
         current_path.should eq(root_path)
-        page.should have_content(I18n.t("views.listings.index.title"))
       end
     end
     
@@ -32,7 +31,6 @@ describe "Listing management" do
         visit root_path
 
         current_path.should eq(root_path)
-        page.should have_content(I18n.t("views.listings.index.title"))
       end
     end
     
