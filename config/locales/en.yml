@@ -16,6 +16,8 @@ en:
       actions:
         create:
           success: The listing was successfully created.
+        update:
+          success: The listing was successfully updated.
 
     sessions_controller:
       actions:
@@ -124,8 +126,17 @@ en:
           sign_up_for_an_account: Sign up for an account
       copy:
         full_stop: "."
+        full_colon: ":"
 
     listings:
+      _cost_calculation:
+        labels:
+          characters: character(s)
+          days: day(s)
+          description: Description
+          panel_size: listing panel
+          price: Price
+          total: Total
       _errors:
         title: This listing could not be created
       _form:
@@ -141,6 +152,7 @@ en:
       _payment_instructions:
         copy:
           instructions: "To publish this listing, please send <strong>%{amount}</strong> %{carrier} talk time from your cell phone number <strong>%{sending_number}</strong> to <strong>%{receiving_number}</strong>."
+          edit_limitation: "Once this listing is published, you will not be able to edit it."
           enter:
             airtel: "Enter"
             mtn: "On your MTN phone, %{sending_number}, enter:"
@@ -157,7 +169,11 @@ en:
           cost_per_day: Cost per day
           cost_per_listing_size: Cost per listing size
         titles:
+          breakdown: Breakdown
+          payment_details: Payment details
           pricing_summary: Pricing summary
+      links:
+        edit: Edit
       index:
         title: Listings
       new:

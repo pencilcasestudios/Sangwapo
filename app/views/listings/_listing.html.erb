@@ -1,5 +1,10 @@
 <div class="listing">
-	<div class="<%= listing.listing_type %>"><small><%= t("models.listing_type.names.#{listing.listing_type}") %></small></div>
+	<div class="<%= listing.listing_type %>">
+		<small><%= t("models.listing_type.names.#{listing.listing_type}") %></small>
+		<% if user_signed_in? && !listing.is_published? && listing.user == current_user %>
+			| <%= link_to t("views.listings.links.edit"), edit_listing_path(listing) %>
+		<% end %>
+	</div>
 	
 	<%=simple_format listing.description %>
 

@@ -1,4 +1,4 @@
-<%= form_for(@listing, html: { class: "form-vertical" } ) do |f| %>
+<%= form_for(@listing) do |f| %>
 		<%= render "errors", listing: @listing %>
 
     <%= f.hidden_field :state %>

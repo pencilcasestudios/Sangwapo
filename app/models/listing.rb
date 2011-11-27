@@ -43,12 +43,24 @@ class Listing < ActiveRecord::Base
   def self.generate_uuid
     `uuidgen`.strip.downcase
   end
-  
-  def total_listing_cost
-    (self.description.size * COST_PER_CHARACTER) + (self.display_for * COST_PER_DAY) + COST_PER_PANEL_SIZE[self.panel_size]
+
+  def total_character_price
+    self.description.size * COST_PER_CHARACTER
+  end
+
+  def total_daily_price
+    self.display_for * COST_PER_DAY
   end
   
-  def published?
+  def total_panel_price
+    COST_PER_PANEL_SIZE[self.panel_size]
+  end
+  
+  def total_listing_price
+     total_character_price + total_daily_price + total_panel_price
+  end
+  
+  def is_published?
     self.state == "published"
   end
 end

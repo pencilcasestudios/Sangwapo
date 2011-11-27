@@ -1,5 +1,5 @@
 class ListingsController < ApplicationController
-  before_filter :sign_in_required, :except => [:index]
+  before_filter :sign_in_required, :except => [:index, :show]
 
   def index
     @listings = Listing.all
@@ -24,6 +24,24 @@ class ListingsController < ApplicationController
       redirect_to @listing
     else
       render action: "new"
+    end
+  end
+
+  def edit
+    @listing = current_user.listings.find_by_id(params[:id])
+    if @listing.blank?
+      flash[:error] = t("controllers.listings_controller.actions.edit.failure")
+      redirect_to root_path
+    end
+  end
+
+  def update
+    @listing = current_user.listings.find_by_id(params[:id])
+    if @listing.update_attributes(params[:listing])
+      flash[:success] = t("controllers.listings_controller.actions.update.success")
+      redirect_to(@listing)
+    else
+      render :action => "edit"
     end
   end
 end
