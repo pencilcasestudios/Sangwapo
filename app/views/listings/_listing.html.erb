@@ -1,12 +1,11 @@
-<div class="listing">
-	<div class="<%= listing.listing_type %>">
-		<small><%= t("models.listing_type.names.#{listing.listing_type}") %></small>
-		<% if user_signed_in? && !listing.is_published? && listing.user == current_user %>
-			| <%= link_to t("views.listings.links.edit"), edit_listing_path(listing) %>
-		<% end %>
-	</div>
-	
+<div class="listing <%= listing.listing_type %>">	
 	<%=simple_format listing.description %>
 
-	<div class="listing_code"><small><%= link_to_unless_current listing.listing_code, listing %></small></div>
+	<div class="listing_meta_data">
+		<% if user_signed_in? && !listing.is_published? && listing.user == current_user %>
+			<span class="edit"><%= link_to t("views.listings.links.edit"), edit_listing_path(listing) %></span>
+		<% end %>
+		<span class="listing_code"><%= link_to_unless_current listing.listing_code, listing %></span>
+		<span class="<%= listing.listing_type %>"><%= t("models.listing_type.names.#{listing.listing_type}") %></span>
+	</div>
 </div>

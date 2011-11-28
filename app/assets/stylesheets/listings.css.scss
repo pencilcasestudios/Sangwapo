@@ -3,33 +3,22 @@
 }
 
 #listings .listing {
-	padding: 1em;
-	border-top: 2px solid #cccccc;
+	padding: 1em 0.5em 1em 0.5em;
+	border-top: 2px solid #dddddd;
 }
 
 #listings .listing:hover {
 	background: #ffffdd;
 }
 
+#listings .listing:hover span.offered,
+#listings .listing:hover span.wanted {
+	color: #009900;
+}
+
 #listings .listing p {
-	font-size: 1.3em;
+	font-size: 1.4em;
 	line-height: 1.5em;
-}
-
-#listings .listing .offered {
-	/* background: #b7ff4e; */
-	color: #008400;
-	/* border-bottom: 3px double #dddddd; */
-	padding: 0.25em 1em 0.25em 0.25em;
-	text-align: right;
-}
-
-#listings .listing .wanted {
-	/* background: #ffcc52; */
-	color: #ff7d00;
-	/* border-bottom: 3px double #dddddd; */
-	padding: 0.25em 1em 0.25em 0.25em;
-	text-align: right;
 }
 
 #listings .listing .listing_code {
@@ -38,12 +27,21 @@
 	color: #999999;
 }
 
+#listings .listing .listing_meta_data {
+	font-size: 0.85em;
+	color: #999999;
+}
+
+#listings .listing .listing_meta_data .edit {
+	float: right;
+}
+
 #listings .listing .listing_code a {
 	color: #999999;
 }
 
 #listings .listing .listing_code a:hover {
-	color: #555555;
+	color: #333333;
 	text-decoration: underline;
 }
 
