@@ -32,7 +32,10 @@
 			<div class="span4">
 				<section id="control_pane">					
 					<header>
-						<h1><%= link_to t("application.name"), root_path %></h1>
+						<h1>
+							<%= link_to t("application.name"), root_path %><br />
+							<small><%=raw t("application.tagline") %></small>
+						</h1>
 					</header>
 					
 					<%= render "footer" %>
