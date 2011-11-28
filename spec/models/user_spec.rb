@@ -26,6 +26,12 @@ describe User do
       user.errors[:language].should == ["can't be blank"]
     end
 
+    it "fails validation with no role" do
+      user = User.new(role: nil)
+      user.should have(1).error_on(:role)
+      user.errors[:role].should == ["can't be blank"]
+    end
+
     it "fails validation with no time_zone" do
       user = User.new
       user.should have(1).error_on(:time_zone)

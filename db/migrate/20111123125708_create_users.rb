@@ -6,6 +6,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :first_name
       t.string :language
       t.string :password_digest
+      t.string :role, default: "user"
       t.string :time_zone
 
       t.timestamps
