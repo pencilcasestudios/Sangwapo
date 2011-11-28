@@ -17,6 +17,8 @@ gem "paper_trail", "~> 2"
 gem "prawn_rails"
 gem "rails-backbone"
 gem "settingslogic"
+gem "state_machine"
+#gem "ruby-graphviz", :require => "graphviz" # Optional: only required with state_machine for graphing
 
 
 
