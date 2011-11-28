@@ -8,7 +8,17 @@ class PhoneNumber < ActiveRecord::Base
   # 095XXXXXXX is Zamtel
   # 096XXXXXXX is MTN
   # 097XXXXXXX is Airtel
-  def self.carrier(phone_number)
-    
+  #
+  # May need to match 011 (International code)
+  def self.mobile_carrier(phone_number)
+    if phone_number =~ /^[\+]?(26)?(097)/
+      "airtel"
+    elsif phone_number =~ /^[\+]?(26)?(096)/
+      "mtn"
+    elsif phone_number =~ /^[\+]?(26)?(095)/
+      "zamtel"
+    else
+      nil
+    end
   end
 end

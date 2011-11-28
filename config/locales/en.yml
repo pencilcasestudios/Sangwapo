@@ -1,5 +1,8 @@
 en:
   application:
+    developer:
+      name: Pencil Case Studios
+      url: http://pencilcasestudios.com
     name: Sangwapo!
     tagline: "Zambia&rsquo;s online classifieds"
 
@@ -101,6 +104,13 @@ en:
         small: "Small (Text only)"
         medium: Medium (Text and 1 picture)
         large: Large (Text and 2 pictures)
+    
+    phone_number:
+      mobile_carriers:
+        airtel: "Airtel"
+        mtn: "MTN"
+        zamtel: "Zamtel"
+        
 
 
 
@@ -151,20 +161,20 @@ en:
           details: Details
       _payment_instructions:
         copy:
-          instructions: "To publish this listing, please send <strong>%{amount}</strong> %{carrier} talk time from your cell phone number <strong>%{sending_number}</strong> to <strong>%{receiving_number}</strong>."
-          edit_limitation: "Once this listing is published, you will not be able to edit it."
+          instructions: "To publish this listing, please send <strong>%{amount}</strong> %{carrier} airtime from your phone with number <strong>%{sending_number}</strong> to <strong>%{receiving_number}</strong>."
+          edit_limitation: "Once the listing is paid for, you will not be able to edit it."
           enter:
-            airtel: "Enter"
-            mtn: "On your MTN phone, %{sending_number}, enter:"
-            zamtel: "Enter"
-          ussd_sequence:
-            airtel: "%{amount}%{receiving_number}"
+            airtel: "From your Airtel mobile phone, %{sending_number}, go to the message pad and enter:"
+            mtn: "On your MTN mobile phone, %{sending_number}, enter:"
+            zamtel: "On your Zamtel mobile phone, %{sending_number}, enter:"
+          airtime_transfer_sequence:
+            airtel: "2u %{receiving_number} %{amount} XXXX"
             mtn: "*224*%{amount}*%{receiving_number}#"
-            zamtel: "%{amount}%{receiving_number}"
+            zamtel: "*444*XXXX*%{receiving_number}*%{amount}*#"
           send_to:
-            airtel: "%{amount}%{receiving_number}"
+            airtel: "(where XXXX is your password). Send the message to 432."
             mtn: "Then send."
-            zamtel: "%{amount}%{receiving_number}"
+            zamtel: "(where XXXX is your PIN). Then send."
           cost_per_character: Cost per character
           cost_per_day: Cost per day
           cost_per_listing_size: Cost per listing size

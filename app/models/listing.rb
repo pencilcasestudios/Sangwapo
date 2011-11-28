@@ -28,7 +28,7 @@ class Listing < ActiveRecord::Base
     I18n.t("models.listing.periods.twenty_eight_days") =>    "28",
   }
   
-  COST_PER_CHARACTER = 200
+  COST_PER_CHARACTER = 120
   COST_PER_DAY = 1000
   COST_PER_PANEL_SIZE = {
     "small" => 3000,
