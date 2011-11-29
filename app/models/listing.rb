@@ -15,17 +15,17 @@ class Listing < ActiveRecord::Base
   validates :uuid, presence: true, uniqueness: true
   
   PERIODS = {
-    # Translation                                            # Database key
-    I18n.t("models.listing.periods.one_day")           =>    "1",
-    I18n.t("models.listing.periods.two_days")          =>    "2",
-    I18n.t("models.listing.periods.three_days")        =>    "3",
-    I18n.t("models.listing.periods.four_days")         =>    "4",
-    I18n.t("models.listing.periods.five_days")         =>    "5",
-    I18n.t("models.listing.periods.six_days")          =>    "6",
-    I18n.t("models.listing.periods.seven_days")        =>    "7",
-    I18n.t("models.listing.periods.fourteen_days")     =>    "14",
-    I18n.t("models.listing.periods.twenty_one_days")   =>    "21",
-    I18n.t("models.listing.periods.twenty_eight_days") =>    "28",
+    # Translation                         # Database key
+    I18n.t("models.listing.periods")[1]  =>    "1",
+    I18n.t("models.listing.periods")[2]  =>    "2",
+    I18n.t("models.listing.periods")[3]  =>    "3",
+    I18n.t("models.listing.periods")[4]  =>    "4",
+    I18n.t("models.listing.periods")[5]  =>    "5",
+    I18n.t("models.listing.periods")[6]  =>    "6",
+    I18n.t("models.listing.periods")[7]  =>    "7",
+    I18n.t("models.listing.periods")[14] =>    "14",
+    I18n.t("models.listing.periods")[21] =>    "21",
+    I18n.t("models.listing.periods")[28] =>    "28",
   }
   
   COST_PER_CHARACTER = 120
