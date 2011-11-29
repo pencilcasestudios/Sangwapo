@@ -186,6 +186,8 @@ en:
         edit: Edit
       index:
         title: Listings
+      edit:
+        title: "Edit listing %{id}"
       new:
         title: New listing
       show:
