@@ -1,7 +1,7 @@
 class PhoneNumber < ActiveRecord::Base
-  # Generate a correctly-formatted, random, 10-digit phone number sequence
+  # Generate a random Zambian mobile carrier phone number sequence
   def self.random
-    [["+",""][rand 2],"#{'%010d' % (rand 1000000000000)}"].join.strip
+    [["+26",""][rand 2],"09",["5","6","7"][rand 3],"#{'%07d' % (rand 10000000)}"].join.strip
   end
   
   # Given a Zambian cell phone number return the mobile carrier:
