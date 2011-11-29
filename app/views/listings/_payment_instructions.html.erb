@@ -2,12 +2,13 @@
 
 <%
 sending_number = current_user.cell_phone_number
-amount = number_to_currency(@listing.total_listing_price, unit: "K")
+amount = @listing.total_listing_price
+formatted_amount = number_to_currency(@listing.total_listing_price, unit: "K")
 carrier = t("models.phone_number.mobile_carriers.#{PhoneNumber.mobile_carrier(current_user.cell_phone_number)}")
 receiving_number = AirtimePayment.receiving_number(PhoneNumber.mobile_carrier(current_user.cell_phone_number))
 %>
 
-<p><%=raw t("views.listings._payment_instructions.copy.instructions", amount: amount, carrier: carrier, sending_number: sending_number, receiving_number: receiving_number) %></p>
+<p><%=raw t("views.listings._payment_instructions.copy.instructions", amount: formatted_amount, carrier: carrier, sending_number: sending_number, receiving_number: receiving_number) %></p>
 <p><%= t("views.listings._payment_instructions.copy.enter.#{PhoneNumber.mobile_carrier(current_user.cell_phone_number)}", sending_number: sending_number) %></p>
 <pre class="USSD_sequence">
 <%= t("views.listings._payment_instructions.copy.airtime_transfer_sequence.#{PhoneNumber.mobile_carrier(current_user.cell_phone_number)}", amount: amount, receiving_number: receiving_number) %>
@@ -18,11 +19,11 @@ receiving_number = AirtimePayment.receiving_number(PhoneNumber.mobile_carrier(cu
 <br />
 
 <div class="row">
-	<div class="span5">
-		<h2><%= t("views.listings._payment_instructions.titles.breakdown") %></h2>
+	<div class="span4">
+		<h3><%= t("views.listings._payment_instructions.titles.breakdown") %></h3>
 		<%= render "cost_calculation", listing: @listing %>
 	</div>
-	<div class="span3">
+	<div class="span4">
 		<%= render "price_list" %>
 	</div>
 </div>
