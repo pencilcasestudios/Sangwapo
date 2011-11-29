@@ -1,9 +1,16 @@
 <h2><%= t("views.listings._payment_instructions.titles.payment_details") %></h2>
 
-<p><%=raw t("views.listings._payment_instructions.copy.instructions", amount: number_to_currency(@listing.total_listing_price, unit: "K"), carrier: t("models.phone_number.mobile_carriers.#{PhoneNumber.mobile_carrier(current_user.cell_phone_number)}"), sending_number: current_user.cell_phone_number, receiving_number: "0987654321") %></p>
-<p><%= t("views.listings._payment_instructions.copy.enter.#{PhoneNumber.mobile_carrier(current_user.cell_phone_number)}", sending_number: current_user.cell_phone_number) %></p>
+<%
+sending_number = current_user.cell_phone_number
+amount = number_to_currency(@listing.total_listing_price, unit: "K")
+carrier = t("models.phone_number.mobile_carriers.#{PhoneNumber.mobile_carrier(current_user.cell_phone_number)}")
+receiving_number = AirtimePayment.receiving_number(PhoneNumber.mobile_carrier(current_user.cell_phone_number))
+%>
+
+<p><%=raw t("views.listings._payment_instructions.copy.instructions", amount: amount, carrier: carrier, sending_number: sending_number, receiving_number: receiving_number) %></p>
+<p><%= t("views.listings._payment_instructions.copy.enter.#{PhoneNumber.mobile_carrier(current_user.cell_phone_number)}", sending_number: sending_number) %></p>
 <pre class="USSD_sequence">
-<%= t("views.listings._payment_instructions.copy.airtime_transfer_sequence.#{PhoneNumber.mobile_carrier(current_user.cell_phone_number)}", amount: @listing.total_listing_price, receiving_number: "0987654321") %>
+<%= t("views.listings._payment_instructions.copy.airtime_transfer_sequence.#{PhoneNumber.mobile_carrier(current_user.cell_phone_number)}", amount: amount, receiving_number: receiving_number) %>
 </pre>
 <p><%= t("views.listings._payment_instructions.copy.send_to.#{PhoneNumber.mobile_carrier(current_user.cell_phone_number)}") %></p>
 <p><%= t("views.listings._payment_instructions.copy.edit_limitation") %></p>
