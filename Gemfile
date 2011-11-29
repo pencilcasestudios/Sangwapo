@@ -10,6 +10,7 @@ gem "rails", "3.1.3"
 
 
 # Used accross environments
+#gem "ruby-graphviz", :require => "graphviz" # Optional: only required with state_machine for graphing
 gem "bcrypt-ruby", "~> 3.0.0"
 gem "jquery-rails"
 gem "nested_form", git: "git://github.com/ryanb/nested_form.git"
@@ -18,7 +19,7 @@ gem "prawn_rails"
 gem "rails-backbone"
 gem "settingslogic"
 gem "state_machine"
-#gem "ruby-graphviz", :require => "graphviz" # Optional: only required with state_machine for graphing
+gem "twitter", "~> 2.0.0"
 
 
 
