@@ -5,13 +5,13 @@ describe Payment do
     it "fails validation with no from" do
       payment = Payment.new(from: nil)
       payment.should have(2).error_on(:from)
-      payment.errors[:from].should == ["can't be blank", "is not formatted properly"]
+      payment.errors[:from].should == ["can't be blank", I18n.t("validators.cell_phone_number_format.error")]
     end
 
     it "fails validation with no to" do
       payment = Payment.new(to: nil)
       payment.should have(2).error_on(:to)
-      payment.errors[:to].should == ["can't be blank", "is not formatted properly"]
+      payment.errors[:to].should == ["can't be blank", I18n.t("validators.cell_phone_number_format.error")]
     end
 
     it "fails validation with no received_at" do
@@ -32,7 +32,7 @@ describe Payment do
       it "is not in Zambian cell phone number format" do
         payment = Payment.new(to: "Something that is not a Zambian cell phone number")
         payment.should have(1).error_on(:to)
-        payment.errors[:to].should == ["is not formatted properly"]
+        payment.errors[:to].should == [I18n.t("validators.cell_phone_number_format.error")]
       end
     end
 
@@ -40,7 +40,7 @@ describe Payment do
       it "is not in Zambian cell phone number format" do
         payment = Payment.new(from: "Something that is not a Zambian cell phone number")
         payment.should have(1).error_on(:from)
-        payment.errors[:from].should == ["is not formatted properly"]
+        payment.errors[:from].should == [I18n.t("validators.cell_phone_number_format.error")]
       end
     end
   end

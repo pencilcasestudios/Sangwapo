@@ -120,6 +120,14 @@ en:
 
 
 
+# Validators
+  validators:
+    cell_phone_number_format:
+      error: is not a Zambian cell phone number
+      
+
+
+
 # Views
   views:
     application:
@@ -237,6 +245,7 @@ en:
         copy:
           accept_terms_of_use: I have read and accept the
           terms_of_use: terms of use
+          exclusively_zambian: "%{application_name} is only available in Zambia. Please use a Zambian cell phone number when creating your account."
       new:
         title: Sign up
       edit:
@@ -244,4 +253,4 @@ en:
 
     welcome:
       about:
-        title: About Sangwapo
+        title: "About %{application_name}"

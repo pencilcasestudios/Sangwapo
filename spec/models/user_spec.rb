@@ -5,7 +5,7 @@ describe User do
     it "fails validation with no cell_phone_number" do
       user = User.new
       user.should have(2).error_on(:cell_phone_number)
-      user.errors[:cell_phone_number].should == ["can't be blank", "is not formatted properly"]
+      user.errors[:cell_phone_number].should == ["can't be blank", I18n.t("validators.cell_phone_number_format.error")]
     end
 
     it "fails validation with no email" do
@@ -65,7 +65,7 @@ describe User do
     it "fails validation with an incorrect format for cell_phone_number" do
       user = User.new(cell_phone_number: "some ridiculously formatted cell phone number")
       user.should have(1).error_on(:cell_phone_number)
-      user.errors[:cell_phone_number].should == ["is not formatted properly"]
+      user.errors[:cell_phone_number].should == [I18n.t("validators.cell_phone_number_format.error")]
     end
   end
 end

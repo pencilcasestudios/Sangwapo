@@ -53,6 +53,13 @@
 					<%= f.label :time_zone, t("views.users._form.labels.time_zone") %>
 					<div class="controls"><%= f.time_zone_select :time_zone, nil, default: "Africa/Lusaka" %></div>
 				</fieldset>
+
+				<br />
+				<% if new_or_create_action? %>
+					<div id="exclusively_zambian">
+						<p><%= t("views.users._form.copy.exclusively_zambian", application_name: t("application.name")) %></p>
+					</div>
+				<% end %>
 			</div>
 		</div>
 
