@@ -7,7 +7,7 @@
     <ul>
 			<% if @user.errors[:first_name].present? %>
 				<% @user.errors[:first_name].each do |message| %>
-					<li><%= t("views.users._errors.fields.name") %> <%= message %></li>
+					<li><%= t("views.users._errors.fields.first_name") %> <%= message %></li>
 				<% end %>
 			<% end %>
 

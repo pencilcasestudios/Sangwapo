@@ -222,9 +222,11 @@ en:
     users:
       _errors:
         fields:
-          email: Email
           cell_phone_number: Cell phone number
+          email: Email
+          first_name: First name
           password: Password
+          password_digest: Password
           terms_of_use: Terms of use
         title: This account could not be created
       _form:
