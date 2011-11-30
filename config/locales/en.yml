@@ -110,7 +110,11 @@ en:
         airtel: "Airtel"
         mtn: "MTN"
         zamtel: "Zamtel"
-        
+
+    user:
+      roles:
+        administrator: Administrator
+        user: User
 
 
 

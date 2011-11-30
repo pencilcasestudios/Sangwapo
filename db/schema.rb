@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(:version => 20111130135654) do
     t.string   "first_name"
     t.string   "language"
     t.string   "password_digest"
-    t.string   "role",              :default => "user"
+    t.string   "role"
     t.string   "time_zone"
     t.datetime "created_at"
     t.datetime "updated_at"

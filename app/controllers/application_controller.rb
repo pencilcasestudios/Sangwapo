@@ -25,6 +25,14 @@ private
       return false
     end
   end
+  
+  def admin_required
+    unless current_user && current_user.admin?
+      #flash[:warning] = t("controllers.application_controller.flash.admin_required")
+      redirect_to root_path
+      return false
+    end
+  end
 
   def store_location
     session[:return_to] =

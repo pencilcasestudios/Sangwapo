@@ -22,4 +22,8 @@ class User < ActiveRecord::Base
     I18n.t("models.user.roles.user")          =>    "user",
     I18n.t("models.user.roles.administrator") =>    "administrator",
   }
+  
+  def admin?
+    self.role == User::ROLES[I18n.t("models.user.roles.administrator")]
+  end
 end

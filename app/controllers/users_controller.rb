@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+    @user.role = User::ROLES[I18n.t("models.user.roles.user")]
     if @user.save
       Emailer.registration_confirmation(@user).deliver  
       flash[:success] = t("controllers.users_controller.actions.create.success")

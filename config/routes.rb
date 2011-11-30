@@ -21,6 +21,7 @@ Sangwapo::Application.routes.draw do
 
 
   resources :listings
+  resources :payments
   resources :sessions
   resources :users
 
