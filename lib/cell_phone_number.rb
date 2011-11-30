@@ -1,4 +1,4 @@
-class PhoneNumber < ActiveRecord::Base
+class CellPhoneNumber < ActiveRecord::Base
   # Generate a random Zambian mobile carrier phone number sequence
   def self.random
     [["+26",""][rand 2],"09",["5","6","7"][rand 3],"#{'%07d' % (rand 10000000)}"].join.strip
