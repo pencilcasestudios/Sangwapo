@@ -14,6 +14,8 @@ class Listing < ActiveRecord::Base
   validates :state, presence: true
   validates :uuid, presence: true, uniqueness: true
   
+  has_many :payments
+
   PERIODS = {
     # Translation                         # Database key
     I18n.t("models.listing.periods")[1]  =>    "1",

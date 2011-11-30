@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111123192747) do
+ActiveRecord::Schema.define(:version => 20111130135654) do
 
   create_table "listings", :force => true do |t|
     t.boolean  "exclude_price",                                :default => false
@@ -33,6 +33,21 @@ ActiveRecord::Schema.define(:version => 20111123192747) do
   end
 
   add_index "listings", ["user_id"], :name => "index_listings_on_user_id"
+
+  create_table "payments", :force => true do |t|
+    t.datetime "received_at"
+    t.integer  "listing_id"
+    t.integer  "user_id"
+    t.string   "from"
+    t.string   "to"
+    t.string   "uuid"
+    t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "payments", ["listing_id"], :name => "index_payments_on_listing_id"
+  add_index "payments", ["user_id"], :name => "index_payments_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "cell_phone_number"

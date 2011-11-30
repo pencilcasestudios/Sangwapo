@@ -14,7 +14,7 @@ describe "User management" do
         email = "monde@example.com"
         fill_in I18n.t("views.users._form.labels.email"), with: email
 
-        cell_phone_number = PhoneNumber.random
+        cell_phone_number = CellPhoneNumber.random
         fill_in I18n.t("views.users._form.labels.cell_phone_number"), with: cell_phone_number
 
         password = "password"
@@ -40,7 +40,7 @@ describe "User management" do
 
         # Not filled in: fill_in I18n.t("views.users._form.labels.email"), with: "monde@example.com"
 
-        cell_phone_number = PhoneNumber.random
+        cell_phone_number = CellPhoneNumber.random
         fill_in I18n.t("views.users._form.labels.cell_phone_number"), with: cell_phone_number
 
         password = "password"
@@ -63,7 +63,7 @@ describe "User management" do
 
         fill_in I18n.t("views.users._form.labels.email"), with: "monde@example.com"
 
-        cell_phone_number = PhoneNumber.random
+        cell_phone_number = CellPhoneNumber.random
         # Not filled in: fill_in I18n.t("views.users._form.labels.cell_phone_number"), with: cell_phone_number
 
         password = "password"
@@ -86,7 +86,7 @@ describe "User management" do
 
         fill_in I18n.t("views.users._form.labels.email"), with: "monde@example.com"
 
-        cell_phone_number = PhoneNumber.random
+        cell_phone_number = CellPhoneNumber.random
         fill_in I18n.t("views.users._form.labels.cell_phone_number"), with: cell_phone_number
 
         password = "password"
@@ -109,7 +109,7 @@ describe "User management" do
 
         fill_in I18n.t("views.users._form.labels.email"), with: "monde@example.com"
 
-        cell_phone_number = PhoneNumber.random
+        cell_phone_number = CellPhoneNumber.random
         fill_in I18n.t("views.users._form.labels.cell_phone_number"), with: cell_phone_number
 
         password = "password"
@@ -132,7 +132,7 @@ describe "User management" do
 
         fill_in I18n.t("views.users._form.labels.email"), with: "monde@example.com"
 
-        cell_phone_number = PhoneNumber.random
+        cell_phone_number = CellPhoneNumber.random
         fill_in I18n.t("views.users._form.labels.cell_phone_number"), with: cell_phone_number
 
         fill_in I18n.t("views.users._form.labels.password"), with: "mbelele"
@@ -154,7 +154,7 @@ describe "User management" do
 
         fill_in I18n.t("views.users._form.labels.email"), with: "monde@example.com"
 
-        cell_phone_number = PhoneNumber.random
+        cell_phone_number = CellPhoneNumber.random
         fill_in I18n.t("views.users._form.labels.cell_phone_number"), with: cell_phone_number
 
         password = "password"
@@ -208,7 +208,7 @@ describe "User management" do
       it "allows the user to edit their cell_phone_number" do
         visit account_settings_path
 
-        updated_field = PhoneNumber.random
+        updated_field = CellPhoneNumber.random
         fill_in I18n.t("views.users._form.labels.cell_phone_number"), with: updated_field
 
         click_button I18n.t("helpers.submit.user.update")

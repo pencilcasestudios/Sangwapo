@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 
   has_paper_trail
 
-  validates :cell_phone_number, :presence => true, :uniqueness => true, :phone_number_format => true
+  validates :cell_phone_number, :presence => true, :uniqueness => true, :cell_phone_number_format => true
   validates :email, :presence => true, :uniqueness => true, :email_format => true
   validates :first_name, :presence => true
   validates :language, :presence => true
@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   attr_accessor :terms_of_use
 
   has_many :listings
+  has_many :payments
 
   ROLES = {
     # Translation                                   # Database key
