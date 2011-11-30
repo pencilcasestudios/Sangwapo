@@ -21,6 +21,8 @@ en:
           success: The listing was successfully created.
         update:
           success: The listing was successfully updated.
+        edit:
+          failure: You cannot edit that listing.
 
     sessions_controller:
       actions:
