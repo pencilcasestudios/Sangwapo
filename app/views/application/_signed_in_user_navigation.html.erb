@@ -1,3 +1,9 @@
+<% if current_user.admin? %>
+<ul class="nav user">
+	<li id="tab_payments"><%= link_to t("views.application._navigation.links.payments"), payments_path %></li>
+</ul><!-- /.nav -->
+<% end %>
+
 <ul class="nav secondary-nav user">
 	<li id="tab_my_listings"><%= link_to t("views.application._navigation.links.my_listings"), listings_path %></li>
 	<li id="tab_create_a_listing"><%= link_to t("views.application._navigation.links.create_a_listing"), new_listing_path %></li>
@@ -9,4 +15,4 @@
 			<li><%= link_to t("views.application._navigation.links.sign_out"), sign_out_path %></li>
 		</ul>
 	</li>
-</ul>
+</ul><!-- /.nav -->
