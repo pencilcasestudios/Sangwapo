@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20111130135654) do
     t.integer  "listing_id"
     t.integer  "user_id"
     t.string   "from"
+    t.string   "state"
     t.string   "to"
     t.string   "uuid"
     t.text     "notes"

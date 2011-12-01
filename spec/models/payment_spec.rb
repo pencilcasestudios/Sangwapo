@@ -20,6 +20,12 @@ describe Payment do
       payment.errors[:received_at].should == ["can't be blank"]
     end
 
+    it "fails validation with no state" do
+      payment = Payment.new(state: nil)
+      payment.should have(2).error_on(:state)
+      payment.errors[:state].should == ["can't be blank", "is invalid"]
+    end
+
     it "fails validation with no uuid" do
       payment = Payment.new(uuid: nil)
       payment.should have(1).error_on(:uuid)

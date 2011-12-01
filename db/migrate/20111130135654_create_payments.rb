@@ -5,6 +5,7 @@ class CreatePayments < ActiveRecord::Migration
       t.references :listing
       t.references :user
       t.string :from
+      t.string :state
       t.string :to
       t.string :uuid
       t.text :notes

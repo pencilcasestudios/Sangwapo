@@ -18,8 +18,6 @@ Factory.define :listing do |f|
   f.sequence(:listing_type) { ListingType::NAMES[ListingType::NAMES.to_a[rand ListingType::NAMES.size].first] }
   f.sequence(:panel_size) { PanelSize::NAMES[PanelSize::NAMES.to_a[rand PanelSize::NAMES.size].first] }
   f.sequence(:uuid) { Listing.generate_uuid }
-
-  f.state I18n.t("models.listing_state.names.unpublished")
 end
 
 Factory.define :payment do |f|

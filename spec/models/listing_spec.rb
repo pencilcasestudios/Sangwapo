@@ -39,9 +39,9 @@ describe Listing do
     end
 
     it "fails validation with no state" do
-      listing = Listing.new
-      listing.should have(1).error_on(:state)
-      listing.errors[:state].should == ["can't be blank"]
+      listing = Listing.new(state: nil)
+      listing.should have(2).error_on(:state)
+      listing.errors[:state].should == ["can't be blank", "is invalid"]
     end
 
     it "fails validation with no uuid" do

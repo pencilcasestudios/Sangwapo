@@ -37,6 +37,28 @@ class Listing < ActiveRecord::Base
     "medium" => 4000,
     "large" => 5000,
   }
+  
+  state_machine :state, :initial => :unpublished do
+    event :payment_sent do
+      transition :unpublished => :clearing
+    end
+
+    event :clear do
+      transition :clearing => :review
+    end
+
+    event :reject do
+      transition :review => :unpublished
+    end
+
+    event :accept do
+      transition :review => :published
+    end
+
+    event :archive do
+      transition :published => :archived
+    end
+  end
 
   def self.generate_listing_code
     Time.now.strftime("L%Y-%m-%d-%H%M%S-%L")
