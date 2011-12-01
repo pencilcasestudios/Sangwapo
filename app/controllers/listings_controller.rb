@@ -13,12 +13,10 @@ class ListingsController < ApplicationController
     @listing = Listing.new
     @listing.listing_code = Listing.generate_listing_code
     @listing.uuid = Listing.generate_uuid
-    @listing.state = ListingState::NAMES[t("models.listing_state.names.unpublished")]
   end
 
   def create
-    @listing = Listing.new(params[:listing])
-    @listing.user = current_user
+    @listing = current_user.listings.new(params[:listing])
     if @listing.save
       flash[:success] = t("controllers.listings_controller.actions.create.success")
       redirect_to @listing
@@ -42,6 +40,22 @@ class ListingsController < ApplicationController
       redirect_to(@listing)
     else
       render :action => "edit"
+    end
+  end
+
+  def mine
+    @listings = current_user.listings
+  end
+  
+  def pay
+    @listing = current_user.listings.find_by_id(params[:id])
+    if @listing.blank?
+      flash[:error] = t("controllers.listings_controller.actions.pay.failure")
+      redirect_to root_path
+    else
+      @listing.pay
+      flash[:success] = t("controllers.listings_controller.actions.pay.success")
+      redirect_to @listing
     end
   end
 end

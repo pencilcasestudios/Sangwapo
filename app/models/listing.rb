@@ -42,7 +42,7 @@ class Listing < ActiveRecord::Base
 
     before_transition :unpublished => :clearing, :do => :generate_payment
 
-    event :payment_sent do
+    event :pay do
       transition :unpublished => :clearing
     end
 

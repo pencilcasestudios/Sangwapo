@@ -27,3 +27,7 @@ receiving_number = AirtimePayment.receiving_number(CellPhoneNumber.mobile_carrie
 		<%= render "price_list" %>
 	</div>
 </div>
+
+<div class="action">
+	<%= link_to t("views.listings._payment_instructions.links.pay", amount: formatted_amount, receiving_number: receiving_number), pay_listing_path(@listing), class: "btn large primary", method: :put %>
+</div>

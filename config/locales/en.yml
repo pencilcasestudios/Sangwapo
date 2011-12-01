@@ -23,6 +23,8 @@ en:
           success: The listing was successfully updated.
         edit:
           failure: You cannot edit that listing.
+        pay:
+          success: "Thank you for sending payment. Please allow up to 24 hours for confirmation."
 
     sessions_controller:
       actions:
@@ -144,7 +146,9 @@ en:
         links:
           about: About
           account_settings: Settings
+          all_listings: All listings
           create_a_listing: Create a listing
+          my_listings: My listings
           payments: Payments
           sign_in: Sign in
           sign_out: Sign out
@@ -193,6 +197,8 @@ en:
           cost_per_character: Cost per character
           cost_per_day: Cost per day
           cost_per_listing_size: Cost per listing size
+        links:
+          pay: "I have sent %{amount} to %{receiving_number}"
         titles:
           breakdown: Breakdown
           payment_details: Payment details
