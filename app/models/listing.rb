@@ -39,6 +39,9 @@ class Listing < ActiveRecord::Base
   }
   
   state_machine :state, :initial => :unpublished do
+
+    before_transition :unpublished => :clearing, :do => :generate_payment
+
     event :payment_sent do
       transition :unpublished => :clearing
     end
@@ -58,6 +61,11 @@ class Listing < ActiveRecord::Base
     event :archive do
       transition :published => :archived
     end
+  end
+  
+  
+  def generate_payment
+    self.payments.new(from: self.user.cell_phone_number).save
   end
 
   def self.generate_listing_code
