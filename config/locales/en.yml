@@ -153,11 +153,11 @@ en:
         links:
           about: About
           account_settings: Settings
-          all_listings: All listings
+          all_listings: Listings
           create_a_listing: Create a listing
-          listings: Listings
+          listings: Review listings
           my_listings: My listings
-          payments: Payments
+          payments: Reconcile payments
           sign_in: Sign in
           sign_out: Sign out
           sign_up_for_an_account: Sign up for an account
