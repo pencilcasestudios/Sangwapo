@@ -25,7 +25,6 @@ class Listing < ActiveRecord::Base
   }
 
   PERIODS = {
-    # Translation                         # Database key
     I18n.t("models.listing.periods")[1]  =>    "1",
     I18n.t("models.listing.periods")[2]  =>    "2",
     I18n.t("models.listing.periods")[3]  =>    "3",
@@ -39,16 +38,14 @@ class Listing < ActiveRecord::Base
   }
   
   SIZES = {
-    # Translation                                               # Database key
-    I18n.t("models.panel_size.names.small")  =>                 "small",
-    I18n.t("models.panel_size.names.medium") =>                 "medium",
-    I18n.t("models.panel_size.names.large")  =>                 "large",
+    I18n.t("models.listing.sizes.small")  =>  "small",
+    I18n.t("models.listing.sizes.medium") =>  "medium",
+    I18n.t("models.listing.sizes.large")  =>  "large",
   }
 
   TYPES = {
-    # Translation                                     # Database key
-    I18n.t("models.listing_type.names.offered") =>    "offered",
-    I18n.t("models.listing_type.names.wanted")  =>    "wanted",
+    I18n.t("models.listing.types.offered") =>    "offered",
+    I18n.t("models.listing.types.wanted")  =>    "wanted",
   }
 
   state_machine :state, :initial => :unpublished do

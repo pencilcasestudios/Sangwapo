@@ -38,7 +38,7 @@ describe "Listing management" do
       it "creates an offer listing on a small panel when acceptable data is given" do
         visit new_listing_path
 
-        select I18n.t("models.listing_type.names.offered"), from: I18n.t("views.listings._form.labels.listing_type")
+        select I18n.t("models.listing.types.offered"), from: I18n.t("views.listings._form.labels.listing_type")
 
         select I18n.t("models.panel_size.names.small"), from: I18n.t("views.listings._form.labels.panel_size")
 

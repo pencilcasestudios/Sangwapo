@@ -102,22 +102,13 @@ en:
         14: "14 days"
         21: "21 days"
         28: "28 days"
-    listing_state:
-      names:
-        unpublished: Unpublished
-        approved: Approved
-        published: Published
-
-    listing_type:
-      names:
-        offered: Offered
-        wanted: Wanted
-
-    panel_size:
-      names:
+      sizes:
         small: "Small (Text only)"
-        medium: Medium (Text and 1 picture)
-        large: Large (Text and 2 pictures)
+        medium: "Medium (Text and 1 picture)"
+        large: "Large (Text and 2 pictures)"
+      types:
+        offered: "Offered"
+        wanted: "Wanted"
     
     phone_number:
       mobile_carriers:
