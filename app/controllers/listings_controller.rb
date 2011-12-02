@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
   before_filter :sign_in_required, :except => [:index, :show]
-  before_filter :admin_required, :only => [:review]
+  before_filter :admin_required, :only => [:review, :accept, :reject]
 
   def index
     @listings = Listing.find_all_by_state("published")

@@ -14,6 +14,7 @@ en:
     application_controller:
       flash:
         sign_in_required: "Please sign in first and then you will be sent right along."
+        admin_required: "You do not have the access to perform that function."
 
     listings_controller:
       actions:

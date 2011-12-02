@@ -28,7 +28,7 @@ private
   
   def admin_required
     unless current_user && current_user.admin?
-      #flash[:warning] = t("controllers.application_controller.flash.admin_required")
+      flash[:warning] = t("controllers.application_controller.flash.admin_required")
       redirect_to root_path
       return false
     end
