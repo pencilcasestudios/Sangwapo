@@ -2,10 +2,17 @@
 	<%=simple_format listing.description %>
 
 	<div class="listing_meta_data">
-		<% if user_signed_in? && !listing.is_published? && listing.user == current_user %>
+		<% if user_signed_in? %>
 			<span class="status_and_controls">
-				<%= t("views.listings.copy.states.#{listing.state}") %>
-				| <%= link_to t("views.listings.links.edit"), edit_listing_path(listing) %>
+				<% if listing.user == current_user %>
+						<%= t("views.listings.copy.states.#{listing.state}") %>
+						| <%= link_to_unless_current t("views.listings.links.view"), listing %>
+						<% if !listing.published? %>| <%= link_to_unless_current t("views.listings.links.edit"), edit_listing_path(listing) %><% end %>
+				<% end %>
+				<% if current_user.admin? && listing.review? %>
+						| <%= link_to_unless_current t("views.listings.links.accept"), accept_listing_path(listing), method: :put %>
+						| <%= link_to_unless_current t("views.listings.links.reject"), reject_listing_path(listing), method: :put %>
+				<% end %>
 			</span>
 		<% end %>
 		<span class="listing_code"><%= link_to_unless_current listing.listing_code, listing %></span>

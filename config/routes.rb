@@ -31,6 +31,7 @@ Sangwapo::Application.routes.draw do
     
     collection do
       get :mine
+      get :review
     end
   end
   

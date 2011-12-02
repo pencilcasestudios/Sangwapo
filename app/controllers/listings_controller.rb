@@ -1,9 +1,9 @@
 class ListingsController < ApplicationController
   before_filter :sign_in_required, :except => [:index, :show]
-  #before_filter :admin_required, :only => [:index, :show]
+  before_filter :admin_required, :only => [:review]
 
   def index
-    @listings = Listing.all
+    @listings = Listing.find_all_by_state("published")
   end
   
   def show
@@ -47,6 +47,10 @@ class ListingsController < ApplicationController
   def mine
     @listings = current_user.listings
   end
+
+  def review
+    @listings = Listing.find_all_by_state("review")
+  end
   
   def pay
     @listing = current_user.listings.find_by_id(params[:id])
@@ -58,5 +62,19 @@ class ListingsController < ApplicationController
       flash[:success] = t("controllers.listings_controller.actions.pay.success")
       redirect_to @listing
     end
+  end
+  
+  def accept
+    @listing = Listing.find(params[:id])
+    @listing.accept
+    flash[:success] = t("controllers.listings_controller.actions.accept.success")
+    redirect_to review_listings_path
+  end
+
+  def reject
+    @listing = Listing.find(params[:id])
+    @listing.reject
+    flash[:success] = t("controllers.listings_controller.actions.reject.success")
+    redirect_to review_listings_path
   end
 end

@@ -155,6 +155,7 @@ en:
           account_settings: Settings
           all_listings: All listings
           create_a_listing: Create a listing
+          listings: Listings
           my_listings: My listings
           payments: Payments
           sign_in: Sign in
@@ -223,16 +224,23 @@ en:
       copy:
         states:
           clearing: Pending payment confirmation 
-          unpublished: Unpublished
+          published: Published
           review: Pending review
+          unpublished: Pending payment
       links:
+        accept: Accept
         edit: Edit
+        reject: Reject
+        view: View
       index:
         title: Listings
       edit:
         title: "Edit listing %{id}"
       new:
         title: New listing
+      review:
+        title: Listings
+        sub_title: pending review
       show:
         title: "Listing %{id}"
 
