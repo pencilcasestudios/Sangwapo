@@ -13,5 +13,7 @@
 		<%= render "payment_instructions", listing: @listing %>
 	<% elsif @listing.clearing? %>
 		<%= render "clearing_notice" %>
+	<% elsif @listing.review? %>
+		<%= render "review_notice" %>
 	<% end %>
 <% end %>

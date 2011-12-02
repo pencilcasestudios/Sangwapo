@@ -1,6 +1,6 @@
 <% if current_user.admin? %>
 <ul class="nav user">
-	<li id="tab_payments"><%= link_to t("views.application._navigation.links.payments"), payments_path %></li>
+	<li id="tab_payments"><%= link_to t("views.application._navigation.links.payments"), pending_payments_path %></li>
 </ul><!-- /.nav -->
 <% end %>
 

@@ -26,6 +26,11 @@ en:
         pay:
           success: "Thank you for sending payment. Please allow up to 24 hours for confirmation."
 
+    payments_controller:
+      actions:
+        update:
+          success: "Reconciled payment %{id}"
+
     sessions_controller:
       actions:
         create:
@@ -45,6 +50,8 @@ en:
 # Helpers
   helpers:
     submit:
+      payment:
+        update: "Reconcile"
       user_session:
         create: "Sign in"
       user:
@@ -160,9 +167,14 @@ en:
     listings:
       _clearing_notice:
         copy:
-          clearing_notice: "Your payment for this listing is being processed.\nPlease allow up to 24 hours for confirmation. Thanks for your patience!"
+          clearing_notice: "Your payment for this listing is being processed.\nPlease allow up to 24 hours for confirmation.\n\nThanks for your patience!"
         titles:
           clearing_notice: "Almost there &hellip;"
+      _review_notice:
+        copy:
+          review_notice: "Your payment for this listing has been received.\nPlease allow up to 24 hours while the contents of the listing are being reviewed.\n\nThanks for your patience!"
+        titles:
+          review_notice: "Almost there &hellip;"
       _cost_calculation:
         labels:
           characters: character(s)
@@ -210,8 +222,9 @@ en:
           pricing_summary: Pricing summary
       copy:
         states:
-          clearing: Payment confirmation pending
+          clearing: Pending payment confirmation 
           unpublished: Unpublished
+          review: Pending review
       links:
         edit: Edit
       index:
@@ -224,8 +237,19 @@ en:
         title: "Listing %{id}"
 
     payments:
+      _form:
+        labels:
+          from: From
+          to: To
+          notes: Notes
+          received_at: Received
+      edit:
+        title: "Reconcile payment %{id}"
       index:
         title: Payments
+      pending:
+        title: Payments
+        sub_title: pending reconciliation
       
     sessions:
       _form:

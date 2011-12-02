@@ -34,7 +34,12 @@ Sangwapo::Application.routes.draw do
     end
   end
   
-  resources :payments
+  resources :payments do
+    collection do
+      get :pending
+    end
+  end
+  
   resources :sessions
   resources :users
 

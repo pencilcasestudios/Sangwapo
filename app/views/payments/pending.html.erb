@@ -1,0 +1,13 @@
+<% title t("views.payments.pending.title") %>
+
+<header>
+	<h1>
+		<%= yield :title %>
+		<small><%= t("views.payments.pending.sub_title") %></small>
+	</h1>
+</header>
+
+<% @payments.each do |payment| %>
+	<% @payment = payment %>
+	<%= render "form", payment: @payment %>
+<% end %>

@@ -5,7 +5,7 @@ sending_number = current_user.cell_phone_number
 amount = @listing.total_listing_price
 formatted_amount = number_to_currency(@listing.total_listing_price, unit: "K")
 carrier = t("models.phone_number.mobile_carriers.#{CellPhoneNumber.mobile_carrier(current_user.cell_phone_number)}")
-receiving_number = AirtimePayment.receiving_number(CellPhoneNumber.mobile_carrier(current_user.cell_phone_number))
+receiving_number = AirtimePayment.random_receiving_number(CellPhoneNumber.mobile_carrier(current_user.cell_phone_number))
 %>
 
 <p><%=raw t("views.listings._payment_instructions.copy.instructions", amount: formatted_amount, carrier: carrier, sending_number: sending_number, receiving_number: receiving_number) %></p>

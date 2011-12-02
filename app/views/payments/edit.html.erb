@@ -1,2 +1,7 @@
-<h1>Payments#edit</h1>
-<p>Find me in app/views/payments/edit.html.erb</p>
+<% title t("views.payments.edit.title", id: @payment.id) %>
+
+<header>
+	<h1><%= yield :title %></h1>
+</header>
+
+<%= render "form" %>

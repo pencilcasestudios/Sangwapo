@@ -1,0 +1,39 @@
+<div class="reconciliation_form">
+	<h2><%= @payment.id %></h2>
+	<%= form_for(@payment) do |f| %>
+			<%= render "errors", payment: @payment %>
+
+	    <%= f.hidden_field :state %>
+
+			<div class="row">
+				<div class="span2">
+					<fieldset class="control-group">
+				    <%= f.label :from, t("views.payments._form.labels.from"), class: "control-label" %>
+						<div class="controls"><%= f.text_field :from, class: "span2", readonly: true %></div>
+					</fieldset>
+				</div>
+				<div class="span2">
+					<fieldset class="control-group">
+				    <%= f.label :to, t("views.payments._form.labels.to"), class: "control-label" %>
+				    <div class="controls"><%= f.select :to, AirtimePayment.available_receiving_numbers(CellPhoneNumber.mobile_carrier(@payment.from)), { prompt: true }, { class: "span2" } %></div>
+					</fieldset>
+				</div>
+				<div class="span4">
+					<fieldset class="control-group">
+				    <%= f.label :notes, t("views.payments._form.labels.notes"), class: "control-label" %>
+						<div class="controls"><%= f.text_area :notes, { class: "span4", rows: 2 } %></div>
+					</fieldset>
+				</div>
+			</div><!-- /.row -->
+
+			<fieldset class="control-group">
+		    <%= f.label :received_at, t("views.payments._form.labels.received_at"), class: "control-label" %>
+				<div class="controls"><%= f.datetime_select :received_at, {}, { class: "span1" } %></div>
+			</fieldset>
+
+		  <div class="actions form-actions">
+		    <%= f.submit class: "btn large primary" %>
+		  </div>
+		</fieldset>
+	<% end %>
+</div><!-- /.reconciliation_form -->

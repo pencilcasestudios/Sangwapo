@@ -1,0 +1,15 @@
+<% if @payment.errors.any? %>
+  <div id="error_explanation" class="alert-message block-message error">
+	  <a class="close" data-dismiss="alert" href="#">&times;</a>
+
+    <h2><%= t("views.payments._errors.title") %></h2>
+
+    <ul>
+			<% if @payment.errors[:to].present? %>
+				<% @payment.errors[:to].each do |message| %>
+					<li><%= t("views.payments._errors.fields.to") %> <%= message %></li>
+				<% end %>
+			<% end %>
+		</ul>
+	</div>
+<% end %>
