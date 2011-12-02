@@ -27,7 +27,8 @@ en:
         pay:
           success: "Thank you for sending payment. Please allow up to 24 hours for confirmation."
         reject:
-          success: "Listing %{id} has been rejected. Please issue a refund of %{refund_percentage}%."
+          comment: "Your listing &mdash; %{listing} &mdash; has been rejected.\n\nYou will receive a refund of %{refund_percentage}%."
+          success: "Listing %{id} has been rejected. Please issue a refund of %{refund_percentage}%."          
         update:
           success: The listing was successfully updated.
 
@@ -182,6 +183,10 @@ en:
           total: Total
       _errors:
         title: This listing could not be created
+        fields:
+          listing_type: Offered or Wanted
+          panel_size: Listing size
+          description: Description
       _form:
         labels:
           description: Description
