@@ -38,6 +38,13 @@ class Listing < ActiveRecord::Base
     I18n.t("models.listing.periods")[28] =>    "28",
   }
   
+  SIZES = {
+    # Translation                                               # Database key
+    I18n.t("models.panel_size.names.small")  =>                 "small",
+    I18n.t("models.panel_size.names.medium") =>                 "medium",
+    I18n.t("models.panel_size.names.large")  =>                 "large",
+  }
+
   TYPES = {
     # Translation                                     # Database key
     I18n.t("models.listing_type.names.offered") =>    "offered",
