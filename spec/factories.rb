@@ -15,7 +15,7 @@ Factory.define :listing do |f|
   f.sequence(:description) { |n| "Description #{n}" }
   f.sequence(:display_for) { Listing::PERIODS[Listing::PERIODS.to_a[rand Listing::PERIODS.size].first] }
   f.sequence(:listing_code) { Listing.generate_listing_code }
-  f.sequence(:listing_type) { ListingType::NAMES[ListingType::NAMES.to_a[rand ListingType::NAMES.size].first] }
+  f.sequence(:listing_type) { Listing::TYPES[Listing::TYPES.to_a[rand Listing::TYPES.size].first] }
   f.sequence(:panel_size) { PanelSize::NAMES[PanelSize::NAMES.to_a[rand PanelSize::NAMES.size].first] }
   f.sequence(:uuid) { Listing.generate_uuid }
 end

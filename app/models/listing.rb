@@ -16,6 +16,14 @@ class Listing < ActiveRecord::Base
   
   has_many :payments
 
+  COST_PER_CHARACTER = 120
+  COST_PER_DAY = 1000
+  COST_PER_PANEL_SIZE = {
+    "small" => 3000,
+    "medium" => 4000,
+    "large" => 5000,
+  }
+
   PERIODS = {
     # Translation                         # Database key
     I18n.t("models.listing.periods")[1]  =>    "1",
@@ -30,14 +38,12 @@ class Listing < ActiveRecord::Base
     I18n.t("models.listing.periods")[28] =>    "28",
   }
   
-  COST_PER_CHARACTER = 120
-  COST_PER_DAY = 1000
-  COST_PER_PANEL_SIZE = {
-    "small" => 3000,
-    "medium" => 4000,
-    "large" => 5000,
+  TYPES = {
+    # Translation                                     # Database key
+    I18n.t("models.listing_type.names.offered") =>    "offered",
+    I18n.t("models.listing_type.names.wanted")  =>    "wanted",
   }
-  
+
   state_machine :state, :initial => :unpublished do
 
     after_transition :unpublished => :clearing, :do => :generate_payment
