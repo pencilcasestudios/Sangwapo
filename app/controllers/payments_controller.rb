@@ -9,6 +9,7 @@ class PaymentsController < ApplicationController
   end
 
   def index
+    @payments = Payment.all
   end
 
   def show

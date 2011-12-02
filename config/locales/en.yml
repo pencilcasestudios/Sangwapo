@@ -158,6 +158,11 @@ en:
         full_colon: ":"
 
     listings:
+      _clearing_notice:
+        copy:
+          clearing_notice: "Your payment for this listing is being processed.\nPlease allow up to 24 hours for confirmation. Thanks for your patience!"
+        titles:
+          clearing_notice: "Almost there &hellip;"
       _cost_calculation:
         labels:
           characters: character(s)
@@ -203,6 +208,10 @@ en:
           breakdown: Breakdown
           payment_details: Payment details
           pricing_summary: Pricing summary
+      copy:
+        states:
+          clearing: Payment confirmation pending
+          unpublished: Unpublished
       links:
         edit: Edit
       index:
@@ -214,6 +223,10 @@ en:
       show:
         title: "Listing %{id}"
 
+    payments:
+      index:
+        title: Payments
+      
     sessions:
       _form:
         buttons:

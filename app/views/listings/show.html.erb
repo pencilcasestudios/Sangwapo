@@ -11,5 +11,7 @@
 <% if user_signed_in? && !@listing.is_published? && @listing.user == current_user %>
 	<% if @listing.unpublished? %>
 		<%= render "payment_instructions", listing: @listing %>
+	<% elsif @listing.clearing? %>
+		<%= render "clearing_notice" %>
 	<% end %>
 <% end %>

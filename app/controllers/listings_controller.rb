@@ -1,5 +1,6 @@
 class ListingsController < ApplicationController
   before_filter :sign_in_required, :except => [:index, :show]
+  #before_filter :admin_required, :only => [:index, :show]
 
   def index
     @listings = Listing.all
