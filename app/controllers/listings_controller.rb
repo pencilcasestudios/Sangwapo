@@ -74,7 +74,7 @@ class ListingsController < ApplicationController
   def reject
     @listing = Listing.find(params[:id])
     @listing.reject
-    flash[:success] = t("controllers.listings_controller.actions.reject.success")
+    flash[:success] = t("controllers.listings_controller.actions.reject.success", id: @listing.id, refund_percentage: AppConfig.refund_percentage)
     redirect_to review_listings_path
   end
 end

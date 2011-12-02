@@ -22,17 +22,19 @@ en:
           success: "Listing %{id} has been accepted and published."
         create:
           success: The listing was successfully created.
-        update:
-          success: The listing was successfully updated.
         edit:
           failure: You cannot edit that listing.
         pay:
           success: "Thank you for sending payment. Please allow up to 24 hours for confirmation."
+        reject:
+          success: "Listing %{id} has been rejected. Please issue a refund of %{refund_percentage}%."
+        update:
+          success: The listing was successfully updated.
 
     payments_controller:
       actions:
         update:
-          success: "Reconciled payment %{id}"
+          success: "Reconciled payment %{id}."
 
     sessions_controller:
       actions:

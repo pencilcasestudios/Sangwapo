@@ -32,6 +32,9 @@ defaults: &defaults
       "0950000000": "0950000000"
       "0950000001": "0950000001"
       "0950000002": "0950000002"
+      
+  # Business rules
+  refund_percentage: 80
 
 development:
   <<: *defaults
