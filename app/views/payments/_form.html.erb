@@ -28,7 +28,7 @@
 
 			<fieldset class="control-group">
 		    <%= f.label :received_at, t("views.payments._form.labels.received_at"), class: "control-label" %>
-				<div class="controls"><%= f.datetime_select :received_at, {}, { class: "span1" } %></div>
+				<div class="controls"><%= f.datetime_select :received_at, { prompt: false }, { class: "span1" } %></div>
 			</fieldset>
 
 		  <div class="actions form-actions">

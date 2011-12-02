@@ -243,6 +243,10 @@ en:
         title: "Listing %{id}"
 
     payments:
+      _errors:
+        title: "This payment could not be reconciled"
+        fields:
+          to: To
       _form:
         labels:
           from: From
