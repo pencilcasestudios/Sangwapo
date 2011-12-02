@@ -67,7 +67,7 @@ class ListingsController < ApplicationController
   def accept
     @listing = Listing.find(params[:id])
     @listing.accept
-    flash[:success] = t("controllers.listings_controller.actions.accept.success")
+    flash[:success] = t("controllers.listings_controller.actions.accept.success", id: @listing.id)
     redirect_to review_listings_path
   end
 

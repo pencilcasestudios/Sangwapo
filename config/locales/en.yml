@@ -18,6 +18,8 @@ en:
 
     listings_controller:
       actions:
+        accept:
+          success: "Listing %{id} has been accepted and published."
         create:
           success: The listing was successfully created.
         update:
@@ -237,6 +239,10 @@ en:
         title: Listings
       edit:
         title: "Edit listing %{id}"
+      mine:
+        title: My listings
+        links:
+          create_a_listing: Create a listing          
       new:
         title: New listing
       review:

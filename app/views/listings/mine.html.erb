@@ -1,1 +1,14 @@
+<% title t("views.listings.mine.title") %>
+
+<header>
+	<div class="row">
+		<div class="span4">
+			<h1><%= yield :title %></h1>
+		</div>
+		<div class="span4 buttons">
+			<%= link_to t("views.listings.mine.links.create_a_listing"), new_listing_path, class: "btn" %>
+		</div>
+	</div><!-- /.row -->
+</header>
+
 <%= render @listings %>
