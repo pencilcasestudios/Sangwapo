@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111130135654) do
+ActiveRecord::Schema.define(:version => 20111202143537) do
+
+  create_table "comments", :force => true do |t|
+    t.integer  "commentable_id"
+    t.integer  "user_id"
+    t.string   "commentable_type"
+    t.string   "label"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "listings", :force => true do |t|
     t.boolean  "exclude_price",                                :default => false

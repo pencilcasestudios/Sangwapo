@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
 
   has_many :listings
   has_many :payments
+  #has_many :comments
 
   ROLES = {
     # Translation                                   # Database key

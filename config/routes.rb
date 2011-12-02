@@ -41,6 +41,7 @@ Sangwapo::Application.routes.draw do
     end
   end
   
+  resources :comments
   resources :sessions
   resources :users
 

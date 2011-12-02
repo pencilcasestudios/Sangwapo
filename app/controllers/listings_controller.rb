@@ -74,6 +74,7 @@ class ListingsController < ApplicationController
   def reject
     @listing = Listing.find(params[:id])
     @listing.reject
+    @listing.comments.new(label: "administrator_comment", body: t("controllers.listings_controller.actions.reject.comment", listing: @listing.description, refund_percentage: AppConfig.refund_percentage)).save
     flash[:success] = t("controllers.listings_controller.actions.reject.success", id: @listing.id, refund_percentage: AppConfig.refund_percentage)
     redirect_to review_listings_path
   end

@@ -9,6 +9,9 @@
 <br />
 
 <% if user_signed_in? && !@listing.is_published? && @listing.user == current_user %>
+
+	<%= render @listing.comments %>
+
 	<% if @listing.unpublished? %>
 		<%= render "payment_instructions", listing: @listing %>
 	<% elsif @listing.clearing? %>

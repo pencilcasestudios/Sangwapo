@@ -15,6 +15,7 @@ class Listing < ActiveRecord::Base
   validates :uuid, presence: true, uniqueness: true
   
   has_many :payments
+  has_many :comments, as: :commentable, dependent: :destroy
 
   COST_PER_CHARACTER = 120
   COST_PER_DAY = 1000
