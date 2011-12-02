@@ -175,7 +175,7 @@ en:
           characters: character(s)
           days: day(s)
           description: Description
-          panel_size: listing panel
+          listing_size: listing
           price: Price
           total: Total
       _errors:
