@@ -44,3 +44,12 @@ test:
 
 production:
   <<: *defaults
+
+  # Mobile "gateway"
+  application_sim_cards:
+    airtel:
+      "0970000000": "0970000000"
+    mtn:
+      "0960000000": "0960000000"
+    zamtel:
+      "0950000000": "0950000000"

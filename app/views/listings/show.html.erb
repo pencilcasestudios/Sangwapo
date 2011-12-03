@@ -10,7 +10,12 @@
 
 <% if user_signed_in? && !@listing.is_published? && @listing.user == current_user %>
 
-	<%= render @listing.comments %>
+	<% if @listing.comments.present? %>
+		<div id="comments">
+			<h3><%= t("views.listings.show.subtitles.comments") %></h3>
+			<%= render @listing.comments %>
+		</div>
+	<% end %>
 
 	<% if @listing.unpublished? %>
 		<%= render "payment_instructions", listing: @listing %>
