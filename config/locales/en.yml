@@ -27,7 +27,7 @@ en:
         pay:
           success: "Thank you for sending payment. Please allow up to 24 hours for confirmation."
         reject:
-          comment: "<blockquote>%{listing}\n<small>%{date}</small>\n</blockquote>\nThe listing above has been rejected.\nA refund of %{refund_percentage}% will be sent to you at %{to}."
+          comment: "<blockquote>%{listing}\n<small>%{date}</small>\n</blockquote>\nOn %{rejected_at} the listing above was rejected.\nA refund of %{refund_percentage}% has been sent to you at %{to}."
           success: "Listing %{id} has been rejected. Please issue a refund of %{refund_percentage}%."          
         update:
           success: The listing was successfully updated.
