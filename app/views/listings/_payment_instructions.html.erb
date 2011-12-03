@@ -30,7 +30,7 @@ receiving_number = AirtimePayment.random_receiving_number(CellPhoneNumber.mobile
 
 <% if @listing.comments.present? %>
 	<div id="comments">
-		<h3><%= t("views.listings.show.subtitles.comments") %></h3>
+		<h3><%= t("views.listings._payment_instructions.titles.comments") %></h3>
 		<%= render @listing.comments %>
 	</div>
 <% end %>

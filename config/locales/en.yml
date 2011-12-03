@@ -220,6 +220,7 @@ en:
           pay: "I have sent %{amount} to %{receiving_number}"
         titles:
           breakdown: Breakdown
+          comments: Comments
           payment_details: Payment details
           pricing_summary: Pricing summary
       copy:
