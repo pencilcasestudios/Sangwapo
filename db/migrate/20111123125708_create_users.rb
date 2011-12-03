@@ -7,6 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :language
       t.string :password_digest
       t.string :role
+      t.string :state
       t.string :time_zone
 
       t.timestamps
