@@ -28,6 +28,13 @@ receiving_number = AirtimePayment.random_receiving_number(CellPhoneNumber.mobile
 	</div>
 </div>
 
+<% if @listing.comments.present? %>
+	<div id="comments">
+		<h3><%= t("views.listings.show.subtitles.comments") %></h3>
+		<%= render @listing.comments %>
+	</div>
+<% end %>
+
 <div class="action">
 	<%= link_to t("views.listings._payment_instructions.links.pay", amount: formatted_amount, receiving_number: receiving_number), pay_listing_path(@listing), class: "btn large primary", method: :put %>
 </div>
