@@ -40,8 +40,8 @@ class Listing < ActiveRecord::Base
   
   SIZES = {
     I18n.t("models.listing.sizes.small")  =>  "small",
-    I18n.t("models.listing.sizes.medium") =>  "medium",
-    I18n.t("models.listing.sizes.large")  =>  "large",
+    #I18n.t("models.listing.sizes.medium") =>  "medium",
+    #I18n.t("models.listing.sizes.large")  =>  "large",
   }
 
   TYPES = {
