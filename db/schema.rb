@@ -63,12 +63,17 @@ ActiveRecord::Schema.define(:version => 20111202143537) do
   add_index "payments", ["user_id"], :name => "index_payments_on_user_id"
 
   create_table "users", :force => true do |t|
+    t.datetime "cell_phone_number_verified_at"
+    t.datetime "email_verified_at"
     t.string   "cell_phone_number"
+    t.string   "cell_phone_number_verification_token"
     t.string   "email"
+    t.string   "email_verification_token"
     t.string   "first_name"
     t.string   "language"
     t.string   "password_digest"
     t.string   "role"
+    t.string   "state"
     t.string   "time_zone"
     t.datetime "created_at"
     t.datetime "updated_at"
