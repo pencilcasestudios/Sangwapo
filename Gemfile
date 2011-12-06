@@ -12,6 +12,7 @@ gem "rails", "3.1.3"
 # Used accross environments
 #gem "ruby-graphviz", :require => "graphviz" # Optional: only required with state_machine for graphing
 gem "bcrypt-ruby", "~> 3.0.0"
+gem "delayed_job"
 gem "jquery-rails"
 gem "nested_form", git: "git://github.com/ryanb/nested_form.git"
 gem "paper_trail", "~> 2"
