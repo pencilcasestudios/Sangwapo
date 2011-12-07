@@ -9,7 +9,8 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     @user.role = User::ROLES[I18n.t("models.user.roles.user")]
     if @user.save
-      Emailer.registration_confirmation(@user).deliver  
+      #Emailer.registration_confirmation(@user).deliver  
+      Emailer.delay.registration_confirmation(@user)
       flash[:success] = t("controllers.users_controller.actions.create.success")
       redirect_to sign_in_path
     else

@@ -6,6 +6,9 @@ describe "User management" do
     # users#new
     describe "requesting sign up" do
       it "allows sign up with acceptable input" do
+        Delayed::Worker.delay_jobs = false 
+        #expected_delayed_jobs = Delayed::Job.count + 1
+
         visit sign_up_path
 
         first_name = "Monde"
@@ -31,8 +34,9 @@ describe "User management" do
         current_path.should eq(sign_in_path)
         page.should have_content(I18n.t("controllers.users_controller.actions.create.success"))
 
-        last_email.to.should include(email)      
-        last_email.subject.should eq(I18n.t("mailers.emailer.registration_confirmation.subject", application_name: I18n.t("application.name")))      
+        last_email.to.should include(email)
+        last_email.subject.should eq(I18n.t("mailers.emailer.registration_confirmation.subject", application_name: I18n.t("application.name")))
+        #expected_delayed_jobs.should eq(Delayed::Job.count)
       end
 
       it "rejects sign up with missing email" do
@@ -217,7 +221,7 @@ describe "User management" do
         page.should have_content(I18n.t("controllers.users_controller.actions.update.success"))
         find_field(I18n.t("views.users._form.labels.cell_phone_number")).value.should eq(updated_field)
       end
-      
+
       # TODO - Update password
       # TODO - Update language
       # TODO - Update time zone
