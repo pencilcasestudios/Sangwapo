@@ -8,7 +8,12 @@ class ListingsController < ApplicationController
   
   def show
     if user_signed_in?
-      @listing  = current_user.listings.find(params[:id])
+      @listing = Listing.find(params[:id])
+      if @listing.published?
+        # Do nothing and render this listing
+      else
+        @listing = current_user.listings.find(params[:id]) # Which will not be found
+      end
     else
       @listing = Listing.where("state='published'").find(params[:id])
     end
