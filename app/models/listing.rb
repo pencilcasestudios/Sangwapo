@@ -13,8 +13,8 @@ class Listing < ActiveRecord::Base
   validates :price, presence: true, numericality: true
   validates :state, presence: true
   validates :uuid, presence: true, uniqueness: true
-  
-  has_many :payments
+
+  has_many :payments, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
 
   COST_PER_CHARACTER = 120
@@ -37,7 +37,7 @@ class Listing < ActiveRecord::Base
     I18n.t("models.listing.periods")[21] =>    "21",
     I18n.t("models.listing.periods")[28] =>    "28",
   }
-  
+
   SIZES = {
     I18n.t("models.listing.sizes.small")  =>  "small",
     #I18n.t("models.listing.sizes.medium") =>  "medium",
@@ -73,10 +73,13 @@ class Listing < ActiveRecord::Base
       transition :published => :archived
     end
   end
-  
-  
+
+
   def generate_payment
-    self.payments.new(from: self.user.cell_phone_number).save
+    p = self.payments.new(from: self.user.cell_phone_number, amount: self.total_listing_price, user: self.user)
+    p.save
+    p.unlock(false) # Force state change
+    p.save(validate: false) # Force-save this payment in an invalidated, unlocked state
   end
 
   def self.generate_listing_code
@@ -94,15 +97,15 @@ class Listing < ActiveRecord::Base
   def total_daily_price
     self.display_for * COST_PER_DAY
   end
-  
+
   def total_panel_price
     COST_PER_PANEL_SIZE[self.panel_size]
   end
-  
+
   def total_listing_price
      total_character_price + total_daily_price + total_panel_price
   end
-  
+
   def is_published?
     self.state == "published"
   end

@@ -25,6 +25,7 @@ Factory.define :payment do |f|
   f.association :listing
 
   f.sequence(:from) { CellPhoneNumber.random }
+  f.sequence(:method) {  Payment::METHODS[Payment::METHODS.to_a[rand Payment::METHODS.size].first] }
   f.sequence(:notes) { |n| "Note #{n}" }
   f.sequence(:received_at) { Time.now }
   f.sequence(:to) { CellPhoneNumber.random }

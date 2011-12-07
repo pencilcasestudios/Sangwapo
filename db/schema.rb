@@ -63,9 +63,11 @@ ActiveRecord::Schema.define(:version => 20111206203454) do
 
   create_table "payments", :force => true do |t|
     t.datetime "received_at"
+    t.decimal  "amount",      :precision => 12, :scale => 2, :default => 0.0
     t.integer  "listing_id"
     t.integer  "user_id"
     t.string   "from"
+    t.string   "method"
     t.string   "state"
     t.string   "to"
     t.string   "uuid"

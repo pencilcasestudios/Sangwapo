@@ -3,21 +3,25 @@ class ListingsController < ApplicationController
   before_filter :admin_required, :only => [:review, :accept, :reject]
 
   def index
-    @listings = Listing.find_all_by_state("published")
+    @listings = Listing.where("state='published'").order("id DESC")
   end
   
   def show
-    @listing = Listing.find(params[:id])
+    if user_signed_in?
+      @listing  = current_user.listings.find(params[:id])
+    else
+      @listing = Listing.where("state='published'").find(params[:id])
+    end
   end
   
   def new
     @listing = Listing.new
-    @listing.listing_code = Listing.generate_listing_code
-    @listing.uuid = Listing.generate_uuid
   end
 
   def create
     @listing = current_user.listings.new(params[:listing])
+    @listing.uuid = Listing.generate_uuid
+    @listing.listing_code = Listing.generate_listing_code
     if @listing.save
       flash[:success] = t("controllers.listings_controller.actions.create.success")
       redirect_to @listing
@@ -27,15 +31,11 @@ class ListingsController < ApplicationController
   end
 
   def edit
-    @listing = current_user.listings.find_by_id(params[:id])
-    if @listing.blank?
-      flash[:error] = t("controllers.listings_controller.actions.edit.failure")
-      redirect_to root_path
-    end
+    @listing = current_user.listings.find(params[:id])
   end
 
   def update
-    @listing = current_user.listings.find_by_id(params[:id])
+    @listing = current_user.listings.find(params[:id])
     if @listing.update_attributes(params[:listing])
       flash[:success] = t("controllers.listings_controller.actions.update.success")
       redirect_to(@listing)

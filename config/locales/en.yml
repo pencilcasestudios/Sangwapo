@@ -57,6 +57,7 @@ en:
   helpers:
     submit:
       payment:
+        #update: "Reconcile payment %{model_id}"
         update: "Reconcile"
       user_session:
         create: "Sign in"
@@ -73,8 +74,11 @@ en:
   mailers:
     emailer:
       registration_confirmation:
-        subject: "Welcome to %{application_name}"
+        subject: "[%{application_name}] Welcome to %{application_name}"
         body: "Hello %{user_name},\n\nWelcome to %{application_name}!\n\nYour account is ready for you to use. You may sign in to create listings by visiting:\n%{sign_in_path}\n\nHope you like using %{application_name} as much as I'm enjoying making it.\n\nTake care and and God bless,\n\nSilumesii\n\n---\n%{application_name} is proudly Zambian and made by Pencil Case Studios.\n%{root_path}\nhttp://pencilcasestudios.com/"
+      payment_received_confirmation:
+        subject: "[%{application_name}] Payment received"
+        body: "Thank you %{user_name},\n\nThe payment for your listing has been received:\n\n%{listing_description}\n\nListing number: %{listing_number}\nPayment number: %{payment_number}\nTotal paid: %{total_paid} (%{method})\n\nThe listing will now be reviewed before it can be published. Please allow up to 24 hours for the review.\n\nThank you,\n\nSilumesii\n\n---\n%{application_name} is proudly Zambian and made by Pencil Case Studios.\n%{root_path}\nhttp://pencilcasestudios.com/"
 
 
 
@@ -113,6 +117,13 @@ en:
         offered: "Offered"
         wanted: "Wanted"
     
+    payment:
+      methods:
+        airtime: "Airtime"
+        cheque: "Cheque"
+        cash: "Cash"
+        mobile_money: "Mobile money"
+        
     phone_number:
       mobile_carriers:
         airtel: "Airtel"
@@ -254,13 +265,16 @@ en:
       _errors:
         title: "This payment could not be reconciled"
         fields:
+          method: Method
           to: To
       _form:
         labels:
+          amount: Amount
           from: From
-          to: To
+          method: Method
           notes: Notes
-          received_at: Received
+          received_at: Received on
+          to: To
       edit:
         title: "Reconcile payment %{id}"
       index:

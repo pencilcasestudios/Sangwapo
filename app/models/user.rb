@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   
   attr_accessor :terms_of_use
 
-  has_many :listings
+  has_many :listings, dependent: :destroy
   has_many :payments
   #has_many :comments
 
@@ -26,5 +26,13 @@ class User < ActiveRecord::Base
   
   def admin?
     self.role == User::ROLES[I18n.t("models.user.roles.administrator")]
+  end
+  
+  def promote
+    self.role = User::ROLES[I18n.t("models.user.roles.administrator")]
+  end
+
+  def demote
+    self.role = User::ROLES[I18n.t("models.user.roles.user")]
   end
 end

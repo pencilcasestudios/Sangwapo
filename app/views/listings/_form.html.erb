@@ -2,8 +2,6 @@
 		<%= render "errors", listing: @listing %>
 
     <%= f.hidden_field :state %>
-		<%= f.hidden_field :uuid %>
-		<%= f.hidden_field :listing_code %>
 
 		<div class="row">
 			<div class="span4">
@@ -31,13 +29,7 @@
 	    <%= f.label :display_for, t("views.listings._form.labels.display_for"), class: "control-label" %>
 	    <div class="controls"><%= f.select :display_for, Listing::PERIODS, { prompt: true }, { class: "span3" } %></div>
 		</fieldset>
-		<p>
-			<small>
-				<strong><%= t("views.listings._form.labels.listing_code") %></strong>:
-				<%= @listing.listing_code %><br />
-			</small>
-		</p>
-		
+
 	  <div class="actions form-actions">
 	    <%= f.submit class: "btn large primary" %>
 	  </div>

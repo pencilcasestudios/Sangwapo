@@ -10,6 +10,12 @@
 					<li><%= t("views.payments._errors.fields.to") %> <%= message %></li>
 				<% end %>
 			<% end %>
+
+			<% if @payment.errors[:method].present? %>
+				<% @payment.errors[:method].each do |message| %>
+					<li><%= t("views.payments._errors.fields.method") %> <%= message %></li>
+				<% end %>
+			<% end %>
 		</ul>
 	</div>
 <% end %>

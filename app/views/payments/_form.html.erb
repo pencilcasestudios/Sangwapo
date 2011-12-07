@@ -26,10 +26,28 @@
 				</div>
 			</div><!-- /.row -->
 
-			<fieldset class="control-group">
-		    <%= f.label :received_at, t("views.payments._form.labels.received_at"), class: "control-label" %>
-				<div class="controls"><%= f.datetime_select :received_at, { prompt: false }, { class: "span1" } %></div>
-			</fieldset>
+			<div class="row">
+				<div class="span2">
+					<fieldset class="control-group">
+				    <%= f.label :amount, t("views.payments._form.labels.amount"), class: "control-label" %>
+						<div class="controls"><%= f.text_field :amount, class: "span2", readonly: true %></div>
+					</fieldset>
+				</div>
+
+				<div class="span2">
+					<fieldset class="control-group">
+				    <%= f.label :method, t("views.payments._form.labels.method"), class: "control-label" %>
+				    <div class="controls"><%= f.select :method, Payment::METHODS, { prompt: true }, { class: "span2" } %></div>
+					</fieldset>
+				</div>
+
+				<div class="span4">
+					<fieldset class="control-group">
+				    <%= f.label :received_at, t("views.payments._form.labels.received_at"), class: "control-label" %>
+						<div class="controls"><%= f.datetime_select :received_at, { prompt: false }, { class: "span1" } %></div>
+					</fieldset>
+				</div>
+			</div><!-- /.row -->
 
 		  <div class="actions form-actions">
 		    <%= f.submit class: "btn large primary" %>
