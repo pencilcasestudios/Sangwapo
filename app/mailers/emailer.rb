@@ -8,4 +8,9 @@ class Emailer < ActionMailer::Base
     @payment = payment
     mail(to: "#{payment.user.first_name} <#{payment.user.email}>", subject: t("mailers.emailer.payment_received_confirmation.subject", application_name: t("application.name")), from: "#{t("application.name")} <#{AppConfig.email_user_name}>")
   end
+
+  def listing_approved_confirmation(listing)
+    @listing = listing
+    mail(to: "#{listing.user.first_name} <#{listing.user.email}>", subject: t("mailers.emailer.listing_approved_confirmation.subject", application_name: t("application.name")), from: "#{t("application.name")} <#{AppConfig.email_user_name}>")
+  end
 end

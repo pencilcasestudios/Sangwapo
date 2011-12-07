@@ -66,7 +66,11 @@ class ListingsController < ApplicationController
   
   def accept
     @listing = Listing.find(params[:id])
+    @listing.update_attribute("approved_at", Time.now)
     @listing.accept
+    
+    Emailer.listing_approved_confirmation(@listing).deliver  
+    #Emailer.delay.listing_approved_confirmation(@listing)
     flash[:success] = t("controllers.listings_controller.actions.accept.success", id: @listing.id)
     redirect_to review_listings_path
   end

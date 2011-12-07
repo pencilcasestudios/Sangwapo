@@ -77,9 +77,10 @@ class Listing < ActiveRecord::Base
 
   def generate_payment
     p = self.payments.new(from: self.user.cell_phone_number, amount: self.total_listing_price, user: self.user)
-    p.save
-    p.unlock(false) # Force state change
-    p.save(validate: false) # Force-save this payment in an invalidated, unlocked state
+
+    # Force-save this payment in an invalidated, unlocked state
+    p.unlock(false)
+    p.save(validate: false) 
   end
 
   def self.generate_listing_code

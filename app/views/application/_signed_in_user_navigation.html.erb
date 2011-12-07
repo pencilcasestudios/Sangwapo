@@ -1,7 +1,7 @@
 <% if current_user.admin? %>
 	<ul class="nav user">
 		<li id="tab_manage_payments"><%= link_to t("views.application._navigation.links.payments"), pending_payments_path %></li>
-		<% payments_count = Payment.find_all_by_state("open").count %>
+		<% payments_count = Payment.find_all_by_state("unlocked").count %>
 		<% if payments_count > 0 %>
 			<li><span class="label notice"><%= payments_count %></span></li>
 		<% end %>
