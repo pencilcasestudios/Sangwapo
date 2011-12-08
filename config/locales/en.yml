@@ -82,6 +82,9 @@ en:
       listing_approved_confirmation:
         subject: "[%{application_name}] Listing approved"
         body: "Hello %{user_name},\n\nGood news! Your listing has been accepted and published at:\n%{listing_path}\n\nIt will remain published until %{end_date}.\n\nThank you for using %{application_name}!\n\nSilumesii\n\n---\n%{application_name} is proudly Zambian and made by Pencil Case Studios.\n%{root_path}\nhttp://pencilcasestudios.com/"
+      listing_rejected_confirmation:
+        subject: "[%{application_name}] Listing rejected"
+        body: "Hello %{user_name},\n\nYour listing has been rejected:\n\n%{listing_description}\n\nYou will receive a refund of %{refund_percentage}%.\n\nYou are welcome to edit the listing and submit the updated version.\n\nThank you,\n\nSilumesii\n\n---\n%{application_name} is proudly Zambian and made by Pencil Case Studios.\n%{root_path}\nhttp://pencilcasestudios.com/"
 
 
 

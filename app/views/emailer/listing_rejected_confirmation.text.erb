@@ -1,0 +1,1 @@
+<%= t("mailers.emailer.listing_rejected_confirmation.body", user_name: @listing.user.first_name, listing_description: @listing.description, refund_percentage: AppConfig.refund_percentage, root_path: root_url, sign_in_path: sign_in_url, application_name: t("application.name")) %>
