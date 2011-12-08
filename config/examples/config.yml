@@ -39,6 +39,8 @@ defaults: &defaults
 development:
   <<: *defaults
 
+  server_name: "0.0.0.0:3002"
+
 test:
   <<: *defaults
 
