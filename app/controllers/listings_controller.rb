@@ -75,7 +75,7 @@ class ListingsController < ApplicationController
     @listing.accept
     
     Emailer.listing_approved_confirmation(@listing).deliver  
-    #Emailer.delay.listing_approved_confirmation(@listing)
+    Emailer.delay.listing_approved_confirmation(@listing)
 
     flash[:success] = t("controllers.listings_controller.actions.accept.success", id: @listing.id)
     redirect_to review_listings_path
@@ -87,7 +87,7 @@ class ListingsController < ApplicationController
     @listing.comments.new(label: "administrator_comment", body: t("controllers.listings_controller.actions.reject.comment", listing: @listing.description, date: @listing.updated_at.strftime("%A, %d %B %Y, %H:%M:%S"), rejected_at: Time.now.strftime("%A, %d %B %Y, %H:%M"), refund_percentage: AppConfig.refund_percentage, to: @listing.user.cell_phone_number)).save
 
     Emailer.listing_rejected_confirmation(@listing).deliver  
-    #Emailer.delay.listing_rejected_confirmation(@listing)
+    Emailer.delay.listing_rejected_confirmation(@listing)
 
     flash[:success] = t("controllers.listings_controller.actions.reject.success", id: @listing.id, refund_percentage: AppConfig.refund_percentage)
     redirect_to review_listings_path

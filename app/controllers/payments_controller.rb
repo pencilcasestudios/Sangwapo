@@ -20,7 +20,7 @@ class PaymentsController < ApplicationController
       @payment.reconcile
       @payment.listing.clear
       Emailer.payment_received_confirmation(@payment).deliver  
-      #Emailer.delay.payment_received_confirmation(@payment)
+      Emailer.delay.payment_received_confirmation(@payment)
       flash[:success] = t("controllers.payments_controller.actions.update.success", id: @payment.id)
       redirect_to pending_payments_path
     else
