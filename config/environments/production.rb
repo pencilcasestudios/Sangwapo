@@ -56,5 +56,10 @@ Sangwapo::Application.configure do
   config.i18n.fallbacks = true
 
   # Send deprecation notices to registered listeners
-  config.active_support.deprecation = :notify
+  config.active_support.deprecation = :notify  
 end
+
+Sangwapo::Application.config.middleware.use ExceptionNotifier,
+  :email_prefix => "[Exception - Sangwapo] ",
+  :sender_address => %{"exception_notifier" <exception_notifier@sangwapo.com>},
+  :exception_recipients => %w{exceptions_group@sangwapo.com}

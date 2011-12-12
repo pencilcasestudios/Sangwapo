@@ -72,6 +72,7 @@ end
 
 
 group :production do
+  gem "exception_notification"
   gem "mysql2"
   #gem "unicorn"?
 end
