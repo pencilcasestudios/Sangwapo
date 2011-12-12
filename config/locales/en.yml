@@ -331,7 +331,8 @@ en:
         copy:
           accept_terms_of_use: I have read and accept the
           terms_of_use: terms of use
-          exclusively_zambian: "%{application_name} is only available in Zambia. Please use a Zambian cell phone number when creating your account."
+          hints:
+            cell_phone_number: "Pre-paid Zambian cell phone number with no spaces, just like you&rsquo;d dial it <em>e.g. 0950930425</em>"
       new:
         title: Sign up
       edit:

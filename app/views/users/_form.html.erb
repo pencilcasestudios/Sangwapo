@@ -17,7 +17,10 @@
 
 				<fieldset class="control-group">
 					<%= f.label :cell_phone_number, t("views.users._form.labels.cell_phone_number"), class: "control-label" %>
-					<div class="controls"><%= f.text_field :cell_phone_number %></div>
+					<div class="controls">
+						<%= f.text_field :cell_phone_number %>
+						<p class="help-text"><%=raw t("views.users._form.copy.hints.cell_phone_number") %></p>
+					</div>
 				</fieldset>
 
 				<legend><%= t("views.users._form.legends.password") %></legend>
@@ -53,13 +56,6 @@
 					<%= f.label :time_zone, t("views.users._form.labels.time_zone") %>
 					<div class="controls"><%= f.time_zone_select :time_zone, nil, default: "Africa/Lusaka" %></div>
 				</fieldset>
-
-				<br />
-				<% if new_or_create_action? %>
-					<div id="exclusively_zambian">
-						<p><%= t("views.users._form.copy.exclusively_zambian", application_name: t("application.name")) %></p>
-					</div>
-				<% end %>
 			</div>
 		</div>
 
