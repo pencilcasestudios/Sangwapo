@@ -10,9 +10,12 @@ gem "rails", "3.1.3"
 
 
 # Used accross environments
+#gem "recaptcha", "~> 0.3.1"
 #gem "ruby-graphviz", :require => "graphviz" # Optional: only required with state_machine for graphing
+#gem "simple_captcha", "~> 0.1.3"
 gem "bcrypt-ruby", "~> 3.0.0"
 gem "delayed_job"
+gem "galetahub-simple_captcha", :require => "simple_captcha"
 gem "jquery-rails"
 gem "nested_form", git: "git://github.com/ryanb/nested_form.git"
 gem "paper_trail", "~> 2"
@@ -21,8 +24,6 @@ gem "rails-backbone"
 gem "settingslogic"
 gem "state_machine"
 gem "twitter", "~> 2.0.0"
-
-
 
 
 # Gems used only for assets and not required
