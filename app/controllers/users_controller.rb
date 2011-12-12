@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     @user.role = User::ROLES[I18n.t("models.user.roles.user")]
-    if @user.save
+    if @user.save_with_captcha
       Emailer.registration_confirmation(@user).deliver  
       #Emailer.delay.registration_confirmation(@user)
       flash[:success] = t("controllers.users_controller.actions.create.success")

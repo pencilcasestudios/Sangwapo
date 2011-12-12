@@ -145,6 +145,16 @@ en:
 
 
 
+# simple_captcha
+  simple_captcha:
+    label: Enter the text you see in the image
+    message:
+      default: "The secret code did not match the image"
+      user: "The secret image and code were different"
+
+
+
+
 # Validators
   validators:
     cell_phone_number_format:

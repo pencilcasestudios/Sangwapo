@@ -35,6 +35,12 @@
 				<% end %>
 			<% end %>
 
+			<% if @user.errors[:captcha].present? %>
+				<% @user.errors[:captcha].each do |message| %>
+					<li><%= message %></li>
+				<% end %>
+			<% end %>
+
 			<% if @user.errors[:terms_of_use].present? %>
 				<% @user.errors[:terms_of_use].each do |message| %>
 					<li><%= t("views.users._errors.fields.terms_of_use") %> <%= message %></li>

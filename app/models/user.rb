@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  apply_simple_captcha
+
   has_secure_password
 
   has_paper_trail
