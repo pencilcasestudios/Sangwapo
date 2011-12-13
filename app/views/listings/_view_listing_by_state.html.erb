@@ -10,10 +10,14 @@
 		<h1><%= yield :title %></h1>
 	</header>
 	<%= render "listing", listing: listing %>
-<% elsif listing.archived? %>
+<% elsif listing.expired? %>
+	<% title t("views.listings.show.titles.expired") %>
 	<header>
 		<h1><%= yield :title %></h1>
 	</header>
+<% else # Assume archived %>
 	<% title t("views.listings.show.titles.archived") %>
-<% else %>
+	<header>
+		<h1><%= yield :title %></h1>
+	</header>
 <% end %>

@@ -69,8 +69,19 @@ class Listing < ActiveRecord::Base
       transition :review => :published
     end
 
+    event :expire do
+      transition :clearing => :expired
+      transition :published => :expired
+      transition :review => :expired
+      transition :unpublished => :expired
+    end
+
+    event :refresh do
+      transition :expired => :unpublished
+    end
+
     event :archive do
-      transition :published => :archived
+      transition :expired => :archived
     end
   end
 
