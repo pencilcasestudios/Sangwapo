@@ -59,6 +59,20 @@ Sangwapo::Application.configure do
   config.active_support.deprecation = :notify  
 end
 
+
+
+
+# Test production exception handling locally
+#class ActionDispatch::Request
+# def local?
+#   false
+# end
+#end
+
+
+
+
+# Email exceptions when they occur
 Sangwapo::Application.config.middleware.use ExceptionNotifier,
   :email_prefix => "[Exception - Sangwapo] ",
   :sender_address => %{"exception_notifier" <exception_notifier@sangwapo.com>},
