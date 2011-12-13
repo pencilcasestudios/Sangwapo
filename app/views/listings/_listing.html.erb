@@ -9,8 +9,8 @@
 						| <%= link_to_unless_current t("views.listings.links.view"), listing %>
 						<% if listing.unpublished? %>| <%= link_to_unless_current t("views.listings.links.edit"), edit_listing_path(listing) %><% end %>
 						<% if listing.expired? %>
-						| <%= link_to_unless_current t("views.listings.links.refresh"), edit_listing_path(listing) %>
-						| <%= link_to_unless_current t("views.listings.links.archive"), edit_listing_path(listing) %>
+						| <%= link_to_unless_current t("views.listings.links.refresh"), refresh_listing_path(listing), title: t("views.listings.links.hints.refresh"), method: :put %>
+						| <%= link_to_unless_current t("views.listings.links.archive"), archive_listing_path(listing), method: :put %>
 						<% end %>
 				<% end %>
 				<% if current_user.admin? && listing.review? %>

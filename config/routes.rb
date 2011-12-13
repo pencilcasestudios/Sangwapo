@@ -26,6 +26,7 @@ Sangwapo::Application.routes.draw do
       put :archive
       put :clear
       put :pay
+      put :refresh
       put :reject
     end
     

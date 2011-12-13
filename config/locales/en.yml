@@ -28,9 +28,13 @@ en:
           success: "Thank you for sending payment. Please allow up to 24 hours for confirmation."
         reject:
           comment: "<blockquote>%{listing}\n<small>%{date}</small>\n</blockquote>\nOn %{rejected_at} the listing above was rejected.\nA refund of %{refund_percentage}% has been sent to you at %{to}."
-          success: "Listing %{id} has been rejected. Please issue a refund of %{refund_percentage}%."          
+          success: "Listing %{id} has been rejected. Please issue a refund of %{refund_percentage}%."
         update:
           success: The listing was successfully updated.
+        refresh:
+          success: The listing was successfully refreshed. It is ready for you to publish again.
+        archive:
+          success: The listing was successfully archived and can no longer be published again.
 
     payments_controller:
       actions:
@@ -44,7 +48,7 @@ en:
           error: Sign in failed. Please check your details try again.
         destroy:
           success: You have successfully signed out.
-      
+
     users_controller:
       actions:
         create:
@@ -122,14 +126,14 @@ en:
       types:
         offered: "Offered"
         wanted: "Wanted"
-    
+
     payment:
       methods:
         airtime: "Airtime"
         cheque: "Cheque"
         cash: "Cash"
         mobile_money: "Mobile money"
-        
+
     phone_number:
       mobile_carriers:
         airtel: "Airtel"
@@ -161,7 +165,7 @@ en:
       error: is not a Zambian cell phone number
     unrestricted_cell_phone_number:
       error: is not an available Zambian cell phone number
-      
+
 
 
 
@@ -255,13 +259,24 @@ en:
           pricing_summary: Pricing summary
       copy:
         states:
-          clearing: Pending payment confirmation 
+          archived: Archived
+          clearing: Pending payment confirmation
+          expired: Expired
           published: Published
           review: Pending review
           unpublished: Pending payment
       links:
+        hints:
+          accept:
+          archive: Permanently unpublish this listing
+          edit:
+          refresh: Refresh this listing to prepare it to be published again
+          reject:
+          view:
         accept: Accept
+        archive: Archive
         edit: Edit
+        refresh: Refresh
         reject: Reject
         view: View
       index:
@@ -271,7 +286,7 @@ en:
       mine:
         title: My listings
         links:
-          create_a_listing: Create a listing          
+          create_a_listing: Create a listing
       new:
         title: New listing
       review:
@@ -279,12 +294,13 @@ en:
         sub_title: pending review
       show:
         titles:
+          archived: Archived listing
+          expired: Expired listing
           published: "Listing %{id}"
           title: "Listing %{id}"
           unpublished: Unpublished listing
-          expired: Expired listing
         copy:
-          archived: This listing has been archived.
+          archived: This listing has been archived and is no longer viewable.
           expired: The display period for this listing has expired.<br />The owner may renew it so please check back later.
           unpublished: This listing is so new it has not yet been published.<br />Please check back shortly. It should be up soon.
 
@@ -309,7 +325,7 @@ en:
       pending:
         title: Payments
         sub_title: pending reconciliation
-      
+
     sessions:
       _form:
         buttons:

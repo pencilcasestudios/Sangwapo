@@ -52,16 +52,34 @@ class ListingsController < ApplicationController
   def review
     @listings = Listing.find_all_by_state("review")
   end
+
+  def archive
+    @listing = current_user.listings.find(params[:id])
+    if @listing.archive
+      flash[:success] = t("controllers.listings_controller.actions.archive.success")
+      redirect_to @listing
+    else
+      # Do nothing
+    end
+  end
+
+  def refresh
+    @listing = current_user.listings.find(params[:id])
+    if @listing.refresh
+      flash[:success] = t("controllers.listings_controller.actions.refresh.success")
+      redirect_to @listing
+    else
+      # Do nothing
+    end
+  end
   
   def pay
-    @listing = current_user.listings.find_by_id(params[:id])
-    if @listing.blank?
-      flash[:error] = t("controllers.listings_controller.actions.pay.failure")
-      redirect_to root_path
-    else
-      @listing.pay
+    @listing = current_user.listings.find(params[:id])
+    if @listing.pay
       flash[:success] = t("controllers.listings_controller.actions.pay.success")
       redirect_to @listing
+    else
+      # Do nothing
     end
   end
   
