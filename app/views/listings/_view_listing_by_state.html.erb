@@ -1,0 +1,19 @@
+<% if listing.unpublished? || listing.clearing? || listing.review? %>
+	<% title t("views.listings.show.titles.unpublished") %>
+	<header>
+		<h1><%= yield :title %></h1>
+	</header>
+	<%=simple_format t("views.listings.show.copy.unpublished") %>
+<% elsif listing.published? %>
+	<% title t("views.listings.show.titles.published", id: listing.id) %>
+	<header>
+		<h1><%= yield :title %></h1>
+	</header>
+	<%= render "listing", listing: listing %>
+<% elsif listing.archived? %>
+	<header>
+		<h1><%= yield :title %></h1>
+	</header>
+	<% title t("views.listings.show.titles.archived") %>
+<% else %>
+<% end %>
