@@ -110,4 +110,8 @@ class Listing < ActiveRecord::Base
   def is_published?
     self.state == "published"
   end
+  
+  def belongs_to?(owner)
+    self.user == owner
+  end
 end
