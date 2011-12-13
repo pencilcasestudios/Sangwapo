@@ -71,3 +71,8 @@
 	border-top-style: solid;
 	border-top-color: #DDD;
 }
+
+#listings .listing.archived p {
+	text-decoration: line-through;
+	
+}
