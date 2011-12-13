@@ -158,6 +158,8 @@ en:
 # Validators
   validators:
     cell_phone_number_format:
+      error: is not a Zambian cell phone number
+    unrestricted_cell_phone_number:
       error: is not an available Zambian cell phone number
       
 
@@ -211,9 +213,10 @@ en:
       _errors:
         title: This listing could not be created
         fields:
+          description: Description
+          display_for: Display for
           listing_type: Offered or Wanted
           panel_size: Listing size
-          description: Description
       _form:
         labels:
           description: Description
@@ -275,7 +278,12 @@ en:
         title: Listings
         sub_title: pending review
       show:
-        title: "Listing %{id}"
+        titles:
+          published: "Listing %{id}"
+          title: "Listing %{id}"
+          unpublished: Unpublished listing
+        copy:
+          unpublished: This listing is so new it has not yet been published.<br />Please check back shortly. It should be up soon.
 
     payments:
       _errors:

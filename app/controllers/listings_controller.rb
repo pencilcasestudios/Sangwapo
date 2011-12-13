@@ -7,16 +7,7 @@ class ListingsController < ApplicationController
   end
   
   def show
-    if user_signed_in?
-      @listing = Listing.find(params[:id])
-      if @listing.published?
-        # Do nothing and render this listing
-      else
-        @listing = current_user.listings.find(params[:id]) # Which will not be found
-      end
-    else
-      @listing = Listing.where("state='published'").find(params[:id])
-    end
+    @listing = Listing.find(params[:id])
   end
   
   def new
@@ -74,7 +65,7 @@ class ListingsController < ApplicationController
     @listing.update_attribute("approved_at", Time.now)
     @listing.accept
     
-    Emailer.listing_approved_confirmation(@listing).deliver  
+    #Emailer.listing_approved_confirmation(@listing).deliver  
     Emailer.delay.listing_approved_confirmation(@listing)
 
     flash[:success] = t("controllers.listings_controller.actions.accept.success", id: @listing.id)
@@ -86,7 +77,7 @@ class ListingsController < ApplicationController
     @listing.reject
     @listing.comments.new(label: "administrator_comment", body: t("controllers.listings_controller.actions.reject.comment", listing: @listing.description, date: @listing.updated_at.strftime("%A, %d %B %Y, %H:%M:%S"), rejected_at: Time.now.strftime("%A, %d %B %Y, %H:%M"), refund_percentage: AppConfig.refund_percentage, to: @listing.user.cell_phone_number)).save
 
-    Emailer.listing_rejected_confirmation(@listing).deliver  
+    #Emailer.listing_rejected_confirmation(@listing).deliver  
     Emailer.delay.listing_rejected_confirmation(@listing)
 
     flash[:success] = t("controllers.listings_controller.actions.reject.success", id: @listing.id, refund_percentage: AppConfig.refund_percentage)

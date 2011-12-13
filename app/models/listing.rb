@@ -26,12 +26,12 @@ class Listing < ActiveRecord::Base
   }
 
   PERIODS = {
-    I18n.t("models.listing.periods")[1]  =>    "1",
-    I18n.t("models.listing.periods")[2]  =>    "2",
-    I18n.t("models.listing.periods")[3]  =>    "3",
-    I18n.t("models.listing.periods")[4]  =>    "4",
-    I18n.t("models.listing.periods")[5]  =>    "5",
-    I18n.t("models.listing.periods")[6]  =>    "6",
+    #I18n.t("models.listing.periods")[1]  =>    "1",
+    #I18n.t("models.listing.periods")[2]  =>    "2",
+    #I18n.t("models.listing.periods")[3]  =>    "3",
+    #I18n.t("models.listing.periods")[4]  =>    "4",
+    #I18n.t("models.listing.periods")[5]  =>    "5",
+    #I18n.t("models.listing.periods")[6]  =>    "6",
     I18n.t("models.listing.periods")[7]  =>    "7",
     I18n.t("models.listing.periods")[14] =>    "14",
     I18n.t("models.listing.periods")[21] =>    "21",

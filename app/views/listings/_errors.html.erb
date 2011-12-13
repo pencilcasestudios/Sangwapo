@@ -65,6 +65,12 @@
 				<% end %>
 			<% end %>
 
+			<% if @listing.errors[:display_for].present? %>
+				<% @listing.errors[:display_for].each do |message| %>
+					<li><%= t("views.listings._errors.fields.display_for") %> <%= message %></li>
+				<% end %>
+			<% end %>
+
 
 		</ul>
 	</div>

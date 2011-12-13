@@ -5,14 +5,14 @@ class User < ActiveRecord::Base
 
   has_paper_trail
 
-  validates :cell_phone_number, :presence => true, :uniqueness => true, :cell_phone_number_format => true
-  validates :email, :presence => true, :uniqueness => true, :email_format => true
-  validates :first_name, :presence => true
-  validates :language, :presence => true
-  validates :role, :presence => true
-  validates :time_zone, :presence => true
+  validates :cell_phone_number, presence: true, uniqueness: true, cell_phone_number_format: true, unrestricted_cell_phone_number: true
+  validates :email, presence: true, uniqueness: true, email_format: true
+  validates :first_name, presence: true
+  validates :language, presence: true
+  validates :role, presence: true
+  validates :time_zone, presence: true
   
-  validates :terms_of_use, :acceptance => true, :on => :create
+  validates :terms_of_use, acceptance: true, on: :create
   
   attr_accessor :terms_of_use
 

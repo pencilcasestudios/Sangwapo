@@ -5,7 +5,7 @@ class CreateListings < ActiveRecord::Migration
       t.datetime :approved_at
       t.datetime :paid_at
       t.decimal :price, precision: 12, scale: 2, default: 0
-      t.integer :display_for, default: 5 # days
+      t.integer :display_for
       t.references :user
       t.string :currency
       t.string :listing_code

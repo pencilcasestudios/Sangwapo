@@ -45,6 +45,8 @@ describe "Listing management" do
         lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         fill_in I18n.t("views.listings._form.labels.description"), with: lorem
 
+        select I18n.t("models.listing.periods")[7], from: I18n.t("views.listings._form.labels.display_for")
+
         click_button I18n.t("helpers.submit.create", :model => "Listing")
 
         page.should have_content(I18n.t("controllers.listings_controller.actions.create.success"))

@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(:version => 20111212181304) do
     t.datetime "approved_at"
     t.datetime "paid_at"
     t.decimal  "price",         :precision => 12, :scale => 2, :default => 0.0
-    t.integer  "display_for",                                  :default => 5
+    t.integer  "display_for"
     t.integer  "user_id"
     t.string   "currency"
     t.string   "listing_code"

@@ -7,13 +7,13 @@
 			<div class="span4">
 				<fieldset class="control-group">
 			    <%= f.label :listing_type, t("views.listings._form.labels.listing_type"), class: "control-label" %>
-			    <div class="controls"><%= f.select :listing_type, Listing::TYPES, { prompt: true }, { class: "span3" } %></div>
+			    <div class="controls"><%= f.select :listing_type, Listing::TYPES, { prompt: false }, { class: "span3" } %></div>
 				</fieldset>
 			</div>
 			<div class="span4">
 				<fieldset class="control-group">
 			    <%= f.label :panel_size, t("views.listings._form.labels.panel_size"), class: "control-label" %>
-			    <div class="controls"><%= f.select :panel_size, Listing::SIZES, { prompt: true }, { class: "span3" } %></div>
+			    <div class="controls"><%= f.select :panel_size, Listing::SIZES, { prompt: false }, { class: "span3" } %></div>
 				</fieldset>
 			</div>
 			<div class="span8">
@@ -27,7 +27,7 @@
 
 		<fieldset class="control-group">
 	    <%= f.label :display_for, t("views.listings._form.labels.display_for"), class: "control-label" %>
-	    <div class="controls"><%= f.select :display_for, Listing::PERIODS, { prompt: true }, { class: "span3" } %></div>
+	    <div class="controls"><%= f.select :display_for, Listing::PERIODS, { prompt: false }, { class: "span3" } %></div>
 		</fieldset>
 
 	  <div class="actions form-actions">
