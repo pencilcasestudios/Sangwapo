@@ -51,25 +51,25 @@ describe Payment do
       it "fails when from is incorrectly formatted (not a cell phone number)" do
         payment = Payment.new(from: "Something that is not a valid cell phone number")
         payment.should have(1).error_on(:from)
-        payment.errors[:from].should == ["is not a Zambian cell phone number"]
+        payment.errors[:from].should == [I18n.t("validators.cell_phone_number_format.error")]
       end
 
       it "fails when from is incorrectly formatted (not a Zambian cell phone number)" do
         payment = Payment.new(from: "0987654321")
         payment.should have(1).error_on(:from)
-        payment.errors[:from].should == ["is not a Zambian cell phone number"]
+        payment.errors[:from].should == [I18n.t("validators.cell_phone_number_format.error")]
       end
 
       it "fails when to is incorrectly formatted (not a cell phone number)" do
         payment = Payment.new(to: "Something that is not a valid cell phone number")
         payment.should have(1).error_on(:to)
-        payment.errors[:to].should == ["is not a Zambian cell phone number"]
+        payment.errors[:to].should == [I18n.t("validators.cell_phone_number_format.error")]
       end
 
       it "fails when to is incorrectly formatted (not a Zambian cell phone number)" do
         payment = Payment.new(to: "0987654321")
         payment.should have(1).error_on(:to)
-        payment.errors[:to].should == ["is not a Zambian cell phone number"]
+        payment.errors[:to].should == [I18n.t("validators.cell_phone_number_format.error")]
       end
     end
 
