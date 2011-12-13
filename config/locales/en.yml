@@ -158,7 +158,7 @@ en:
 # Validators
   validators:
     cell_phone_number_format:
-      error: is not a Zambian cell phone number
+      error: is not an available Zambian cell phone number
       
 
 
