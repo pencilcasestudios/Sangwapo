@@ -7,7 +7,11 @@
 				<% if listing.user == current_user %>
 						<%= t("views.listings.copy.states.#{listing.state}") %>
 						| <%= link_to_unless_current t("views.listings.links.view"), listing %>
-						<% if !listing.published? %>| <%= link_to_unless_current t("views.listings.links.edit"), edit_listing_path(listing) %><% end %>
+						<% if listing.unpublished? %>| <%= link_to_unless_current t("views.listings.links.edit"), edit_listing_path(listing) %><% end %>
+						<% if listing.expired? %>
+						| <%= link_to_unless_current t("views.listings.links.refresh"), edit_listing_path(listing) %>
+						| <%= link_to_unless_current t("views.listings.links.archive"), edit_listing_path(listing) %>
+						<% end %>
 				<% end %>
 				<% if current_user.admin? && listing.review? %>
 						| <%= link_to_unless_current t("views.listings.links.accept"), accept_listing_path(listing), method: :put %>

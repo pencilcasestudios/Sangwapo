@@ -282,9 +282,10 @@ en:
           published: "Listing %{id}"
           title: "Listing %{id}"
           unpublished: Unpublished listing
+          expired: Expired listing
         copy:
           archived: This listing has been archived.
-          expired: The display period for this listing has expired.<br />The owner may renew it so please check back in a few days.
+          expired: The display period for this listing has expired.<br />The owner may renew it so please check back later.
           unpublished: This listing is so new it has not yet been published.<br />Please check back shortly. It should be up soon.
 
     payments:

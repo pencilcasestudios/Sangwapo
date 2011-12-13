@@ -15,6 +15,7 @@
 	<header>
 		<h1><%= yield :title %></h1>
 	</header>
+	<%=simple_format t("views.listings.show.copy.expired") %>
 <% else # Assume archived %>
 	<% title t("views.listings.show.titles.archived") %>
 	<header>
