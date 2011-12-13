@@ -1,15 +1,35 @@
 <% if user_signed_in? %>
-	<% title t("views.listings.show.titles.title", id: @listing.id) %>
-
-	<header>
-		<h1><%= yield :title %></h1>
-	</header>
-
-	<%= render "listing", listing: @listing %>
+	<% if @listing.belongs_to?(current_user) %>
+		<% title t("views.listings.show.titles.title", id: @listing.id) %>
+		<header>
+			<h1><%= yield :title %></h1>
+		</header>
+		<%= render "listing", listing: @listing %>
+	<% else %>
+		<% if @listing.unpublished? || @listing.clearing? || @listing.review? %>
+			<% title t("views.listings.show.titles.unpublished") %>
+			<header>
+				<h1><%= yield :title %></h1>
+			</header>
+			<%=simple_format t("views.listings.show.copy.unpublished") %>
+		<% elsif @listing.published? %>
+			<% title t("views.listings.show.titles.published", id: @listing.id) %>
+			<header>
+				<h1><%= yield :title %></h1>
+			</header>
+			<%= render "listing", listing: @listing %>
+		<% elsif @listing.archived? %>
+			<header>
+				<h1><%= yield :title %></h1>
+			</header>
+			<% title t("views.listings.show.titles.archived") %>
+		<% else %>
+		<% end %>
+	<% end %>
 
 	<br />
 
-	<% if user_signed_in? && !@listing.is_published? && @listing.user == current_user %>
+	<% if user_signed_in? && !@listing.is_published? && @listing.belongs_to?(current_user) %>
 		<% if @listing.unpublished? %>
 			<%= render "payment_instructions", listing: @listing %>
 		<% elsif @listing.clearing? %>
