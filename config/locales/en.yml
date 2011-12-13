@@ -23,7 +23,7 @@ en:
         create:
           success: The listing was successfully created.
         edit:
-          error: You cannot edit the listing.
+          error: "You cannot edit the listing."
         pay:
           success: "Thank you for sending payment. Please allow up to 24 hours for confirmation."
         reject:
