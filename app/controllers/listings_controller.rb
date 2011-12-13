@@ -28,6 +28,11 @@ class ListingsController < ApplicationController
 
   def edit
     @listing = current_user.listings.find(params[:id])
+    unless @listing.unpublished?
+      # Editing is only allowed on unpublished listings
+      flash[:error] = t("controllers.listings_controller.actions.edit.error")
+      redirect_to @listing
+    end
   end
 
   def update
