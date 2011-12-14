@@ -1,4 +1,5 @@
-<div class="listing <%= listing.listing_type %> <%= listing.state %>">	
+<a name="listing<% listing.id %>"></a>
+<div id="listing_id_<% listing.id %>" class="listing <%= listing.listing_type %> <%= listing.state %>">	
 	<%=simple_format listing.description %>
 
 	<div class="listing_meta_data">

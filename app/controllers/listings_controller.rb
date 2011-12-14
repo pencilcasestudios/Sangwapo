@@ -3,7 +3,7 @@ class ListingsController < ApplicationController
   before_filter :admin_required, :only => [:review, :accept, :reject]
 
   def index
-    @listings = Listing.where("state='published'").order("id DESC")
+    @listings = Listing.where("state='published'")
   end
   
   def show
