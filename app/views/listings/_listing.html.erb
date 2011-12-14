@@ -10,7 +10,7 @@
 						<% if listing.unpublished? %>| <%= link_to_unless_current t("views.listings.links.edit"), edit_listing_path(listing) %><% end %>
 						<% if listing.expired? %>
 						| <%= link_to_unless_current t("views.listings.links.refresh"), refresh_listing_path(listing), title: t("views.listings.links.hints.refresh"), method: :put %>
-						| <%= link_to_unless_current t("views.listings.links.archive"), archive_listing_path(listing), method: :put %>
+						| <%= link_to t("views.listings.links.delete"), listing, title: t("views.listings.links.hints.delete"), confirm: t("views.listings.links.confirmations.delete"), method: :delete %>
 						<% end %>
 				<% end %>
 				<% if current_user.admin? && listing.review? %>
@@ -19,7 +19,7 @@
 				<% end %>
 			</span>
 		<% end %>
-		<span class="listing_code"><%= link_to_unless_current listing.listing_code, listing %></span>
+		<span class="listing_code"><%= link_to listing.listing_code, listing %></span>
 		<span class="<%= listing.listing_type %>"><%= t("models.listing.types.#{listing.listing_type}") %></span>
 	</div>
 </div>

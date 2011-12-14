@@ -7,7 +7,7 @@ class ListingsController < ApplicationController
   end
   
   def show
-    @listing = Listing.find(params[:id])
+    @listing = Listing.where("state!='archived'").find(params[:id])
   end
   
   def new
@@ -27,7 +27,7 @@ class ListingsController < ApplicationController
   end
 
   def edit
-    @listing = current_user.listings.find(params[:id])
+    @listing = current_user.listings.where("state!='archived'").find(params[:id])
     unless @listing.unpublished?
       # Editing is only allowed on unpublished listings
       flash[:error] = t("controllers.listings_controller.actions.edit.error")
@@ -46,21 +46,11 @@ class ListingsController < ApplicationController
   end
 
   def mine
-    @listings = current_user.listings
+    @listings = current_user.listings.where("state!='archived'")
   end
 
   def review
     @listings = Listing.find_all_by_state("review")
-  end
-
-  def archive
-    @listing = current_user.listings.find(params[:id])
-    if @listing.archive
-      flash[:success] = t("controllers.listings_controller.actions.archive.success")
-      redirect_to @listing
-    else
-      # Do nothing
-    end
   end
 
   def refresh
@@ -105,5 +95,16 @@ class ListingsController < ApplicationController
 
     flash[:success] = t("controllers.listings_controller.actions.reject.success", id: @listing.id, refund_percentage: AppConfig.refund_percentage)
     redirect_to review_listings_path
+  end
+
+  # Permanently archive this listing
+  def destroy
+    @listing = current_user.listings.find(params[:id])
+    if @listing.archive
+      flash[:success] = t("controllers.listings_controller.actions.destroy.success")
+    else
+      flash[:error] = t("controllers.listings_controller.actions.destroy.error")
+    end
+    redirect_to mine_listings_path
   end
 end

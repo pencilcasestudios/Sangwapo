@@ -33,7 +33,7 @@ en:
           success: The listing was successfully updated.
         refresh:
           success: The listing was successfully refreshed. It is ready for you to publish again.
-        archive:
+        destroy:
           success: The listing was successfully archived and can no longer be published again.
 
     payments_controller:
@@ -266,15 +266,17 @@ en:
           review: Pending review
           unpublished: Pending payment
       links:
+        confirmations:
+          delete: Are you sure you want to delete this listing?
         hints:
           accept:
-          archive: Permanently unpublish this listing
+          delete: Delete this listing
           edit:
           refresh: Refresh this listing to prepare it to be published again
           reject:
           view:
         accept: Accept
-        archive: Archive
+        delete: Delete
         edit: Edit
         refresh: Refresh
         reject: Reject

@@ -23,7 +23,6 @@ Sangwapo::Application.routes.draw do
   resources :listings do
     member do
       put :accept
-      put :archive
       put :clear
       put :pay
       put :refresh
