@@ -76,7 +76,7 @@ class Listing < ActiveRecord::Base
       transition :unpublished => :expired
     end
 
-    event :refresh do
+    event :relist do
       transition :expired => :unpublished
     end
 

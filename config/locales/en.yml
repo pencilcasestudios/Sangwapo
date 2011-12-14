@@ -31,8 +31,8 @@ en:
           success: "Listing %{id} has been rejected. Please issue a refund of %{refund_percentage}%."
         update:
           success: The listing was successfully updated.
-        refresh:
-          success: The listing was successfully refreshed. It is ready for you to publish again.
+        relist:
+          success: The listing was successfully updated. It is ready for you to edit and publish again.
         destroy:
           success: The listing was successfully archived and can no longer be published again.
 
@@ -270,15 +270,15 @@ en:
           delete: Are you sure you want to delete this listing?
         hints:
           accept:
-          delete: Delete this listing
+          delete: Permanently remove this listing
           edit:
-          refresh: Refresh this listing to prepare it to be published again
+          relist: Update this listing to prepare it to be published again
           reject:
           view:
         accept: Accept
         delete: Delete
         edit: Edit
-        refresh: Refresh
+        relist: Re-list
         reject: Reject
         view: View
       index:

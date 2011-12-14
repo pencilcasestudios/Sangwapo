@@ -53,10 +53,10 @@ class ListingsController < ApplicationController
     @listings = Listing.find_all_by_state("review")
   end
 
-  def refresh
+  def relist
     @listing = current_user.listings.find(params[:id])
-    if @listing.refresh
-      flash[:success] = t("controllers.listings_controller.actions.refresh.success")
+    if @listing.relist
+      flash[:success] = t("controllers.listings_controller.actions.relist.success")
       redirect_to @listing
     else
       # Do nothing
