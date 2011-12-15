@@ -10,14 +10,14 @@ defaults: &defaults
   ruby_version: "ruby-1.9.3-p0"
   server_name: "sangwapo.com"
   user: "silumesii"
-  
+
   # Email settings
   email_address: "smtp.gmail.com"
   email_domain: "gmail.com"
   email_password: "password" # Update this in production
   email_port: 587
   email_user_name: "hello@sangwapo.com"
-  
+
   # Mobile "gateway"
   application_sim_cards:
     airtel:
@@ -32,10 +32,10 @@ defaults: &defaults
       "0950000000": "0950000000"
       "0950000001": "0950000001"
       "0950000002": "0950000002"
-      
+
   # Business rules
   refund_percentage: 80
-  
+
   # Public contact information
   public_contact_email_address: questions@sangwapo.com
 
@@ -53,8 +53,8 @@ production:
   # Mobile "gateway"
   application_sim_cards:
     airtel:
-      "0970000000": "0970000000"
+      "0971746967": "0971746967"
     mtn:
-      "0960000000": "0960000000"
+      "0962916042": "0962916042"
     zamtel:
-      "0950000000": "0950000000"
+      "0950930425": "0950930425"
