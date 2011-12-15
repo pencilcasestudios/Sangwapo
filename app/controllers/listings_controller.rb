@@ -5,11 +5,11 @@ class ListingsController < ApplicationController
   def index
     @listings = Listing.where("state='published'")
   end
-  
+
   def show
     @listing = Listing.where("state!='archived'").find(params[:id])
   end
-  
+
   def new
     @listing = Listing.new
   end
@@ -62,7 +62,7 @@ class ListingsController < ApplicationController
       # Do nothing
     end
   end
-  
+
   def pay
     @listing = current_user.listings.find(params[:id])
     if @listing.pay
@@ -72,17 +72,17 @@ class ListingsController < ApplicationController
       # Do nothing
     end
   end
-  
+
   def accept
     @listing = Listing.find(params[:id])
     @listing.update_attribute("approved_at", Time.now)
     @listing.accept
-    
-    #Emailer.listing_approved_confirmation(@listing).deliver  
+
+    #Emailer.listing_approved_confirmation(@listing).deliver
     Emailer.delay.listing_approved_confirmation(@listing)
-    
+
     # Schedule the listing to expire
-    Delayed::Job.enqueue(ListingExpirationJob.new(params[:id]), -3, 2.minutes.from_now)
+    Delayed::Job.enqueue(ListingExpirationJob.new(params[:id]), 0, 2.minutes.from_now)
 
     flash[:success] = t("controllers.listings_controller.actions.accept.success", id: @listing.id)
     redirect_to review_listings_path
@@ -93,7 +93,7 @@ class ListingsController < ApplicationController
     @listing.reject
     @listing.comments.new(label: "administrator_comment", body: t("controllers.listings_controller.actions.reject.comment", listing: @listing.description, date: @listing.updated_at.strftime("%A, %d %B %Y, %H:%M:%S"), rejected_at: Time.now.strftime("%A, %d %B %Y, %H:%M"), refund_percentage: AppConfig.refund_percentage, to: @listing.user.cell_phone_number)).save
 
-    #Emailer.listing_rejected_confirmation(@listing).deliver  
+    #Emailer.listing_rejected_confirmation(@listing).deliver
     Emailer.delay.listing_rejected_confirmation(@listing)
 
     flash[:success] = t("controllers.listings_controller.actions.reject.success", id: @listing.id, refund_percentage: AppConfig.refund_percentage)

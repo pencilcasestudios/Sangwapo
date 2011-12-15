@@ -49,7 +49,7 @@ class Listing < ActiveRecord::Base
 
   state_machine :state, :initial => :unpublished do
 
-    after_transition :unpublished => :clearing, :do => :generate_payment
+    after_transition :unpublished => :clearing, do: :generate_payment
 
     event :pay do
       transition :unpublished => :clearing

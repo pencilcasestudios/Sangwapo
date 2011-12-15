@@ -2,6 +2,7 @@ en:
   application:
     developer:
       name: Pencil Case Studios
+      sign_off: Silumesii
       url: http://pencilcasestudios.com
     name: Sangwapo!
     tagline: "Zambia&rsquo;s online classifieds"
@@ -77,18 +78,22 @@ en:
 # Mailers
   mailers:
     emailer:
+      _footer: "\n%{developer_sign_off}\n\n---\n%{application_name} is proudly Zambian and made by Pencil Case Studios.\n%{root_path}\nhttp://pencilcasestudios.com/"
+      expired_listing_notification:
+        subject: "%{application_name} - Listing expired"
+        body: "Hello %{user_name},\n\nThe publishing period for your listing has expired:\n\n%{listing_description}\n\nYou can choose to re-list or delete the listing.\n\nThank you for using %{application_name}!"
       registration_confirmation:
-        subject: "[%{application_name}] Welcome to %{application_name}"
-        body: "Hello %{user_name},\n\nWelcome to %{application_name}!\n\nYour account is ready for you to use. You may sign in to create listings by visiting:\n%{sign_in_path}\n\nHope you like using %{application_name} as much as I'm enjoying making it.\n\nTake care and and God bless,\n\nSilumesii\n\n---\n%{application_name} is proudly Zambian and made by Pencil Case Studios.\n%{root_path}\nhttp://pencilcasestudios.com/"
+        subject: "%{application_name} - Welcome to %{application_name}"
+        body: "Hello %{user_name},\n\nWelcome to %{application_name}!\n\nYour account is ready for you to use. You may sign in to create listings by visiting:\n%{sign_in_path}\n\nHope you like using %{application_name} as much as I'm enjoying making it.\n\nTake care and and God bless,"
       payment_received_confirmation:
-        subject: "[%{application_name}] Payment received"
-        body: "Thank you %{user_name},\n\nThe payment for your listing has been received:\n\n%{listing_description}\n\nListing number: %{listing_number}\nPayment number: %{payment_number}\nTotal paid: %{total_paid} (%{method})\n\nThe listing will now be reviewed before it can be published. Please allow up to 24 hours for the review.\n\nThank you,\n\nSilumesii\n\n---\n%{application_name} is proudly Zambian and made by Pencil Case Studios.\n%{root_path}\nhttp://pencilcasestudios.com/"
+        subject: "%{application_name} - Payment received"
+        body: "Thank you %{user_name},\n\nThe payment for your listing has been received:\n\n%{listing_description}\n\nListing number: %{listing_number}\nPayment number: %{payment_number}\nTotal paid: %{total_paid} (%{method})\n\nThe listing will now be reviewed before it can be published. Please allow up to 24 hours for the review.\n\nThank you,"
       listing_approved_confirmation:
-        subject: "[%{application_name}] Listing approved"
-        body: "Hello %{user_name},\n\nGood news! Your listing has been accepted and published at:\n%{listing_path}\n\nIt will remain published until %{end_date}.\n\nThank you for using %{application_name}!\n\nSilumesii\n\n---\n%{application_name} is proudly Zambian and made by Pencil Case Studios.\n%{root_path}\nhttp://pencilcasestudios.com/"
+        subject: "%{application_name} - Listing approved"
+        body: "Hello %{user_name},\n\nGood news! Your listing has been accepted and published at:\n%{listing_path}\n\nIt will remain published until %{end_date}.\n\nThank you for using %{application_name}!"
       listing_rejected_confirmation:
-        subject: "[%{application_name}] Listing rejected"
-        body: "Hello %{user_name},\n\nYour listing has been rejected:\n\n%{listing_description}\n\nYou will receive a refund of %{refund_percentage}%.\n\nYou are welcome to edit the listing and submit the updated version.\n\nThank you,\n\nSilumesii\n\n---\n%{application_name} is proudly Zambian and made by Pencil Case Studios.\n%{root_path}\nhttp://pencilcasestudios.com/"
+        subject: "%{application_name} - Listing rejected"
+        body: "Hello %{user_name},\n\nYour listing has been rejected:\n\n%{listing_description}\n\nYou will receive a refund of %{refund_percentage}%.\n\nYou are welcome to edit the listing and submit the updated version.\n\nThank you,"
 
 
 

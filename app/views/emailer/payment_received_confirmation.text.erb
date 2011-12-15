@@ -1,1 +1,2 @@
 <%= t("mailers.emailer.payment_received_confirmation.body", user_name: @payment.user.first_name, listing_description: @payment.listing.description, listing_number: @payment.listing.id, payment_number: @payment.id, total_paid: number_to_currency(@payment.amount, unit: "K"), method: t("models.payment.methods.#{@payment.method}"), root_path: root_url, sign_in_path: sign_in_url, application_name: t("application.name")) %>
+<%= render "footer" %>

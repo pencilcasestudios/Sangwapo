@@ -18,4 +18,9 @@ class Emailer < ActionMailer::Base
     @listing = listing
     mail(to: "#{listing.user.first_name} <#{listing.user.email}>", subject: t("mailers.emailer.listing_rejected_confirmation.subject", application_name: t("application.name")), from: "#{t("application.name")} <#{AppConfig.email_user_name}>")
   end
+
+  def expired_listing_notification(listing)
+    @listing = listing
+    mail(to: "#{listing.user.first_name} <#{listing.user.email}>", subject: t("mailers.emailer.expired_listing_notification.subject", application_name: t("application.name")), from: "#{t("application.name")} <#{AppConfig.email_user_name}>")
+  end
 end
