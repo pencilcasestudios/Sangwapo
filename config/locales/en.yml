@@ -384,4 +384,23 @@ en:
 
     welcome:
       about:
-        title: "About %{application_name}"
+        titles:
+          where_do_i_start: Where do I start?
+          how_do_i_list_an_item: How do I list an item?
+          title: "About %{application_name}"
+        copy:
+          introduction:
+            p1: "%{application_name} is the Zambian way for you to use the Internet to advertise things you are offering or things you want."
+          where_do_i_start:
+            p1:
+              s1: "To use %{application_name}, visit"
+              s2: "You will find a variety of currently available items listed there."
+              s3: "If what you are looking for is not listed now, check back later. New items are being added all the time!"
+          how_do_i_list_an_item:
+            p1:
+              s1: to create listings.
+            p2:
+              s1: "There is a price to have your listing published and you can pay from the convenience of your own Zambian pre-paid mobile phone."
+        links:
+          sign_up_for_an_account: Sign up for an account
+          

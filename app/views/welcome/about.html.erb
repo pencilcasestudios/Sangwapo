@@ -1,3 +1,42 @@
 <header>
-	<h1><%= t("views.welcome.about.title") %></h1>
+	<h1><%= t("views.welcome.about.titles.title", application_name: t("application.name")) %></h1>
 </header>
+
+<p class="leader"><%= t("views.welcome.about.copy.introduction.p1", application_name: t("application.name")) %></p>
+
+
+
+
+<h2><%= t("views.welcome.about.titles.where_do_i_start") %></h2>
+
+<p>
+	<%= t("views.welcome.about.copy.where_do_i_start.p1.s1", application_name: t("application.name")) %>
+	<%= link_to AppConfig.server_name, root_url %><%= t("views.application.copy.full_stop") %>
+	<%= t("views.welcome.about.copy.where_do_i_start.p1.s2") %>
+</p>
+
+<p>
+	<%= t("views.welcome.about.copy.where_do_i_start.p1.s3") %>
+</p>
+
+
+
+<h2><%= t("views.welcome.about.titles.how_do_i_list_an_item") %></h2>
+
+<div class="row">
+	<div class="span5">
+		<p>
+		<%= link_to t("views.welcome.about.links.sign_up_for_an_account"), sign_up_path %>
+		<%= t("views.welcome.about.copy.how_do_i_list_an_item.p1.s1") %>
+		</p>
+
+		<p>
+		<%= t("views.welcome.about.copy.how_do_i_list_an_item.p2.s1") %>
+		</p>
+	</div>
+	<div class="span3">
+		<div class="price_list">
+			<%= render "listings/price_list" %>
+		</div>
+	</div>
+</div>

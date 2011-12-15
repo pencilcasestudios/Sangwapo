@@ -8,8 +8,10 @@
 		<li><%= t("views.listings._payment_instructions.copy.cost_per_listing_size") %>:
 			<ul>
 				<li><%= t("models.listing.sizes.small") %><%= t("views.application.copy.full_colon") %> <strong><%= number_to_currency(Listing::COST_PER_PANEL_SIZE["small"], unit: "K") %></strong></li>
+				<!--
 				<li><%= t("models.listing.sizes.medium") %><%= t("views.application.copy.full_colon") %> <strong><%= number_to_currency(Listing::COST_PER_PANEL_SIZE["medium"], unit: "K") %></strong></li>
 				<li><%= t("models.listing.sizes.large") %><%= t("views.application.copy.full_colon") %> <strong><%= number_to_currency(Listing::COST_PER_PANEL_SIZE["large"], unit: "K") %></strong></li>
+				-->
 			</ul>
 		</li>
 	</ul>
