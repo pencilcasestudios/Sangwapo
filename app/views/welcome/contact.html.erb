@@ -1,3 +1,8 @@
 <header>
 	<h1><%= t("views.welcome.contact.title") %></h1>
 </header>
+
+<p>
+	<%= t("views.welcome.contact.copy.p1") %>
+	<%=mail_to AppConfig.public_contact_email_address %><%= t("views.application.copy.full_stop") %>
+</p>
