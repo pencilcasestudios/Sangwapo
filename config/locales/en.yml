@@ -169,7 +169,7 @@ en:
     cell_phone_number_format:
       error: is not a Zambian cell phone number
     unrestricted_cell_phone_number:
-      error: is not an available Zambian cell phone number
+      error: has already been taken
 
 
 
