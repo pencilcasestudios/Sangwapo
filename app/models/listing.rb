@@ -123,4 +123,10 @@ class Listing < ActiveRecord::Base
   def belongs_to?(owner)
     self.user == owner
   end
+  
+  def expires_at
+    if self.published?
+      self.approved_at + self.display_for.days
+    end
+  end
 end

@@ -1,2 +1,2 @@
-<%= t("mailers.emailer.listing_approved_confirmation.body", user_name: @listing.user.first_name, listing_description: @listing.description, listing_number: @listing.id, listing_path: listing_url(@listing), end_date: (@listing.approved_at + @listing.display_for.days).strftime("%A, %d %B %Y"), root_path: root_url, sign_in_path: sign_in_url, application_name: t("application.name")) %>
+<%= t("mailers.emailer.listing_approved_confirmation.body", user_name: @listing.user.first_name, listing_description: @listing.description, listing_number: @listing.id, listing_path: listing_url(@listing), end_date: (@listing.expires_at).strftime("%A, %d %B %Y"), root_path: root_url, sign_in_path: sign_in_url, application_name: t("application.name")) %>
 <%= render "footer" %>

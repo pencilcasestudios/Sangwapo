@@ -82,7 +82,7 @@ class ListingsController < ApplicationController
     Emailer.delay.listing_approved_confirmation(@listing)
 
     # Schedule the listing to expire
-    Delayed::Job.enqueue(ListingExpirationJob.new(params[:id]), 0, 2.minutes.from_now)
+    Delayed::Job.enqueue(ListingExpirationJob.new(params[:id]), 0, @listing.expires_at)
 
     flash[:success] = t("controllers.listings_controller.actions.accept.success", id: @listing.id)
     redirect_to review_listings_path
