@@ -41,6 +41,10 @@
 
 
 
+# https://github.com/collectiveidea/delayed_job/wiki/Rails-3-and-Capistrano
+require "delayed/recipes"  
+set :rails_env, "production" #added for delayed job  
+
 # Customise these application-specific settings by updating config/config.yml
 # DEPLOYMENT_CONFIG is initialised in Capfile
 set :application_name, DEPLOYMENT_CONFIG["application_name"]
@@ -127,3 +131,11 @@ end
 after "deploy", "deploy:cleanup" # keeps only last 5 releases
 after "deploy:setup", "deploy:setup_shared"
 after "deploy:finalize_update", "deploy:symlink_extras"
+
+# https://github.com/collectiveidea/delayed_job/wiki/Rails-3-and-Capistrano
+# Delayed Job  
+before "deploy:restart", "delayed_job:stop"
+after  "deploy:restart", "delayed_job:start"
+
+after "deploy:stop",  "delayed_job:stop"
+after "deploy:start", "delayed_job:start"
