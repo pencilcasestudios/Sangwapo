@@ -403,4 +403,18 @@ en:
               s1: "There is a price to have your listing published and you can pay from the convenience of your own Zambian pre-paid mobile phone."
         links:
           sign_up_for_an_account: Sign up for an account
-          
+      contact:
+        title: Contact
+        copy:
+          p1: "Questions, comments and friendly remarks can be sent to"
+      privacy:
+        title: Privacy policy
+        copy:
+          p1: "The personal information you choose to give when creating your account on %{application_name} will not be given to any third-party without your permission."
+          p2: "The information you supply in the listings on %{application_name} is at your own digression. Listings are publicly displayed so there is no control over how the information in them will be used. You are encouraged to be very careful about how much personal information you include in a public listing."
+      terms:
+        title: Terms of use
+        copy:
+          p1: "%{application_name} is a friendly, welcoming and useful application many Zambians. For this to stay this way, listings are carefully curated and only approved listings are published."
+          p2: "Listings that are rejected will receive a refund of %{refund_percentage}%."
+          p3: "By using %{application_name}, you agree to be deliberate about what you list and mindful of how your use of the application will affect the greater community of users."
