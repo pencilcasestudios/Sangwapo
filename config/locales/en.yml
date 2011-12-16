@@ -195,7 +195,7 @@ en:
           payments: Reconcile payments
           sign_in: Sign in
           sign_out: Sign out
-          sign_up_for_an_account: Sign up for an account
+          sign_up_for_an_account: Sign up and post your listings
       copy:
         full_stop: "."
         full_colon: ":"
