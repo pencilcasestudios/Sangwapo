@@ -1,5 +1,6 @@
 <div class="price_list">
 	<h3><%= t("views.listings._payment_instructions.titles.pricing_summary") %></h3>
+
 	<p>
 	<%= t("views.listings._payment_instructions.copy.cost_per_character") %><%= t("views.application.copy.full_colon") %> <strong><%= number_to_currency(Listing::COST_PER_CHARACTER, unit: "K") %></strong><br />
 	<%= t("views.listings._payment_instructions.copy.cost_per_day") %><%= t("views.application.copy.full_colon") %> <strong><%= number_to_currency(Listing::COST_PER_DAY, unit: "K") %></strong><br />
@@ -15,4 +16,9 @@
 			</ul>
 		</li>
 	</ul>
+	
+	<!-- Pricing until Saturday, 31 December 2011 -->
+	<p><small><%= t("views.listings._payment_instructions.copy.2011_pricing") %></small></p>
+	<!-- /Pricing until Saturday, 31 December 2011 -->
+	
 </div>

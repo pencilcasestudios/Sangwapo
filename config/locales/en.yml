@@ -238,6 +238,7 @@ en:
           details: Details
       _payment_instructions:
         copy:
+          2011_pricing: "Valid for listings created before Sunday, 1st January in the year of our Lord 2012 A.D."
           instructions: "To publish this listing, please send <strong>%{amount}</strong> %{carrier} airtime from your phone with number <strong>%{sending_number}</strong> to <strong>%{receiving_number}</strong>."
           edit_limitation: "Once the listing is paid for, you will not be able to edit it."
           enter:
