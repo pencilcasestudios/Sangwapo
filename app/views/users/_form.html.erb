@@ -42,7 +42,7 @@
 
 						<fieldset class="control-group">
 					    <%= f.label :terms_of_use, t("views.users._form.labels.terms_of_use"), class: "control-label" %>
-					    <div class="controls terms_of_use"><%= f.check_box :terms_of_use %> <%= t("views.users._form.copy.accept_terms_of_use") %> <%= link_to t("views.users._form.copy.terms_of_use"), terms_path %><%= t("views.application.copy.full_stop") %></div>
+					    <div class="controls terms_of_use"><%= f.check_box :terms_of_use %> <%= t("views.users._form.copy.accept_terms_of_use") %> <%= link_to t("views.users._form.copy.terms_of_use"), terms_path, target: "_blank" %><%= t("views.application.copy.full_stop") %></div>
 						</fieldset>
 					</div>
 				<% end %>
