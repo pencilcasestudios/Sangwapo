@@ -14,7 +14,7 @@ gem "rails", "3.1.3"
 #gem "ruby-graphviz", :require => "graphviz" # Optional: only required with state_machine for graphing
 #gem "simple_captcha", "~> 0.1.3"
 gem "bcrypt-ruby", "~> 3.0.0"
-gem "delayed_job"
+gem "delayed_job_active_record", "~> 0.2.1"
 gem "galetahub-simple_captcha", :require => "simple_captcha"
 gem "jquery-rails"
 gem "nested_form", git: "git://github.com/ryanb/nested_form.git"
