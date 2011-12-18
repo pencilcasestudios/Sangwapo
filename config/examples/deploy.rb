@@ -41,9 +41,10 @@
 
 
 
+
 # https://github.com/collectiveidea/delayed_job/wiki/Rails-3-and-Capistrano
 require "delayed/recipes"  
-set :rails_env, "production" #added for delayed job  
+set :rails_env, "production" # Added for delayed job  
 
 # Customise these application-specific settings by updating config/config.yml
 # DEPLOYMENT_CONFIG is initialised in Capfile
