@@ -1,69 +1,85 @@
-<%= form_for(@user, html: { class: "form-vertical" } ) do |f| %>
+<%= form_for(@user) do |f| %>
+	<%= render "errors", user: @user %>
 
-		<%= render "errors", user: @user %>
-
-		<div class="row">
-			<div class="span4">
-				<legend><%= t("views.users._form.legends.contact_information") %></legend>
-				<fieldset class="control-group">
-			    <%= f.label :first_name, t("views.users._form.labels.first_name"), class: "control-label" %>
-			    <div class="controls"><%= f.text_field :first_name %></div>
-				</fieldset>
-
-				<fieldset class="control-group">
-					<%= f.label :email, t("views.users._form.labels.email"), class: "control-label" %>
-					<div class="controls"><%= f.text_field :email %></div>
-				</fieldset>
-
-				<fieldset class="control-group">
-					<%= f.label :cell_phone_number, t("views.users._form.labels.cell_phone_number"), class: "control-label" %>
-					<div class="controls">
-						<%= f.text_field :cell_phone_number %>
-						<p class="help-text"><%=raw t("views.users._form.copy.hints.cell_phone_number") %></p>
-					</div>
-				</fieldset>
-
-				<legend><%= t("views.users._form.legends.password") %></legend>
-				<fieldset class="control-group">
-					<%= f.label :password, t("views.users._form.labels.password"), class: "control-label" %>
-					<div class="controls"><%= f.password_field :password %></div>
-				</fieldset>
-
-				<fieldset class="control-group">
-					<%= f.label :password_confirmation, t("views.users._form.labels.password_confirmation"), class: "control-label" %>
-					<div class="controls"><%= f.password_field :password_confirmation %></div>
-				</fieldset>
-
-				<% if new_or_create_action? %>
-					<div id="confirm_terms_of_use">
-						<legend><%= t("views.users._form.legends.confirmation") %></legend>
-
-						<%= show_simple_captcha(object: "user") %>
-
-						<fieldset class="control-group">
-					    <%= f.label :terms_of_use, t("views.users._form.labels.terms_of_use"), class: "control-label" %>
-					    <div class="controls terms_of_use"><%= f.check_box :terms_of_use %> <%= t("views.users._form.copy.accept_terms_of_use") %> <%= link_to t("views.users._form.copy.terms_of_use"), terms_path, target: "_blank" %><%= t("views.application.copy.full_stop") %></div>
-						</fieldset>
-					</div>
-				<% end %>
-			</div>
-
-			<div class="span4">
-				<legend><%= t("views.users._form.legends.localisation") %></legend>
-				<fieldset class="control-group">
-					<%= f.label :language, t("views.users._form.labels.language"), class: "control-label" %>
-					<div class="controls"><%= f.select :language, Language::NAMES, { select: t("models.language.names.eng") } %></div>
-				</fieldset>
-
-				<fieldset class="control-group">
-					<%= f.label :time_zone, t("views.users._form.labels.time_zone") %>
-					<div class="controls"><%= f.time_zone_select :time_zone, nil, default: "Africa/Lusaka" %></div>
-				</fieldset>
-			</div>
+	<legend><%= t("views.users._form.legends.contact_information") %></legend>
+	<div class="row">
+		<div class="span4">
+			<fieldset class="control-group">
+		    <%= f.label :first_name, t("views.users._form.labels.first_name"), class: "control-label" %>
+		    <div class="controls"><%= f.text_field :first_name, class: "span4" %></div>
+			</fieldset>
+			<fieldset class="control-group">
+				<%= f.label :email, t("views.users._form.labels.email"), class: "control-label" %>
+				<div class="controls"><%= f.text_field :email, class: "span4" %></div>
+			</fieldset>
 		</div>
+		<div class="span4">
+			<fieldset class="control-group">
+				<%= f.label :cell_phone_number, t("views.users._form.labels.cell_phone_number"), class: "control-label" %>
+				<div class="controls">
+					<%= f.text_field :cell_phone_number, class: "span4" %>
+					<p class="help-text"><%=raw t("views.users._form.copy.hints.cell_phone_number") %></p>
+				</div>
+			</fieldset>
+		</div>
+	</div><!-- /row -->
 
-	  <div class="actions form-actions">
-	    <%= f.submit class: "btn large primary" %>
-	  </div>
-	</fieldset>
+	<legend><%= t("views.users._form.legends.password") %></legend>
+	<div class="row">
+		<div class="span4">
+			<fieldset class="control-group">
+				<%= f.label :password, t("views.users._form.labels.password"), class: "control-label" %>
+				<div class="controls"><%= f.password_field :password, class: "span4" %></div>
+			</fieldset>
+		</div>
+		<div class="span4">
+			<fieldset class="control-group">
+				<%= f.label :password_confirmation, t("views.users._form.labels.password_confirmation"), class: "control-label" %>
+				<div class="controls"><%= f.password_field :password_confirmation, class: "span4" %></div>
+			</fieldset>
+		</div>
+	</div><!-- /row -->
+
+	<legend><%= t("views.users._form.legends.localisation") %></legend>
+	<div class="row">
+		<div class="span4">
+			<fieldset class="control-group">
+				<%= f.label :language, t("views.users._form.labels.language"), class: "control-label" %>
+				<div class="controls"><%= f.select :language, Language::NAMES, { select: t("models.language.names.eng") } %></div>
+			</fieldset>
+		</div>
+		<div class="span4">
+			<fieldset class="control-group">
+				<%= f.label :time_zone, t("views.users._form.labels.time_zone") %>
+				<div class="controls"><%= f.time_zone_select :time_zone, nil, { default: "Africa/Lusaka" } %></div>
+			</fieldset>
+		</div>
+	</div><!-- /row -->
+
+	<% if new_or_create_action? %>
+		<div id="confirm_terms_of_use">
+			<legend><%= t("views.users._form.legends.confirmation") %></legend>
+			<div class="row">
+				<div class="span4">
+					<%= show_simple_captcha(object: "user") %>
+				</div>
+				<div class="span4">
+					<fieldset class="control-group">
+				    <%= f.label :terms_of_use, t("views.users._form.labels.terms_of_use"), class: "control-label" %>
+				    <div class="controls terms_of_use">
+							<%= f.check_box :terms_of_use %>
+							<%= t("views.users._form.copy.agree") %>
+							<%= link_to t("views.users._form.copy.terms_of_use"), terms_path, target: "_blank" %>
+							<%= t("views.users._form.copy.and") %>
+							<%= link_to t("views.users._form.copy.privacy_policy"), privacy_path, target: "_blank" %><%= t("views.application.copy.full_stop") %>
+						</div>
+					</fieldset>
+				</div>
+			</div><!-- /row -->
+		</div>
+	<% end %>
+
+  <div class="actions form-actions">
+    <%= f.submit class: "btn large primary" %>
+  </div>
 <% end %>

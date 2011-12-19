@@ -158,8 +158,8 @@ en:
   simple_captcha:
     label: Enter the text you see in the image
     message:
-      default: "The secret code did not match the image"
-      user: "The secret image and code were different"
+      default: "The security check text did not match the image"
+      user: "The security check text did not match the image"
 
 
 
@@ -368,13 +368,16 @@ en:
           language: Language
           time_zone: Time zone
           terms_of_use: Terms of use
+          captcha: Security check
         legends:
           confirmation: Confirmation
           contact_information: Contact information
           localisation: Preferences
           password: Password
         copy:
-          accept_terms_of_use: I have read and accept the
+          agree: I agree to the
+          and: and
+          privacy_policy: privacy policy
           terms_of_use: terms of use
           hints:
             cell_phone_number: "Pre-paid Zambian cell phone number with no spaces, just like you&rsquo;d dial it <em>e.g. 0950930425</em>"

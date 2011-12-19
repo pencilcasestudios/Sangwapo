@@ -1,4 +1,5 @@
 <fieldset class="control-group">
+  <%= label_tag :captcha, t("views.users._form.labels.captcha"), class: "control-label" %>
   <div class="simple_captcha_image"><%= simple_captcha_options[:image] %></div>
   <div class="simple_captcha_label"><%= simple_captcha_options[:label] %></div>
   <div class="simple_captcha_field"><%= simple_captcha_options[:field] %></div>
