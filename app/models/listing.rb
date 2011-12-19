@@ -3,7 +3,7 @@ class Listing < ActiveRecord::Base
 
   has_paper_trail
 
-  validates :description, presence: true
+  validates :description, presence: true, length: { :maximum => 140 }
   validates :display_for, presence: true, numericality: true
   validates :listing_code, presence: true, uniqueness: true
   validates :listing_type, presence: true
