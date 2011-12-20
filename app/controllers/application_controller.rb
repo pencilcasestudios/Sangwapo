@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  http_basic_authenticate_with :name => AppConfig.http_basic_name, :password => AppConfig.http_basic_password unless Rails.env == "test"
+  #http_basic_authenticate_with :name => AppConfig.http_basic_name, :password => AppConfig.http_basic_password unless Rails.env == "test"
 
   helper_method :current_user, :user_signed_in?
 
