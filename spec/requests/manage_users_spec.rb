@@ -29,6 +29,9 @@ describe "User management" do
 
         check I18n.t("views.users._form.labels.terms_of_use")
 
+        captcha = User.connection.execute("select * from simple_captcha_data").last
+        fill_in "user_captcha", with: captcha["value"]
+
         click_button I18n.t("helpers.submit.user.create")
 
         current_path.should eq(sign_in_path)
