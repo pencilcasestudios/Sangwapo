@@ -1,0 +1,47 @@
+2011 December
+=============
+
+Welcome to the Sangwapo! developer journal. By keeping thoughts here, perhaps I'll learn more about good application development and add a personal touch to this project.
+Enjoy!
+
+Silumesii
+
+
+
+
+- Launched Sangwapo! today behind http_basic_authentication.
+- Private beta sent email invitations to Lawrence, Litia, Lindiwe and Mike to have a look.
+- Posted my own listing as an Admin. The transaction seems smooth. Using a Kazang terminal to receive payments works because I can print out the SMS flash messages showing receipt of payment.
+- Airtel Me2u allowed me to send ZMK693.00 for the first listing.
+- I'm doing promotional pricing until 1 Jan 2012. This should allow me to gauge the full listing cycle including the crucial payment part.
+- Litia's feedback suggests that the "About" page needs work. I could be clearer explaining that you need to sign up in order to create listings.
+- Lost Internet access to sites outside of Zambia so Sangwapo! is not accessible ...
+- Tweaked the sign up link copy from "* Sign up for an account" to "Sign up and post your listings".
+- Still feeling I'm being passive and not active with the instructions. Should there be a bright red Sign Up! call to action or should I engage people slowly and "intelligently"?
+
+
+
+
+2011-12-19
+- Removed http_basic_authentication
+- Re-built the database adding simple_captcha and delayed_job. Relaunched the application and obliterated the data that was already there. I'll need to be more careful. At least only my listing and two accounts were lost.
+- Experimenting with the Twitter gem to post listings to @NaSangwapo (still need to secure @Sangwapo).
+
+
+
+
+2011-12-20
+- I've had no responses from anyone on my invite list - it could be because the invitation email did not come from my email address. Perhaps it was a bit spammy to email from hello@sangwapo.com  rather than an address everyone would know like my personal address.
+- The Twitter Gem (2.0.2) is broken in Ruby 1.9.3 - Went on to the Google Group to report the issue. Waiting.
+- The website for the application now features on the second page of a Google search for "sangwapo classifieds zambia". Now to get it further up the search results ladder in Google.
+- Experimental pricing is up (commented out). May change. I want to set it fairly high so that price reductions are significant. Also, so that I make some "money". It feels like a good price range at 140 characters (maxiumum) per listing.
+- Thinking about SMS published listings for some time in the future.
+- The site currently has no listings :)
+
+
+
+
+2011-12-27
+- Seems my invitation email was not good. Everyone I sent the invitation to is confused about how to log in and how Sangwapo works. How can I make it clearer?
+- Out of about seven emails sent, only three have had feedback and none have created a listing.
+
