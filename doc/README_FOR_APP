@@ -1,8 +1,25 @@
-Use this README file to introduce your application and point to useful places in the API for learning more.
-Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
-
 Git workflow
 ============
 
 Tag the repository after deployment:
 git tag "`date +deployed_%Y-%m-%d_%H%M%S`"
+
+
+
+
+Running the tests
+=================
+
+rake db:drop
+rake db:migrate
+rake db:test:prepare
+bundle exec guard
+
+
+
+
+Other notes
+===========
+
+Use this README file to introduce your application and point to useful places in the API for learning more.
+Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
