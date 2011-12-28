@@ -18,7 +18,7 @@ class Listing < ActiveRecord::Base
   COST_PER_CHARACTER = 0
   COST_PER_DAY = 99
   COST_PER_PANEL_SIZE = {
-    "small" => 999,
+    "small" => 0,
     "medium" => 0,
     "large" => 0,
   }
