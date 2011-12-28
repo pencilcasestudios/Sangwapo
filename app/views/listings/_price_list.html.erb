@@ -2,23 +2,26 @@
 	<h3><%= t("views.listings._payment_instructions.titles.pricing_summary") %></h3>
 
 	<p>
-	<%= t("views.listings._payment_instructions.copy.cost_per_character") %><%= t("views.application.copy.full_colon") %> <strong><%= number_to_currency(Listing::COST_PER_CHARACTER, unit: "K") %></strong><br />
-	<%= t("views.listings._payment_instructions.copy.cost_per_day") %><%= t("views.application.copy.full_colon") %> <strong><%= number_to_currency(Listing::COST_PER_DAY, unit: "K") %></strong><br />
+		<!--
+		<%= t("views.listings._payment_instructions.copy.cost_per_character") %><%= t("views.application.copy.full_colon") %> <strong><%= number_to_currency(Listing::COST_PER_CHARACTER, unit: "K") %></strong><br />
+		-->
+		<%= t("views.listings._payment_instructions.copy.cost_per_day") %><%= t("views.application.copy.full_colon") %> <strong><%= number_to_currency(Listing::COST_PER_DAY, unit: "K") %></strong><br />
 	</p>
+
+	<!--
 	<ul class="unstyled">
 		<li><%= t("views.listings._payment_instructions.copy.cost_per_listing_size") %>:
 			<ul>
 				<li><%= t("models.listing.sizes.small") %><%= t("views.application.copy.full_colon") %> <strong><%= number_to_currency(Listing::COST_PER_PANEL_SIZE["small"], unit: "K") %></strong></li>
-				<!--
 				<li><%= t("models.listing.sizes.medium") %><%= t("views.application.copy.full_colon") %> <strong><%= number_to_currency(Listing::COST_PER_PANEL_SIZE["medium"], unit: "K") %></strong></li>
 				<li><%= t("models.listing.sizes.large") %><%= t("views.application.copy.full_colon") %> <strong><%= number_to_currency(Listing::COST_PER_PANEL_SIZE["large"], unit: "K") %></strong></li>
-				-->
 			</ul>
 		</li>
 	</ul>
+	-->
 	
 	<!-- Pricing until Saturday, 31 December 2011 -->
-	<p><small><%= t("views.listings._payment_instructions.copy.2011_pricing") %></small></p>
+	<p><small><%= t("views.listings._payment_instructions.copy.introductory_pricing") %></small></p>
 	<!-- /Pricing until Saturday, 31 December 2011 -->
 	
 </div>
