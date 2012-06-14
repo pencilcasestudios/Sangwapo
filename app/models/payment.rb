@@ -55,4 +55,8 @@ class Payment < ActiveRecord::Base
   def set_payment_amount
     self.amount = self.listing.total_listing_price
   end
+
+  def self.random_payment_method
+    METHODS[METHODS.to_a[rand METHODS.size].first]
+  end
 end

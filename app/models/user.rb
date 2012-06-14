@@ -26,15 +26,20 @@ class User < ActiveRecord::Base
     I18n.t("models.user.roles.administrator") =>    "administrator",
   }
   
+  def self.random_role
+    ROLES[ROLES.to_a[rand ROLES.size].first]
+  end
+  
+  
   def admin?
-    self.role == User::ROLES[I18n.t("models.user.roles.administrator")]
+    self.role == ROLES[I18n.t("models.user.roles.administrator")]
   end
   
   def promote
-    self.role = User::ROLES[I18n.t("models.user.roles.administrator")]
+    self.role = ROLES[I18n.t("models.user.roles.administrator")]
   end
 
   def demote
-    self.role = User::ROLES[I18n.t("models.user.roles.user")]
+    self.role = ROLES[I18n.t("models.user.roles.user")]
   end
 end

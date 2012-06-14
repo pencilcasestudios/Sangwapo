@@ -138,4 +138,16 @@ class Listing < ActiveRecord::Base
       self.approved_at + self.display_for.days
     end
   end
+  
+  def self.random_display_period
+    PERIODS[PERIODS.to_a[rand PERIODS.size].first]
+  end
+
+  def self.random_type
+    TYPES[TYPES.to_a[rand TYPES.size].first]
+  end
+
+  def self.random_size
+    SIZES[SIZES.to_a[rand SIZES.size].first]
+  end
 end
