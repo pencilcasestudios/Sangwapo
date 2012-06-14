@@ -3,13 +3,19 @@ defaults: &defaults
   http_basic_password: future
   test_user_password: password
 
-  # Deployment recipe settings
+  # Multi-stage recipe settings
   application_name: "Sangwapo"
-  deployment_branch: "deployment"
+  deployment_path_production: production
+  deployment_path_staging: staging
   gemset_name: "sangwapo-rails.3.1.x"
-  ruby_version: "ruby-1.9.3-p0"
-  server_name: "sangwapo.com"
-  user: "silumesii"
+  repository_deployment_branch: master
+  repository_server_name: sangwapo.com
+  ruby_version: ruby-1.9.3-p125
+  server_name_production: sangwapo.com
+  server_name_staging: sangwapo.clientcase.net
+  stage_name_production: production
+  stage_name_staging: staging
+  user: silumesii
 
   # Email settings
   email_address: "smtp.gmail.com"
