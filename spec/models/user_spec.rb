@@ -41,14 +41,14 @@ describe User do
 
   describe "uniqueness" do
     it "fails validation with a duplicate cell_phone_number" do
-      user = Factory(:user)
+      user = FactoryGirl.create(:user)
       duplicate = User.new(cell_phone_number: user.cell_phone_number)
       duplicate.should have(1).error_on(:cell_phone_number)
       duplicate.errors[:cell_phone_number].should == ["has already been taken"]
     end
 
     it "fails validation with a duplicate email" do
-      user = Factory(:user)
+      user = FactoryGirl.create(:user)
       duplicate = User.new(email: user.email)
       duplicate.should have(1).error_on(:email)
       duplicate.errors[:email].should == ["has already been taken"]

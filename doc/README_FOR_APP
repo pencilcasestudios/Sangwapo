@@ -1,25 +1,44 @@
-Git workflow
-============
-
-Tag the repository after deployment:
-git tag "`date +deployed_%Y-%m-%d_%H%M%S`"
-
-
-
-
-Running the tests
-=================
-
+# Rake for testing
+gem cleanup
+bundle update
 rake db:drop
-rake db:migrate
+rake db:setup
+bundle exec rake
+
+
+
+
+# Guard for testing
+gem cleanup
+bundle update
+rake db:drop
+rake db:setup
 rake db:test:prepare
-bundle exec guard
+bundle exec guard --no-vendor
 
 
 
 
-Other notes
-===========
+# Gem update
+gem cleanup
+bundle update
 
-Use this README file to introduce your application and point to useful places in the API for learning more.
-Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
+
+
+
+# Capistrano for non-initial deployment
+# STAGING DEPLOYMENT
+git checkout master
+git merge work
+git push
+git push production
+cap deploy
+
+# Capistrano for non-initial deployment
+# PRODUCTION DEPLOYMENT
+git checkout master
+git merge work
+git push
+git push production
+cap production deploy
+git tag "`date +published_%Y-%m-%d_%H%M%S`"

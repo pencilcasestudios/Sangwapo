@@ -61,14 +61,14 @@ describe Listing do
 
   describe "uniqueness" do
     it "fails validation with a duplicate uuid" do
-      listing = Factory(:listing)
+      listing = FactoryGirl.create(:listing)
       duplicate = Listing.new(uuid: listing.uuid)
       duplicate.should have(1).error_on(:uuid)
       duplicate.errors[:uuid].should == ["has already been taken"]
     end
 
     it "fails validation with a duplicate listing_code" do
-      listing = Factory(:listing)
+      listing = FactoryGirl.create(:listing)
       duplicate = Listing.new(listing_code: listing.listing_code)
       duplicate.should have(1).error_on(:listing_code)
       duplicate.errors[:listing_code].should == ["has already been taken"]

@@ -4,7 +4,7 @@ source "http://rubygems.org"
 
 
 # Our foundation
-gem "rails", "3.1.3"
+gem "rails"#, "3.1.3"
 
 
 
@@ -13,50 +13,59 @@ gem "rails", "3.1.3"
 #gem "recaptcha", "~> 0.3.1"
 #gem "ruby-graphviz", :require => "graphviz" # Optional: only required with state_machine for graphing
 #gem "simple_captcha", "~> 0.1.3"
-gem "bcrypt-ruby", "~> 3.0.0"
-gem "delayed_job_active_record", "~> 0.2.1"
-gem "galetahub-simple_captcha", :require => "simple_captcha"
+gem "bcrypt-ruby"#, "~> 3.0.0"
+gem "bundler"
+gem "cancan"
+gem "carrierwave" #, git: "git://github.com/jnicklas/carrierwave.git"
+gem "carrierwave_backgrounder"
+gem "delayed_job_active_record"#, "~> 0.2.1"
+gem "exception_notification"
+gem "galetahub-simple_captcha", require: "simple_captcha", git: "git://github.com/galetahub/simple-captcha.git"
 gem "jquery-rails"
 gem "nested_form", git: "git://github.com/ryanb/nested_form.git"
-gem "paper_trail", "~> 2"
+gem "paper_trail"
 gem "prawn_rails"
 gem "rails-backbone"
+gem "rake"
+gem "rvm"
 gem "settingslogic"
+gem "sqlite3"
 gem "state_machine"
-gem "twitter", "~> 2.0.0"
+gem "twitter"
+
+
 
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem "coffee-rails", "~> 3.1.1"
-  gem "jombo", "~> 0.0.1.beta9"
-  gem "pcs_vegas", "~> 0.0.1.beta"
-  gem "sass-rails",   "~> 3.1.4"
-  gem "uglifier", ">= 1.0.3"
+  gem "coffee-rails"#, "~> 3.1.1"
+  gem "jombo"
+  gem "sass-rails"#,   "~> 3.1.4"
+  gem "uglifier"#, ">= 1.0.3"
 end
 
 
 
+
+group :test, :development do
+  gem "rspec-rails"
+end
+
+group :test, :darwin do
+  gem "rb-fsevent-legacy" # PowerPC
+  gem "rb-readline"
+end
 
 group :test do
   gem "capybara"
   gem "factory_girl_rails"
   gem "guard-bundler"
   gem "guard-rspec"
-  gem "guard-spork"#, :git => "git://github.com/guard/guard-spork.git"
+  gem "guard-spork"
   gem "launchy" # Ref: http://techiferous.com/2010/04/using-capybara-in-rails-3/ for save_and_open_page to work
-  gem "rspec-rails"
-  gem "spork", "> 0.9.0.rc"
-  gem "sqlite3"
-end
-
-
-
-
-group :test, :darwin do
-  gem "rb-fsevent"#, "~> 0.9.0.pre4"
-  gem "rb-readline"
+  gem "rack_session_access"
+  gem "spork-rails"
 end
 
 
@@ -64,16 +73,15 @@ end
 
 group :development do
   gem "capistrano"
+  gem "capistrano-ext"
   gem "letter_opener"
-  gem "rspec-rails"
-  gem "sqlite3"
+  gem "rvm-capistrano"
 end
 
 
 
 
 group :production do
-  gem "exception_notification"
+  #gem "unicorn"
   gem "mysql2"
-  #gem "unicorn"?
 end

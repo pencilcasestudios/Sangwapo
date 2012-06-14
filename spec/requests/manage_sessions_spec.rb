@@ -19,7 +19,7 @@ describe "Session management" do
       end
 
       it "rejects sign in with an invalid email" do
-        @current_user = Factory(:user)  
+        @current_user = FactoryGirl.create(:user)  
 
         visit sign_in_path
 
@@ -33,7 +33,7 @@ describe "Session management" do
       end
 
       it "rejects sign in with an invalid cell_phone_number" do
-        @current_user = Factory(:user)  
+        @current_user = FactoryGirl.create(:user)  
 
         visit sign_in_path
 
@@ -47,7 +47,7 @@ describe "Session management" do
       end
 
       it "rejects sign in with an invalid password" do
-        @current_user = Factory(:user)  
+        @current_user = FactoryGirl.create(:user)  
 
         visit sign_in_path
 
@@ -61,7 +61,7 @@ describe "Session management" do
       end
 
       it "rejects sign in with a blank email and password" do
-        @current_user = Factory(:user)  
+        @current_user = FactoryGirl.create(:user)  
 
         visit sign_in_path
 

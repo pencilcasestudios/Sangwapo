@@ -75,7 +75,7 @@ describe Payment do
 
     describe "uniqueness" do
       it "fails validation with a duplicate uuid" do
-        payment = Factory(:payment)
+        payment = FactoryGirl.create(:payment)
         duplicate = Payment.new(uuid: payment.uuid)
         duplicate.should have(1).error_on(:uuid)
         duplicate.errors[:uuid].should == ["has already been taken"]

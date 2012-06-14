@@ -1,5 +1,5 @@
 def sign_in_with_email
-  @current_user = Factory(:user)  
+  @current_user = FactoryGirl.create(:user)  
 
   visit sign_in_path
 
@@ -12,7 +12,7 @@ def sign_in_with_email
 end
 
 def sign_in_with_cell_phone_number
-  @current_user = Factory(:user)  
+  @current_user = FactoryGirl.create(:user)  
 
   visit sign_in_path
 
