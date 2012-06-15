@@ -8,4 +8,4 @@ ActionMailer::Base.smtp_settings = {
   user_name:            AppConfig.email_user_name,
 }
 
-ActionMailer::Base.default_url_options[:host] = AppConfig.server_name
+ActionMailer::Base.default_url_options[:host] = AppConfig.application_server_name

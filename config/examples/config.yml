@@ -24,6 +24,9 @@ defaults: &defaults
   email_port: 587
   email_user_name: "hello@sangwapo.com"
 
+  # ActionMailer settings
+  application_server_name: "sangwapo.clientcase.net"
+
   # Mobile "gateway"
   application_sim_cards:
     airtel:
