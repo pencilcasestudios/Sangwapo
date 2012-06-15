@@ -7,7 +7,7 @@ defaults: &defaults
   application_name: "Sangwapo"
   deployment_path_production: production
   deployment_path_staging: staging
-  gemset_name: "sangwapo-rails.3.1.x"
+  gemset_name: "sangwapo-rails.3.2.x"
   repository_deployment_branch: master
   repository_server_name: sangwapo.com
   ruby_version: ruby-1.9.3-p125
