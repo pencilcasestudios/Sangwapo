@@ -1,12 +1,12 @@
 <div class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
-		<div class="fluid-container">
+		<div class="container-fluid">
 			<%= link_to t("application.name"), root_path, class:  "brand" %>      
 			<% if user_signed_in? %>
 				<%= render "signed_in_user_navigation" %>
 			<% else %>
 				<%= render "signed_out_user_navigation" %>
 			<% end %>
-		</div><!-- /fluid-container -->
+		</div><!-- /container-fluid -->
   </div><!-- /.navbar-inner -->
-</div><!-- /.navbar navbar-fixed -->
+</div><!-- /.navbar navbar-fixed-top -->

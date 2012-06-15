@@ -1,1 +1,11 @@
-<%= render @listings %>
+<div class="row">
+	<% @listings.each_with_index do |listing,index| %>
+		<div class="span3">
+			<%=render listing %>
+		</div>
+		<% if (index % 3 == 2) %>
+			</div><!-- /.row -->
+			<div class="row">			
+		<% end %>
+	<% end %>
+</div><!-- /.row -->
