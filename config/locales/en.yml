@@ -197,8 +197,9 @@ en:
           sign_out: Sign out
           sign_up_for_an_account: Sign up and post your listings
       copy:
+        at: "@"
         full_stop: "."
-        full_colon: ":"
+        per: "/"
 
     listings:
       _clearing_notice:
@@ -227,6 +228,8 @@ en:
           listing_type: Offered or Wanted
           panel_size: Listing size
       _form:
+        copy:
+          day: day
         labels:
           description: Description
           display_for: Display for

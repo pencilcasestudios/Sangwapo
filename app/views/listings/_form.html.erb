@@ -27,7 +27,11 @@
 
 		<fieldset class="control-group">
 	    <%= f.label :display_for, t("views.listings._form.labels.display_for"), class: "control-label" %>
-	    <div class="controls"><%= f.select :display_for, Listing::PERIODS, { prompt: false }, { class: "span3" } %></div>
+	    <div class="controls">
+				<%= f.select :display_for, Listing::PERIODS, { prompt: false }, { class: "span2" } %>
+				<%= t("views.application.copy.at") %>
+				<%= number_to_currency(Listing::COST_PER_DAY, unit: "ZMK" ) %><%= t("views.application.copy.per") %><%= t("views.listings._form.copy.day") %>				
+			</div>
 		</fieldset>
 
 	  <div class="actions form-actions">
