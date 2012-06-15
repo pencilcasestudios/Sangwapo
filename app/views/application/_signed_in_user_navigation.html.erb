@@ -3,12 +3,12 @@
 		<li id="tab_manage_payments"><%= link_to t("views.application._navigation.links.payments"), pending_payments_path %></li>
 		<% payments_count = Payment.find_all_by_state("unlocked").count %>
 		<% if payments_count > 0 %>
-			<li><span class="label notice"><%= payments_count %></span></li>
+			<li><span class="label label-important"><%= payments_count %></span></li>
 		<% end %>
 		<li id="tab_manage_listings"><%= link_to t("views.application._navigation.links.listings"), review_listings_path %></li>
 		<% listings_count = Listing.find_all_by_state("review").count %>
 		<% if listings_count > 0 %>
-			<li><span class="label notice"><%= listings_count %></span></li>
+			<li><span class="label label-important"><%= listings_count %></span></li>
 		<% end %>
 	</ul><!-- /.nav -->
 <% end %>

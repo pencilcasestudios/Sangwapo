@@ -36,5 +36,5 @@ receiving_number = AirtimePayment.random_receiving_number(CellPhoneNumber.mobile
 <% end %>
 
 <div class="action">
-	<%= link_to t("views.listings._payment_instructions.links.pay", amount: formatted_amount, receiving_number: receiving_number), pay_listing_path(@listing), class: "btn large primary", method: :put %>
+	<%= link_to t("views.listings._payment_instructions.links.pay", amount: formatted_amount, receiving_number: receiving_number), pay_listing_path(@listing), class: "btn btn-primary btn-large", method: :put %>
 </div>
