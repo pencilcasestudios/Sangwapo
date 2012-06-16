@@ -178,6 +178,9 @@ en:
   views:
     application:
       _footer:
+        copy:
+          facebook: "Like Sangwapo! on Facebook"
+          twitter: "Follow Sangwapo! on Twitter"
         links:
           about: About
           blog: Blog
