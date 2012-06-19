@@ -16,11 +16,11 @@ class Listing < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
 
   COST_PER_CHARACTER = 0
-  COST_PER_DAY = 99
+  COST_PER_DAY = 799
   COST_PER_PANEL_SIZE = {
-    "small" => 0,
-    "medium" => 0,
-    "large" => 0,
+    "small"  => 0, # Text only
+    "medium" => 0, # Text and one image
+    "large"  => 0, # Text and three images
   }
 
   # Revised pricing starting 1 March 2012

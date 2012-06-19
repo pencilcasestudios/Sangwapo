@@ -201,8 +201,10 @@ en:
           sign_up_for_an_account: Sign up and post your listings
       copy:
         at: "@"
+        full_colon: ":"
         full_stop: "."
         per: "/"
+        semi_colon: ";"
 
     listings:
       _clearing_notice:
@@ -294,7 +296,10 @@ en:
         reject: Reject
         view: View
       index:
-        title: Listings
+        title: current listings
+        copy:
+          post_your_listing: "Post your listing"
+          ball_park_price_per_month: "As low as %{price} per month"
       edit:
         title: "Edit listing %{id}"
       mine:

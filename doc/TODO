@@ -1,24 +1,25 @@
-TODO - Multi-stage deployment
-TODO - Database backup process
-TODO - Column layout
-TODO - Automatically start delayed job on VPS reboot
-TODO - Pricing on create listing page
-TODO - Maximum character count on create listing page
-TODO - Tweet new listings
-TODO - New listings to Facebook page?
 TODO - Administration and customer support
-TODO - Notes on payments - are they public?
-TODO - Username
-TODO - Make the app more "social" with an inside and an outside? Walled garden-like
-TODO - Google Analytics (New)
-TODO - Google Webmaster tools
 TODO - Advertising (by Grapevine? and CareerVillage?)
 TODO - Ajax?
-TODO - SEO (sitemap.xml?)
-TODO - Media upload
-TODO - Pricing
-TODO - Payments part
-TODO - Locations
+TODO - Automatically start delayed job on VPS reboot
 TODO - Categories
+TODO - Column layout
+TODO - Database backup process
+TODO - Google Analytics (New)
+TODO - Google Webmaster tools
+TODO - Locations
+TODO - Make the app more "social" with an inside and an outside? Walled garden-like
+TODO - Maximum character count on create listing page
+TODO - Media upload
+TODO - New listings to Facebook page?
+TODO - Notes on payments - are they public?
+TODO - Open Graph
+TODO - Payments part
+TODO - Pricing
+TODO - Responsive layout testing
+TODO - Search
+TODO - SEO (sitemap.xml?)
 TODO - Social media
 TODO - SSL
+TODO - Tweet new listings
+TODO - Username
