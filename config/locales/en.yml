@@ -154,6 +154,15 @@ en:
 
 
 
+# Pluralization
+  pluralization:
+    day:
+      one: a day
+      other: "%{count} days"
+
+
+
+
 # simple_captcha
   simple_captcha:
     label: Enter the text you see in the image
@@ -244,6 +253,9 @@ en:
           uuid: UUID
         legends:
           details: Details
+      _listing:
+        copy:
+          expires_in: Expires in
       _payment_instructions:
         copy:
           introductory_pricing: "Valid for listings created before Thursday, 1st March in the year of our Lord 2012 A.D."

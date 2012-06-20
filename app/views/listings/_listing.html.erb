@@ -21,6 +21,7 @@
 			</span>
 		<% end %>
 		<span class="listing_code"><%= link_to listing.listing_code, listing %></span>
-		<span class="<%= listing.listing_type %>"><%= t("models.listing.types.#{listing.listing_type}") %></span>
+		<span class="<%= listing.listing_type %>"><%= t("models.listing.types.#{listing.listing_type}") %></span><br />
+		<span class="expiry_countdown"><%= t("views.listings._listing.copy.expires_in") %> <%= t("pluralization.day", count: listing.expiry_count_down) %></span>
 	</div>
 </div>
