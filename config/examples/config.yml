@@ -46,7 +46,7 @@ defaults: &defaults
   refund_percentage: 80
 
   # Public contact information
-  public_contact_email_address: questions@sangwapo.com
+  public_contact_email_address: hello@sangwapo.com
 
 development:
   <<: *defaults

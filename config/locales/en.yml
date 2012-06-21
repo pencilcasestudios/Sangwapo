@@ -4,6 +4,9 @@ en:
       name: Pencil Case Studios
       sign_off: Silumesii
       url: http://pencilcasestudios.com
+    meta_tags:
+      description: "Sangwapo! provides paid local classifieds for Zambia. List items for sale or advertise for items that you are looking for."
+      keywords: "zambia, sangwapo, online, classifieds, listings, offered, wanted, sale, post"
     name: Sangwapo!
     tagline: "Zambia&rsquo;s online classifieds"
 
@@ -258,7 +261,6 @@ en:
           expires_in: Expires in
       _payment_instructions:
         copy:
-          introductory_pricing: "Valid for listings created before Thursday, 1st March in the year of our Lord 2012 A.D."
           instructions: "To publish this listing, please send <strong>%{amount}</strong> %{carrier} airtime from your phone with number <strong>%{sending_number}</strong> to <strong>%{receiving_number}</strong>."
           edit_limitation: "Once the listing is paid for, you will not be able to edit it."
           enter:
@@ -308,7 +310,7 @@ en:
         reject: Reject
         view: View
       index:
-        title: current listings
+        title: Current listings
         copy:
           ball_park_price_per_month: "from %{price} per month"
           ball_park_price_per_week: "from %{price} per week"
@@ -418,12 +420,13 @@ en:
           title: "About %{application_name}"
         copy:
           introduction:
-            p1: "%{application_name} is the Zambian way for you to use the Internet to advertise things you are offering or things you want."
+            p1: "%{application_name} is a way for you to use the Internet to advertise things you want to buy or sell anywhere in Zambia."
           where_do_i_start:
             p1:
-              s1: "To use %{application_name}, visit"
-              s2: "You will find a variety of currently available items listed there."
-              s3: "If what you are looking for is not listed now, check back later. New items are being added all the time!"
+              links:
+                the_home_page: the homepage
+              s1: "You will find a variety of currently available items listed on"
+              s2: "If what you are looking for is not listed now, check back later. New items are being added all the time!"
           how_do_i_list_an_item:
             p1:
               s1: to create listings.
