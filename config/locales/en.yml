@@ -310,8 +310,9 @@ en:
       index:
         title: current listings
         copy:
+          ball_park_price_per_month: "from %{price} per month"
+          ball_park_price_per_week: "from %{price} per week"
           post_your_listing: "Post your listing"
-          ball_park_price_per_month: "As low as %{price} per month"
       edit:
         title: "Edit listing %{id}"
       mine:

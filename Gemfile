@@ -10,6 +10,7 @@ gem "rails"#, "3.1.3"
 
 
 # Used accross environments
+#gem "rails-backbone"
 #gem "recaptcha", "~> 0.3.1"
 #gem "ruby-graphviz", :require => "graphviz" # Optional: only required with state_machine for graphing
 #gem "simple_captcha", "~> 0.1.3"
@@ -23,10 +24,10 @@ gem "delayed_job_active_record"#, "~> 0.2.1"
 gem "exception_notification"
 gem "galetahub-simple_captcha", require: "simple_captcha", git: "git://github.com/galetahub/simple-captcha.git"
 gem "jquery-rails"
+gem "meta-tags", require: "meta_tags"
 gem "nested_form", git: "git://github.com/ryanb/nested_form.git"
 gem "paper_trail"
 gem "prawn_rails"
-gem "rails-backbone"
 gem "rake"
 gem "rvm"
 gem "settingslogic"
