@@ -6,9 +6,9 @@
 		</tr>
 	</thead>
   <tbody>
-		<tr><td><%= listing.description.size %> <%= t("views.listings._cost_calculation.labels.characters") %></td><td class="price"><%= number_to_currency(listing.total_character_price, unit: "K") %></td></tr>
-		<tr><td><%= listing.display_for %> <%= t("views.listings._cost_calculation.labels.days") %></td><td class="price"><%= number_to_currency(listing.total_daily_price, unit: "K") %></td></tr>
-		<tr><td><%= t("models.listing.sizes.#{listing.panel_size}") %> <%= t("views.listings._cost_calculation.labels.listing_size") %></td><td class="price"><%= number_to_currency(listing.total_panel_price, unit: "K") %></td></tr>
-		<tr><td class="total"><%= t("views.listings._cost_calculation.labels.total") %></td><td class="price total"><%= number_to_currency(listing.total_listing_price, unit: "K") %></td></tr>
+		<tr><td><%= listing.description.size %> <%= t("views.listings._cost_calculation.labels.characters") %></td><td class="price"><%= number_to_currency(listing.total_character_price, unit: "ZMK") %></td></tr>
+		<tr><td><%= listing.display_for %> <%= t("views.listings._cost_calculation.labels.days") %></td><td class="price"><%= number_to_currency(listing.total_daily_price, unit: "ZMK") %></td></tr>
+		<tr><td><%= t("models.listing.sizes.#{listing.panel_size}") %> <%= t("views.listings._cost_calculation.labels.listing_size") %></td><td class="price"><%= number_to_currency(listing.total_panel_price, unit: "ZMK") %></td></tr>
+		<tr><td class="total"><%= t("views.listings._cost_calculation.labels.total") %></td><td class="price total"><%= number_to_currency(listing.total_listing_price, unit: "ZMK") %></td></tr>
 	</tbody>
 </table>

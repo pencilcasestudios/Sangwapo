@@ -1,5 +1,5 @@
 <header>
-	<h1><%= t("views.welcome.about.titles.title", application_name: t("application.name")) %></h1>
+	<h1><%=title t("views.welcome.about.titles.title", application_name: t("application.name")) %></h1>
 </header>
 
 <p class="leader"><%= t("views.welcome.about.copy.introduction.p1", application_name: t("application.name")) %></p>
@@ -12,13 +12,12 @@
 		<h2><%= t("views.welcome.about.titles.where_do_i_start") %></h2>
 
 		<p>
-			<%= t("views.welcome.about.copy.where_do_i_start.p1.s1", application_name: t("application.name")) %>
-			<%= link_to AppConfig.application_name, root_url %><%= t("views.application.copy.full_stop") %>
-			<%= t("views.welcome.about.copy.where_do_i_start.p1.s2") %>
+			<%= t("views.welcome.about.copy.where_do_i_start.p1.s1") %>
+			<%= link_to t("views.welcome.about.copy.where_do_i_start.p1.links.the_home_page"), root_path %><%= t("views.application.copy.full_stop") %>
 		</p>
 
 		<p>
-			<%= t("views.welcome.about.copy.where_do_i_start.p1.s3") %>
+			<%= t("views.welcome.about.copy.where_do_i_start.p1.s2") %>
 		</p>
 	</div>
 
