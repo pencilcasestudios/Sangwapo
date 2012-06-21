@@ -136,9 +136,7 @@ class Listing < ActiveRecord::Base
   end
   
   def expires_at
-    if self.published?
-      self.approved_at + self.display_for.days
-    end
+    self.approved_at + self.display_for.days
   end
 
   # Count down to expiry in days
