@@ -1,8 +1,7 @@
 <% if user_signed_in? %>
 	<% if @listing.belongs_to?(current_user) %>
-		<%= title t("views.listings.show.titles.title", id: @listing.id) %>
 		<header>
-			<h1><%= yield :title %></h1>
+			<h1><%= title t("views.listings.show.titles.title", id: @listing.id) %></h1>
 		</header>
 		<%= render "listing", listing: @listing %>
 	<% else %>
