@@ -143,7 +143,9 @@ class Listing < ActiveRecord::Base
 
   # Count down to expiry in days
   def expiry_count_down
-		((self.expires_at - Time.now) / (60*60*24)).to_i
+    if self.expires_at.present?
+  		((self.expires_at - Time.now) / (60*60*24)).to_i
+		end
   end
   
   def self.random_display_period
