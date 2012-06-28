@@ -1,6 +1,6 @@
 <% if @listing.published? %>
 	<% description @listing.description %>
-	<% keywords (t("application.meta_tags.keywords") + @listing.description).downcase.gsub(/(\W|\d)/, " ").split.sort.uniq.join(", ") %>
+	<% keywords (t("application.meta_tags.keywords") + " " + @listing.description).downcase.gsub(/(\W|\d)/, ",").gsub(/,.?,/, ",").split(",").sort.uniq.join(", ") %>
 	<% set_meta_tags open_graph: {
 				description: @listing.description,
 				title: t("views.listings.show.titles.published", id: @listing.id) + " | " + t("application.name"),
