@@ -1,3 +1,14 @@
+<% if @listing.published? %>
+	<% description @listing.description %>
+	<% keywords (t("application.meta_tags.keywords") + @listing.description).downcase.gsub(/(\W|\d)/, " ").split.sort.uniq.join(", ") %>
+	<% set_meta_tags open_graph: {
+				description: @listing.description,
+				title: t("views.listings.show.titles.published", id: @listing.id) + " | " + t("application.name"),
+				url: listing_url(@listing),
+			}
+	%>
+<% end %>
+
 <% if user_signed_in? %>
 	<% if @listing.belongs_to?(current_user) %>
 		<header>
