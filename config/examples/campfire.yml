@@ -1,0 +1,5 @@
+# https://github.com/westarete/capistrano-helpers#campfire
+# Configuration for posting to campfire.
+subdomain: update_me
+token: update_me
+room: update_me

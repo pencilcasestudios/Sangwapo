@@ -16,6 +16,7 @@
 /tmp
 
 # Ignore deployment configuration files
+config/campfire.yml
 config/config.yml
 config/database.yml
 config/deploy.rb
