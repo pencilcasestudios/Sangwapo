@@ -65,7 +65,7 @@
 require "capistrano/ext/multistage"
 
 # https://github.com/collectiveidea/delayed_job/wiki/Rails-3-and-Capistrano
-require "delayed/recipes"  
+require "delayed/recipes"
 
 # https://github.com/westarete/capistrano-helpers#campfire
 require "capistrano-helpers/campfire"
@@ -79,7 +79,7 @@ require "capistrano-helpers/campfire"
 set :stages, [DEPLOYMENT_CONFIG["stage_name_staging"], DEPLOYMENT_CONFIG["stage_name_production"]]
 set :default_stage, DEPLOYMENT_CONFIG["stage_name_staging"]
 
-set :rails_env, "production" # Added for delayed job  
+set :rails_env, "production" # Added for delayed job
 
 # Customise these application-specific settings by updating config.yml used by Settingslogic
 # DEPLOYMENT_CONFIG is initialised in Capfile
@@ -91,9 +91,6 @@ set :user, DEPLOYMENT_CONFIG["user"]
 set :bundle_without, [:darwin, :development, :test]
 set :rvm_ruby_gemset, "#{ruby_version}@#{gemset_name}"              # Don't forget to create gemset on the server
 set :rvm_ruby_string, "#{rvm_ruby_gemset}"                          # Select the gemset
-
-# Load RVM's capistrano plugin.
-require "rvm/capistrano"                                            
 
 
 
@@ -195,7 +192,7 @@ after "deploy:setup", "deploy:setup_shared"
 after "deploy:finalize_update", "deploy:symlink_extras"
 
 # https://github.com/collectiveidea/delayed_job/wiki/Rails-3-and-Capistrano
-# Delayed Job  
+# Delayed Job
 before "deploy:restart", "delayed_job:stop"
 after  "deploy:restart", "delayed_job:start"
 
