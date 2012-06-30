@@ -33,6 +33,7 @@ gem "rvm"
 gem "settingslogic"
 gem "sqlite3"
 gem "state_machine"
+gem "tinder"
 gem "twitter"
 
 
@@ -75,6 +76,7 @@ end
 
 group :development do
   gem "capistrano"
+  gem "capistrano-campfire"
   gem "capistrano-ext"
   gem "letter_opener"
   gem "rvm-capistrano"

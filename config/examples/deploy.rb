@@ -67,6 +67,10 @@ require "capistrano/ext/multistage"
 # https://github.com/collectiveidea/delayed_job/wiki/Rails-3-and-Capistrano
 require "delayed/recipes"  
 
+# https://github.com/technicalpickles/capistrano-campfire
+require "capistrano/campfire"
+
+
 
 
 # Multi-stage deployment
@@ -87,6 +91,9 @@ set :user, DEPLOYMENT_CONFIG["user"]
 set :bundle_without, [:darwin, :development, :test]
 set :rvm_ruby_gemset, "#{ruby_version}@#{gemset_name}"              # Don't forget to create gemset on the server
 set :rvm_ruby_string, "#{rvm_ruby_gemset}"                          # Select the gemset
+
+# Campfire room settings
+set :campfire_options, room: DEPLOYMENT_CONFIG["campfire_room"], token: DEPLOYMENT_CONFIG["campfire_token"], ssl: true
 
 # Load RVM's capistrano plugin.
 require "rvm/capistrano"                                            
@@ -180,6 +187,32 @@ end
 
 
 
+
+# Campfire tasks
+# Talk about what's happening with the deployment in the Campfire room
+set :prefix "[Sangwapo]"
+
+namespace :campfire do
+  # Application deployment
+  desc "In the Campfire room, say that application deployment has started"
+  task :say_deployment_started do
+    campfire_room.speak "#{prefix} The application is being deployed"
+  end
+
+  desc "In the Campfire room, say that application deployment has completed"
+  task :say_deployment_completed do
+    campfire_room.speak "#{prefix} The application been successfully deployed"
+  end
+end
+
+
+
+
+# Campfire chatter
+before "deploy:setup", "campfire:say_deployment_started"
+before "deploy", "campfire:say_deployment_started"
+
+after "deploy:start", "campfire:say_deployment_completed"
 
 # http://beginrescueend.com/integration/capistrano/
 # RVM-Capistrano

@@ -47,6 +47,11 @@ defaults: &defaults
 
   # Public contact information
   public_contact_email_address: hello@sangwapo.com
+  
+  # Campfire
+  campfire_room: "Engine Room"
+  campfire_token: 49c56aef5a8582015916c38ab511e5bb9bc52f77 # Secure this
+  
 
 development:
   <<: *defaults
