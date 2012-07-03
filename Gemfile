@@ -77,7 +77,7 @@ end
 group :development do
   gem "capistrano"
   gem "capistrano-ext"
-  gem "capistrano-helpers"
+  #gem "capistrano-helpers"
   gem "letter_opener"
   gem "rvm-capistrano"
 end

@@ -68,7 +68,7 @@ require "capistrano/ext/multistage"
 require "delayed/recipes"
 
 # https://github.com/westarete/capistrano-helpers#campfire
-require "capistrano-helpers/campfire"
+#require "capistrano-helpers/campfire"
 
 # https://github.com/wayneeseguin/rvm-capistrano
 require "rvm/capistrano"
