@@ -19,11 +19,11 @@ module ApplicationHelper
       prefix: " ",
       reverse: true,
       site: t("application.name"),
-      title: t("application.tagline"),
+      title: t("application.tagline_html"),
       open_graph: {
         description: t("application.meta_tags.description"),
         image: root_url + asset_path("logo-400x400.png"),
-        title: t("application.tagline"),
+        title: t("application.tagline_html"),
         type: :website,
         url: root_url,
       }

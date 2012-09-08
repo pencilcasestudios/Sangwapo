@@ -1,1 +1,1 @@
-<%= yield(:title).present? ? yield(:title) : raw(t('application.tagline')) %> | <%= t('application.name') %>
+<%= yield(:title).present? ? yield(:title) : t('application.tagline_html') %> | <%= t('application.name') %>
