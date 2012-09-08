@@ -6,6 +6,31 @@
 	text-align: right;
 }
 
+#listings section.welcome {
+	padding-bottom: 1em;
+}
+
+#listings section.welcome p {
+	padding: 1em;
+	text-align: center;
+	background: #fcff4a;
+}
+
+#listings .action {
+	padding: 17px 20px 18px;
+	padding-top: 17px;
+	padding-right: 20px;
+	padding-bottom: 18px;
+	padding-left: 20px;
+	margin-top: 18px;
+	margin-bottom: 18px;
+	background-color: whiteSmoke;
+	border-top: 1px solid #DDD;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #DDD;
+}
+
 #listings .listing {
 	padding: 1em 0.5em 1em 0.5em;
 	border-top: 2px solid #dddddd;
@@ -50,39 +75,21 @@
 	text-decoration: underline;
 }
 
+#listings .listing.archived p {
+	text-decoration: line-through;	
+}
+
+#listings .no_listings {
+	padding: 1em;
+	text-align: center;
+	border: 1px dotted #cccccc;
+}
+
+
 #listings #listing_description {
 	font-size: 1.3em;
 	font-weight: normal;
 	line-height: 1.5em;
 	padding: 0.5em;
 	color: #333333;
-}
-
-#listings .action {
-	padding: 17px 20px 18px;
-	padding-top: 17px;
-	padding-right: 20px;
-	padding-bottom: 18px;
-	padding-left: 20px;
-	margin-top: 18px;
-	margin-bottom: 18px;
-	background-color: whiteSmoke;
-	border-top: 1px solid #DDD;
-	border-top-width: 1px;
-	border-top-style: solid;
-	border-top-color: #DDD;
-}
-
-#listings .listing.archived p {
-	text-decoration: line-through;	
-}
-
-#listings section.welcome {
-	padding-bottom: 1em;
-}
-
-#listings section.welcome p {
-	padding: 1em;
-	text-align: center;
-	background: #fcff4a;
 }

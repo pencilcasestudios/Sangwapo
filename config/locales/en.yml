@@ -305,6 +305,7 @@ en:
         copy:
           ball_park_price_per_month: "from %{price} per month"
           ball_park_price_per_week: "from %{price} per week"
+          no_listings_html: There are currently no listings.<br />Please check back soon. new ones get added all the time!
           post_your_listing: "Post your listing"
       edit:
         title: "Edit listing %{id}"

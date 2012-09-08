@@ -17,14 +17,22 @@
 	</div><!-- /.row -->
 </section>
 
-<div class="row">
-	<% @listings.each_with_index do |listing,index| %>
-		<div class="span3">
-			<%=render listing %>
-		</div>
-		<% if (index % 3 == 2) %>
-			</div><!-- /.row -->
-			<div class="row">			
+<% if @listings.present? %>
+	<div class="row">
+		<% @listings.each_with_index do |listing,index| %>
+			<div class="span3">
+				<%=render listing %>
+			</div>
+			<% if (index % 3 == 2) %>
+				</div><!-- /.row -->
+				<div class="row">			
+			<% end %>
 		<% end %>
-	<% end %>
-</div><!-- /.row -->
+	</div>
+<% else %>
+	<div class="row">
+		<div class="span9">
+			<p class="no_listings"><%= t("views.listings.index.copy.no_listings_html") %></p>
+		</div><!-- /.span9 -->
+	</div><!-- /.row -->
+<% end %>
