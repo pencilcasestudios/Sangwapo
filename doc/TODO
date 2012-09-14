@@ -2,11 +2,15 @@ TODO - Administration and customer support
 TODO - Advertising (by Grapevine? and CareerVillage?)
 TODO - Ajax?
 TODO - Automatically start delayed job on VPS reboot
+TODO - CanCan?
 TODO - Categories
+TODO - Cell phone number verification
 TODO - Column layout
 TODO - Database backup process
+TODO - Email verification
 TODO - Google Analytics (New)
 TODO - Google Webmaster tools
+TODO - History of payment transactions
 TODO - Locations
 TODO - Make the app more "social" with an inside and an outside? Walled garden-like
 TODO - Maximum character count on create listing page
@@ -15,6 +19,7 @@ TODO - New listings to Facebook page?
 TODO - Notes on payments - are they public?
 TODO - Open Graph
 TODO - Payments part
+TODO - Pjax?
 TODO - Pricing
 TODO - Rename "first_name" to "name"?
 TODO - Responsive layout testing
@@ -25,5 +30,4 @@ TODO - Social media
 TODO - SSL
 TODO - Tweet new listings
 TODO - Username
-TODO - History of payment transactions
-TODO - Pjax?
+TODO - Nested columns
