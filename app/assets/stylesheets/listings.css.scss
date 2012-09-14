@@ -34,6 +34,7 @@
 #listings .listing {
 	padding: 1em 0.5em 1em 0.5em;
 	border-top: 2px solid #dddddd;
+	word-wrap: break-word;
 }
 
 #listings .listing:hover {
