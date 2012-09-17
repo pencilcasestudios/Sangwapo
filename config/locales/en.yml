@@ -157,6 +157,17 @@ en:
 
 
 
+# Pluralisation
+  listings:
+    one: listing
+    other: listings
+  users:
+    one: user
+    other: users
+
+
+
+
 # simple_captcha
   simple_captcha:
     label: Enter the text you see in the image
@@ -400,10 +411,12 @@ en:
           terms_of_use: terms of use
           hints:
             cell_phone_number: "Pre-paid Zambian cell phone number with no spaces, just like you&rsquo;d dial it <em>e.g. 0950930425</em>"
-      new:
-        title: Sign up
       edit:
         title: Account settings
+      index:
+        title: Users
+      new:
+        title: Sign up
 
     welcome:
       about:

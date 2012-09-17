@@ -1,0 +1,7 @@
+<div class="user">
+	<%= user.first_name %>,
+	<%= user.email %>,
+	<%= user.cell_phone_number %>,
+	<%= user.role %>,
+	<%= "#{user.listings.size} #{t("listings", count: user.listings.size)}" %>
+</div><!-- /.user -->

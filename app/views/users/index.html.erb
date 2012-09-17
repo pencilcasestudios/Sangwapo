@@ -1,5 +1,9 @@
 <header>
-	<h1><%= title t("views.users.index.title") %></h1>
+	<h1><%= title "#{@users.size} #{t("users", count: @users.size)}" %></h1>
 </header>
 
 <%= render @users %>
+
+
+
+
