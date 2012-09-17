@@ -6,15 +6,20 @@ TODO - CanCan?
 TODO - Categories
 TODO - Cell phone number verification
 TODO - Column layout
+TODO - Count the number of characters left in the listing description text field
 TODO - Database backup process
 TODO - Email verification
+TODO - First name, last name, middle name (or full name or just name)
 TODO - Google Analytics (New)
 TODO - Google Webmaster tools
+TODO - Gravatar (default avatars)
 TODO - History of payment transactions
 TODO - Locations
 TODO - Make the app more "social" with an inside and an outside? Walled garden-like
+TODO - Masonry layout - http://vanilla-masonry.desandro.com/, http://www.wookmark.com/jquery-plugin, http://www.queness.com/post/11133/the-famous-pinterest-dynamic-grid-layout-and-design-inspirations
 TODO - Maximum character count on create listing page
 TODO - Media upload
+TODO - Nested columns
 TODO - New listings to Facebook page?
 TODO - Notes on payments - are they public?
 TODO - Open Graph
@@ -28,6 +33,8 @@ TODO - Secure Campfire API token
 TODO - SEO (sitemap.xml?)
 TODO - Social media
 TODO - SSL
+TODO - Tests
+TODO - Tests - Javascript/UI
 TODO - Tweet new listings
 TODO - Username
-TODO - Nested columns
+TODO - username?
