@@ -57,6 +57,8 @@ en:
       actions:
         create:
           success: Your account was successfully created. You may now sign in.
+        update:
+          success: Your account was successfully updated.
 
 
 
