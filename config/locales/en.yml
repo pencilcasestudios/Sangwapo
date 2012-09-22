@@ -315,8 +315,8 @@ en:
       index:
         title: Current listings
         copy:
-          ball_park_price_per_month: "from %{price} per month"
-          ball_park_price_per_week: "from %{price} per week"
+          ball_park_price_per_month: "for less than %{price}/month"
+          ball_park_price_per_week: "for less than %{price}/week"
           no_listings_html: There are currently no listings.<br />Please check back soon. New ones get added all the time!
           post_your_listing: "Post your listing"
       edit:
