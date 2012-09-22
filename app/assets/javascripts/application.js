@@ -5,7 +5,7 @@
 // the compiled file.
 //
 //= require jquery
+//= require tablesorter
 //= require jquery_ujs
 //= require bootstrap
-//= require tablesorter
 //= require_tree .
