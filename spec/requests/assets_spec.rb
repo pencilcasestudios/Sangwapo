@@ -32,15 +32,17 @@ describe "Assets" do
 
       get "/assets/Sangwapo-650x650.tiff"
       response.status.should be(200)
+    end
+  end
 
-      #get "/assets/backgrounds/background0.jpg"
-      #response.status.should be(200)
-      #
-      #get "/assets/backgrounds/background1.jpg"
-      #response.status.should be(200)
-      #
-      #get "/assets/backgrounds/background2.jpg"
-      #response.status.should be(200)
+  # jQuery assets
+  describe "jQuery assets" do
+    it "are available" do
+      get "/assets/jquery.js"
+      response.status.should be(200)
+
+      get "/assets/jquery-ui.js"
+      response.status.should be(200)
     end
   end
 
@@ -52,62 +54,20 @@ describe "Assets" do
 
       get "/assets/bootstrap.js"
       response.status.should be(200)
+
+      get "/assets/glyphicons-halflings.png"
+      response.status.should be(200)
+
+      get "/assets/glyphicons-halflings-white.png"
+      response.status.should be(200)
     end
   end
 
-  ## Vegas jQuery Background plugin assets
-  #describe "Vegas assets" do
-  #  it "are available" do
-  #    get "/assets/vegas.css"
-  #    response.status.should be(200)
-  #
-  #    get "/assets/vegas.js"
-  #    response.status.should be(200)
-  #
-  #    get "/assets/overlays/01.png"
-  #    response.status.should be(200)
-  #
-  #    get "/assets/overlays/02.png"
-  #    response.status.should be(200)
-  #
-  #    get "/assets/overlays/03.png"
-  #    response.status.should be(200)
-  #
-  #    get "/assets/overlays/04.png"
-  #    response.status.should be(200)
-  #
-  #    get "/assets/overlays/05.png"
-  #    response.status.should be(200)
-  #
-  #    get "/assets/overlays/06.png"
-  #    response.status.should be(200)
-  #
-  #    get "/assets/overlays/07.png"
-  #    response.status.should be(200)
-  #
-  #    get "/assets/overlays/08.png"
-  #    response.status.should be(200)
-  #
-  #    get "/assets/overlays/09.png"
-  #    response.status.should be(200)
-  #
-  #    get "/assets/overlays/10.png"
-  #    response.status.should be(200)
-  #
-  #    get "/assets/overlays/11.png"
-  #    response.status.should be(200)
-  #
-  #    get "/assets/overlays/12.png"
-  #    response.status.should be(200)
-  #
-  #    get "/assets/overlays/13.png"
-  #    response.status.should be(200)
-  #
-  #    get "/assets/overlays/14.png"
-  #    response.status.should be(200)
-  #
-  #    get "/assets/overlays/15.png"
-  #    response.status.should be(200)
-  #  end
-  #end
+  # pcs_tablesorter assets
+  describe "pcs_tablesorter assets" do
+    it "are available" do
+      get "/assets/tablesorter.js"
+      response.status.should be(200)
+    end
+  end
 end

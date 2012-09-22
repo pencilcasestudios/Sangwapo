@@ -7,4 +7,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require tablesorter
 //= require_tree .

@@ -1,0 +1,11 @@
+<% ascending = 0 %>
+<% descending = 1 %>
+
+<script>
+	$(function() {
+		$("table#<%= table %>")
+		.tablesorter({
+			sortList: [[<%= sort_by_column_number %>,<%= ascending %>]]
+		});
+	});
+</script>

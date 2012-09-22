@@ -1,8 +1,10 @@
+<%= render "tablesorter", { table: "table_of_users", sort_by_column_number: 0 } %>
+
 <header>
 	<h1><%= title "#{@users.size} #{t("users", count: @users.size)}" %></h1>
 </header>
 
-<table class="table table-hover table-condensed">
+<table id="table_of_users" class="table table-hover table-condensed">
 	<thead>
 		<th><%= title t("views.users.index.table.headers.number") %></th>
 		<th><%= title t("views.users.index.table.headers.role") %></th>

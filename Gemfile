@@ -10,22 +10,18 @@ gem "rails"
 
 
 # Used accross environments
-#gem "rails-backbone"
-#gem "recaptcha", "~> 0.3.1"
-#gem "ruby-graphviz", :require => "graphviz" # Optional: only required with state_machine for graphing
-#gem "simple_captcha", "~> 0.1.3"
-gem "bcrypt-ruby"#, "~> 3.0.0"
+gem "bcrypt-ruby"
 gem "bundler"
 gem "cancan"
-gem "carrierwave" #, git: "git://github.com/jnicklas/carrierwave.git"
+gem "carrierwave"
 gem "carrierwave_backgrounder"
 gem "daemons"
-gem "delayed_job_active_record"#, "~> 0.2.1"
+gem "delayed_job_active_record"
 gem "exception_notification"
 gem "galetahub-simple_captcha", require: "simple_captcha", git: "git://github.com/galetahub/simple-captcha.git"
 gem "jquery-rails"
 gem "meta-tags", require: "meta_tags"
-gem "nested_form"#, git: "git://github.com/ryanb/nested_form.git"
+gem "nested_form"
 gem "paper_trail"
 gem "prawn_rails"
 gem "rake"
@@ -42,10 +38,11 @@ gem "twitter"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem "coffee-rails"#, "~> 3.1.1"
+  gem "coffee-rails"
   gem "jombo"
-  gem "sass-rails"#,   "~> 3.1.4"
-  gem "uglifier"#, ">= 1.0.3"
+  gem "pcs_tablesorter"
+  gem "sass-rails"
+  gem "uglifier"
 end
 
 
