@@ -1,4 +1,5 @@
 <%= render "tablesorter", { table: "table_of_users", sort_by_column_number: 0 } %>
+<%= render "tooltip", { selector: "#table_of_users", placement: "top" } %>
 
 <header>
 	<h1><%= title "#{@users.size} #{t("users", count: @users.size)}" %></h1>
@@ -18,7 +19,10 @@
 			<tr>
 				<td><%= user.id %></td>
 				<td><%= user.role %></td>
-				<td><%= user.first_name %></td>
+				<td>
+					<% member_since = "#{t("views.users.index.table.copy.since")} #{user.created_at.strftime("%A, %d %B %Y, %H:%M:%S")}"%>
+					<%= link_to user.first_name, user, { rel: "tooltip", title: member_since } %>
+				</td>
 				<td><%= user.email %></td>
 				<td><%= user.cell_phone_number %></td>
 				<td><%= "#{user.listings.size} #{t("listings", count: user.listings.size)}" %></td>

@@ -424,6 +424,8 @@ en:
             email: Email
             cell_phone_number: Cell Phone Number
             number_of_listings: Listings
+          copy:
+            since: "Since:"
         title: Users
       new:
         title: Sign up
