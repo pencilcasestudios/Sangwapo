@@ -425,7 +425,9 @@ en:
             cell_phone_number: Cell Phone Number
             number_of_listings: Listings
           copy:
+            administrator: Admin
             since: "Since:"
+            user: User
         title: Users
       new:
         title: Sign up

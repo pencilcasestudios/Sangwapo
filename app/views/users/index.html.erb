@@ -7,18 +7,18 @@
 
 <table id="table_of_users" class="table table-hover table-condensed">
 	<thead>
-		<th><%= title t("views.users.index.table.headers.number") %></th>
-		<th><%= title t("views.users.index.table.headers.role") %></th>
-		<th><%= title t("views.users.index.table.headers.name") %></th>
-		<th><%= title t("views.users.index.table.headers.email") %></th>
-		<th><%= title t("views.users.index.table.headers.cell_phone_number") %></th>
-		<th><%= title t("views.users.index.table.headers.number_of_listings") %></th>
+		<th><%= t("views.users.index.table.headers.number") %></th>
+		<th><%= t("views.users.index.table.headers.role") %></th>
+		<th><%= t("views.users.index.table.headers.name") %></th>
+		<th><%= t("views.users.index.table.headers.email") %></th>
+		<th><%= t("views.users.index.table.headers.cell_phone_number") %></th>
+		<th><%= t("views.users.index.table.headers.number_of_listings") %></th>
 	</thead>
 	<tbody>
 		<% @users.each do |user| %>
 			<tr>
 				<td><%= user.id %></td>
-				<td><%= user.role %></td>
+				<td><%= t("views.users.index.table.copy.#{user.role}") %></td>
 				<td>
 					<% member_since = "#{t("views.users.index.table.copy.since")} #{user.created_at.strftime("%A, %d %B %Y, %H:%M:%S")}"%>
 					<%= link_to user.first_name, user, { rel: "tooltip", title: member_since } %>
