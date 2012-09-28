@@ -2,6 +2,8 @@ class PaymentsController < ApplicationController
   before_filter :sign_in_required
   before_filter :admin_required
 
+  load_and_authorize_resource
+
   def index
     @payments = Payment.all
   end
@@ -10,11 +12,11 @@ class PaymentsController < ApplicationController
   end
 
   def edit
-    @payment = Payment.find(params[:id])
+    #@payment = Payment.find(params[:id])
   end
   
   def update
-    @payment = Payment.find(params[:id])
+    #@payment = Payment.find(params[:id])
     @payment.uuid = Payment.generate_uuid
     if @payment.update_attributes(params[:payment])
       @payment.reconcile

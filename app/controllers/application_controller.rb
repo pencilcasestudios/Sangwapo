@@ -3,9 +3,16 @@ class ApplicationController < ActionController::Base
 
   #http_basic_authenticate_with :name => AppConfig.http_basic_name, :password => AppConfig.http_basic_password unless Rails.env == "test"
 
+  check_authorization # CanCan Ref: https://github.com/ryanb/cancan/wiki/Ensure-Authorization
+
   helper_method :current_user, :user_signed_in?
 
   before_filter :set_user_time_zone
+
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = t("controllers.application_controller.flash.access_denied")
+    redirect_to root_path
+  end
 
 private
 
@@ -26,6 +33,15 @@ private
     end
   end
   
+  def sign_out_required
+    if current_user
+      #store_location
+      flash[:warning] = t("controllers.application_controller.flash.sign_out_required")
+      redirect_to root_path
+      return false
+    end
+  end
+
   def admin_required
     unless current_user && current_user.admin?
       flash[:warning] = t("controllers.application_controller.flash.admin_required")

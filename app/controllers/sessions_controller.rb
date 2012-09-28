@@ -1,4 +1,8 @@
 class SessionsController < ApplicationController
+  skip_authorization_check
+
+  before_filter :sign_out_required, except: [:destroy]
+
   def new
   end
 

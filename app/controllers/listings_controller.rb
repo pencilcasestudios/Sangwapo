@@ -2,20 +2,22 @@ class ListingsController < ApplicationController
   before_filter :sign_in_required, :except => [:index, :show]
   before_filter :admin_required, :only => [:review, :accept, :reject]
 
+  load_and_authorize_resource
+
   def index
     @listings = Listing.where("state='published'")
   end
 
   def show
-    @listing = Listing.where("state!='archived'").find(params[:id])
+    #@listing = Listing.where("state!='archived'").find(params[:id])
   end
 
   def new
-    @listing = Listing.new
+    #@listing = Listing.new
   end
 
   def create
-    @listing = current_user.listings.new(params[:listing])
+    #@listing = current_user.listings.new(params[:listing])
     @listing.uuid = Listing.generate_uuid
     @listing.listing_code = Listing.generate_listing_code
     if @listing.save
@@ -27,7 +29,7 @@ class ListingsController < ApplicationController
   end
 
   def edit
-    @listing = current_user.listings.where("state!='archived'").find(params[:id])
+    #@listing = current_user.listings.where("state!='archived'").find(params[:id])
     unless @listing.unpublished?
       # Editing is only allowed on unpublished listings
       flash[:error] = t("controllers.listings_controller.actions.edit.error")
@@ -36,7 +38,7 @@ class ListingsController < ApplicationController
   end
 
   def update
-    @listing = current_user.listings.find(params[:id])
+    #@listing = current_user.listings.find(params[:id])
     if @listing.update_attributes(params[:listing])
       flash[:success] = t("controllers.listings_controller.actions.update.success")
       redirect_to(@listing)

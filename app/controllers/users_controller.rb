@@ -1,16 +1,18 @@
 class UsersController < ApplicationController
-  before_filter :sign_in_required, :except => [:new, :create]
+  before_filter :sign_in_required, except: [:new, :create]
+  before_filter :sign_out_required, only: [:new, :create]
+  before_filter :admin_required, only: [:index]
+
+  load_and_authorize_resource
 
   def index
     @users = User.all
   end
   
   def new
-    @user = User.new
   end
 
   def create
-    @user = User.new(params[:user])
     @user.role = User::ROLES[I18n.t("models.user.roles.user")]
     if @user.save_with_captcha
       #Emailer.registration_confirmation(@user).deliver  
@@ -23,11 +25,12 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user
+    if @user.blank?
+      @user = current_user
+    end
   end
 
   def update
-    @user = current_user
     if @user.update_attributes(params[:user])
       flash[:success] = t("controllers.users_controller.actions.update.success")
       redirect_to(account_settings_path)
