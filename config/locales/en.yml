@@ -275,11 +275,11 @@ en:
           airtime_transfer_sequence:
             airtel: "2u %{receiving_number} %{amount} XXXX"
             mtn: "*224*%{amount}*%{receiving_number}#"
-            zamtel: "*444*XXXX*%{receiving_number}*%{amount}*#"
+            zamtel: "*445*XXXX*%{receiving_number}*%{amount}#"
           send_to:
-            airtel: "(where XXXX is your password). Send the message to 432."
-            mtn: "Then send."
-            zamtel: "(where XXXX is your PIN). Then send."
+            airtel: "Replace XXXX with your PIN.\nSend the message to <strong>432</strong>."
+            mtn: "Press the <strong>send</strong> button."
+            zamtel: "Note that the receving Zamtel number starts with <strong>95</strong> and not <strong>095</strong>.\n\nReplace XXXX with your PIN.\nPress the <strong>send</strong> button."
           cost_per_character: Cost per character
           cost_per_day: Cost per day
           cost_per_listing_size: Cost per listing size
