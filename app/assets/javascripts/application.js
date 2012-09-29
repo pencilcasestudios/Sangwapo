@@ -8,4 +8,5 @@
 //= require tablesorter
 //= require jquery_ujs
 //= require bootstrap
+//= require charcount
 //= require_tree .

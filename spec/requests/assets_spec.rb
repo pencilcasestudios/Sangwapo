@@ -70,4 +70,12 @@ describe "Assets" do
       response.status.should be(200)
     end
   end
+
+  # Plugin assets
+  describe "Plugin assets:" do
+    it "charcount is available" do
+      get "/assets/charcount.js"
+      response.status.should be(200)
+    end
+  end
 end
