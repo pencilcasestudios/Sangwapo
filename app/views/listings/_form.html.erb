@@ -1,4 +1,4 @@
-<%= render "charcount" %>
+<%= render "charcount", attribute: "#listing_description", allowed: Listing::MAXIMUM_CHARACTERS_IN_A_LISTING, warning: 25 %>
 
 <%= form_for(@listing) do |f| %>
 		<%= render "errors", listing: @listing %>
@@ -22,7 +22,7 @@
 				<legend><%= t("views.listings._form.legends.details") %></legend>
 				<fieldset class="control-group">
 			    <%= f.label :description, t("views.listings._form.labels.description"), class: "control-label" %>
-			    <div class="controls"><%= f.text_area :description, { id: "listing_description", class: "span6",  rows: 5 } %></div>
+			    <div class="controls"><%= f.text_area :description, { id: "listing_description", class: "span6",  rows: 3 } %></div>
 				</fieldset>
 			</div>
 		</div><!-- /.row -->

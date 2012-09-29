@@ -16,6 +16,21 @@
 	background: #fcff4a;
 }
 
+#listings form .counter {
+	padding-left: 0.25em;
+	padding-right: 0.25em;
+	font-weight:bold;
+	color:#ccc;
+}
+
+#listings form .warning{
+	color: #600;
+}	
+
+#listings form .exceeded{
+	color: #e00;
+}	
+
 #listings .action {
 	padding: 17px 20px 18px;
 	padding-top: 17px;
@@ -45,6 +60,9 @@
 #listings .listing:hover span.offered,
 #listings .listing:hover span.wanted {
 	color: #009900;
+}
+
+#listings #listing_description {
 }
 
 #listings .listing p {
@@ -85,7 +103,6 @@
 	text-align: center;
 	border: 1px dotted #cccccc;
 }
-
 
 #listings #listing_description {
 	font-size: 1.3em;

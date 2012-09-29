@@ -5,7 +5,8 @@ class Listing < ActiveRecord::Base
 
   has_paper_trail
 
-  validates :description, presence: true, length: { :maximum => 140 }
+  MAXIMUM_CHARACTERS_IN_A_LISTING = 140
+  validates :description, presence: true, length: { :maximum => MAXIMUM_CHARACTERS_IN_A_LISTING }
   validates :display_for, presence: true, numericality: true
   validates :listing_code, presence: true, uniqueness: true
   validates :listing_type, presence: true
