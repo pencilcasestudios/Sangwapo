@@ -32,7 +32,7 @@
 	    <div class="controls">
 				<%= f.select :display_for, Listing::PERIODS, { prompt: false }, { class: "span2" } %>
 				<%= t("views.application.copy.at") %>
-				<%= number_to_currency(Listing::COST_PER_DAY, unit: "ZMK" ) %><%= t("views.application.copy.per") %><%= t("views.listings._form.copy.day") %>				
+				<%= number_to_currency(Listing::COST_PER_DAY, unit: "ZMW" ) %><%= t("views.application.copy.per") %><%= t("views.listings._form.copy.day") %>
 			</div>
 		</fieldset>
 

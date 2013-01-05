@@ -19,7 +19,7 @@ class Listing < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
 
   COST_PER_CHARACTER = 0
-  COST_PER_DAY = 799
+  COST_PER_DAY = 0.79
   COST_PER_PANEL_SIZE = {
     "small"  => 0, # Text only
     "medium" => 0, # Text and one image
@@ -101,7 +101,7 @@ class Listing < ActiveRecord::Base
 
     # Force-save this payment in an invalidated, unlocked state
     p.unlock(false)
-    p.save(validate: false) 
+    p.save(validate: false)
   end
 
   def self.generate_listing_code
@@ -131,11 +131,11 @@ class Listing < ActiveRecord::Base
   def is_published?
     self.state == "published"
   end
-  
+
   def belongs_to?(owner)
     self.user == owner
   end
-  
+
   def expires_at
     self.approved_at + self.display_for.days
   end
@@ -146,7 +146,7 @@ class Listing < ActiveRecord::Base
   		((self.expires_at - Time.now) / (60*60*24)).to_i
 		end
   end
-  
+
   def self.random_display_period
     PERIODS[PERIODS.to_a[rand PERIODS.size].first]
   end

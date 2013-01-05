@@ -112,6 +112,7 @@ en:
         gbp: GBP
         usd: USD
         zmk: ZMK
+        zmw: ZMW
 
     language:
       names:
@@ -318,7 +319,7 @@ en:
         title: Current listings
         copy:
           ball_park_price_per_month: "for less than %{price}/month"
-          ball_park_price_per_week: "for less than %{price}/week"
+          ball_park_price_per_week_html: "for less than %{price}/week <small>(%{old_currency_price}/week)</small>"
           no_listings_html: There are currently no listings.<br />Please check back soon. New ones get added all the time!
           post_your_listing: "Post your listing"
       edit:

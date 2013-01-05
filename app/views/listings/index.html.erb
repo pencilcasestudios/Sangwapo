@@ -7,8 +7,9 @@
 		<div class="span4">
 			<p>
 				<%= link_to t("views.listings.index.copy.post_your_listing"), new_listing_path %>
-				<% price = number_to_currency((((Listing::COST_PER_DAY * 7) / 1000.0).ceil * 1000.0), unit: "ZMK") %>
-				<%= t("views.listings.index.copy.ball_park_price_per_week", price: price) %><%= t("views.application.copy.full_stop") %>
+				<% old_currency_price = number_to_currency((((Listing::COST_PER_DAY * 7  * 1000) / 1000.0).ceil * 1000.0), unit: "ZMK") %>
+				<% price = number_to_currency((Listing::COST_PER_DAY * 7).ceil, unit: "ZMW") %>
+				<%= t("views.listings.index.copy.ball_park_price_per_week_html", { price: price, old_currency_price: old_currency_price }) %><%= t("views.application.copy.full_stop") %>
 			</p>
 		</div>
 	</div><!-- /.row -->
@@ -22,7 +23,7 @@
 			</div>
 			<% if (index % 3 == 2) %>
 				</div><!-- /.row -->
-				<div class="row">			
+				<div class="row">
 			<% end %>
 		<% end %>
 	</div>
