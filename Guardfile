@@ -1,4 +1,17 @@
-guard 'spork', :cucumber => false, :test_unit => false, :rspec_env => { 'RAILS_ENV' => 'test' }, :wait => 600, :rspec_port => 3214 do
+# Guardfile
+# Ref: https://github.com/guard/guard#readme
+
+
+
+
+# Configuration variables
+wait_time = 180
+port_number = 6011
+
+
+
+
+guard 'spork', cucumber: false, test_unit: false, rspec_env: { 'RAILS_ENV' => 'test' }, wait: wait_time, rspec_port: port_number do
   watch('config/application.rb')
   watch('config/environment.rb')
   watch(%r{^config/environments/.+\.rb$})
@@ -12,7 +25,7 @@ end
 
 
 
-guard 'bundler', :cli => "--drb --drb-port 3214" do
+guard 'bundler', cli: "--drb --drb-port #{port_number}" do
   watch('Gemfile')
   # Uncomment next line if Gemfile contain `gemspec' command
   # watch(/^.+\.gemspec/)
@@ -21,7 +34,7 @@ end
 
 
 
-guard 'rspec', :version => 2, :cli => "--drb --drb-port 3214" do
+guard 'rspec', cli: "--drb --drb-port #{port_number}" do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
   watch('spec/spec_helper.rb')  { "spec" }

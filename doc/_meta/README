@@ -1,3 +1,6 @@
+Testing
+=======
+
 # Guard for testing
 gem cleanup
 bundle update
@@ -9,12 +12,21 @@ bundle exec guard
 
 
 
-# Gem update
-gem cleanup
+Gem management
+==============
+
+MAINTAIN GEM BUNDLE
 bundle update
+gem cleanup
+
+DELETE ALL INSTALLED GEMS
+gem list | cut -d" " -f1 | xargs gem uninstall -aIx
 
 
 
+
+Application Deployment
+======================
 
 # Capistrano for non-initial deployment
 # STAGING DEPLOYMENT
