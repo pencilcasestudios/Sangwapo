@@ -49,13 +49,9 @@ end
 
 
 group :test, :development do
-  gem "rspec-rails"
-end
-
-group :test, :darwin do
-  #gem "rb-fsevent-legacy" # PowerPC
   gem "rb-fsevent"
-  gem "rb-readline"
+  gem "rb-inotify"
+  gem "rspec-rails"
 end
 
 group :test do
@@ -75,7 +71,6 @@ end
 group :development do
   gem "capistrano"
   gem "capistrano-ext"
-  #gem "capistrano-helpers"
   gem "letter_opener"
   gem "rvm-capistrano"
 end
@@ -84,6 +79,5 @@ end
 
 
 group :production do
-  #gem "unicorn"
   gem "mysql2"
 end
