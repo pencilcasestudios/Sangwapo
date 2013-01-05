@@ -397,7 +397,7 @@ en:
           email: Email
           cell_phone_number: Cell phone number
           password: Password
-          password_confirmation: Password confirmation
+          password_confirmation: Confirm password
           language: Language
           time_zone: Time zone
           terms_of_use: Terms of use
