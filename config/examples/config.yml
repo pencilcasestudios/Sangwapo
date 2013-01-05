@@ -10,7 +10,7 @@ defaults: &defaults
   gemset_name: "sangwapo-rails.3.2.x"
   repository_deployment_branch: master
   repository_server_name: sangwapo.com
-  ruby_version: ruby-1.9.3-p194
+  ruby_version: ruby-1.9.3-p327
   server_name_production: sangwapo.com
   server_name_staging: sangwapo.clientcase.net
   stage_name_production: production
