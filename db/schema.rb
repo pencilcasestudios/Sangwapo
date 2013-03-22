@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(:version => 20111218172626) do
     t.string   "commentable_type"
     t.string   "label"
     t.text     "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(:version => 20111218172626) do
     t.datetime "failed_at"
     t.string   "locked_by"
     t.string   "queue"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
@@ -56,8 +56,8 @@ ActiveRecord::Schema.define(:version => 20111218172626) do
     t.string   "state"
     t.string   "uuid"
     t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                                      :null => false
+    t.datetime "updated_at",                                                      :null => false
   end
 
   add_index "listings", ["user_id"], :name => "index_listings_on_user_id"
@@ -73,8 +73,8 @@ ActiveRecord::Schema.define(:version => 20111218172626) do
     t.string   "to"
     t.string   "uuid"
     t.text     "notes"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                                  :null => false
+    t.datetime "updated_at",                                                  :null => false
   end
 
   add_index "payments", ["listing_id"], :name => "index_payments_on_listing_id"
@@ -83,8 +83,8 @@ ActiveRecord::Schema.define(:version => 20111218172626) do
   create_table "simple_captcha_data", :force => true do |t|
     t.string   "key",        :limit => 40
     t.string   "value",      :limit => 6
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
   add_index "simple_captcha_data", ["key"], :name => "idx_key"
@@ -102,8 +102,8 @@ ActiveRecord::Schema.define(:version => 20111218172626) do
     t.string   "role"
     t.string   "state"
     t.string   "time_zone"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
   end
 
   create_table "versions", :force => true do |t|
