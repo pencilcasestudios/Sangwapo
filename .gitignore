@@ -20,4 +20,5 @@ config/campfire.yml
 config/config.yml
 config/database.yml
 config/deploy.rb
-config/deploy/
+config/deploy/*.rb
+
