@@ -10,7 +10,7 @@ gem "rails"
 
 
 # Used accross environments
-gem "bcrypt-ruby"
+gem "bcrypt-ruby", "~> 3.0.1"
 gem "bundler"
 gem "cancan"
 gem "carrierwave"
