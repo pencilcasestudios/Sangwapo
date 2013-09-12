@@ -13,11 +13,7 @@ cp config/examples/deploy/*.rb config/deploy
 
 Set up the hosts (e.g. for "galaunia.co.dev" we're using a 3 levels for the TLD)
 Add:
-127.0.0.1	doesnotexist.galaunia.co.dev
-127.0.0.1	galaunia.co.dev
-127.0.0.1	roanparkphase1.galaunia.co.dev
-127.0.0.1	roanparkphase2.galaunia.co.dev
-127.0.0.1	sitatungacity.galaunia.co.dev
+127.0.0.1	sangwapo.dev		www.sangwapo.dev
 
 Set up symbolic links to the externalised assets:
 cd [APP_FOLDER]/app/assets/images/housing_projects
