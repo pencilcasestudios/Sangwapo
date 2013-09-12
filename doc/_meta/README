@@ -1,3 +1,43 @@
+Setting up the application to run the first time
+================================================
+Setup the database
+cp config/examples/database.yml config
+
+Setup the configuration files
+cp config/examples/config.yml config
+
+Setup the deployment files
+cp config/examples/deploy.rb config
+mkdir config/deploy
+cp config/examples/deploy/*.rb config/deploy
+
+Set up the hosts (e.g. for "galaunia.co.dev" we're using a 3 levels for the TLD)
+Add:
+127.0.0.1	doesnotexist.galaunia.co.dev
+127.0.0.1	galaunia.co.dev
+127.0.0.1	roanparkphase1.galaunia.co.dev
+127.0.0.1	roanparkphase2.galaunia.co.dev
+127.0.0.1	sitatungacity.galaunia.co.dev
+
+Set up symbolic links to the externalised assets:
+cd [APP_FOLDER]/app/assets/images/housing_projects
+ln -s ~/Dropbox/Galaunia\ Farms/Website/Images/Roan\ Park\ Phase\ 1/ roanparkphase1_images
+
+cd [APP_FOLDER]/app/assets/images
+ln -s ~/Dropbox/Galaunia\ Farms/Website/Images/Newsletters/ newsletters_images
+
+cd [APP_FOLDER]/app/assets/pdfs/housing_projects
+ln -s ~/Dropbox/Galaunia\ Farms/Website/PDFs/Roan\ Park\ Phase\ 1/ roanparkphase1_pdfs
+
+cd [APP_FOLDER]/app/assets/pdfs
+ln -s ~/Dropbox/Galaunia\ Farms/Website/PDFs/Newsletters/ newsletters_pdfs
+
+Setup deployment references:
+git remote add production galaunia.co.zm:/var/Repositories/Git/Galaunia.git
+
+
+
+
 Testing
 =======
 
