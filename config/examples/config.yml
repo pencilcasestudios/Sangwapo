@@ -5,23 +5,23 @@ defaults: &defaults
 
   application_name: "Sangwapo"
   gemset_name: "sangwapo-rails.3.2.x"
-  repository_deployment_branch: master
-  repository_server_name: sangwapo.com
-  ruby_version: ruby-1.9.3-p327
-  server_name_production: sangwapo.com
-  server_name_staging: sangwapo.clientcase.net
+  ruby_version: ruby-2.0.0-p247
   user: deploy
 
   # Multi-stage recipe settings
   # Virtual deployment
-  deployment_path_virtual: virtual
-  stage_name_virtual: virtual
+  virtual_deployment_path: virtual
+  virtual_repository_deployment_branch: master
+  virtual_server_name: sangwapo.virtual
+  virtual_stage_name: virtual
 
   # Staging deployment
+  server_name_staging: sangwapo.clientcase.net
   deployment_path_staging: staging
   stage_name_staging: staging
 
   # Production deployment
+  server_name_production: sangwapo.com
   deployment_path_production: production
   stage_name_production: production
 

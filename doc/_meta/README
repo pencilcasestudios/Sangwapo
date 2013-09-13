@@ -1,22 +1,16 @@
 Setting up the application to run the first time
 ================================================
-Setup the database
-cp config/examples/database.yml config
-
-Setup the configuration files
-cp config/examples/config.yml config
-
-Setup the deployment files
-cp config/examples/deploy.rb config
-mkdir config/deploy
-cp config/examples/deploy/*.rb config/deploy
+cp config/examples/database.yml config # Setup the database
+cp config/examples/config.yml config # Setup the configuration files
+cp config/examples/deploy.rb config # Setup the capistrano deployment recipe
+cp config/examples/deploy/*.rb config/deploy # Setup deployment stage configuration
 
 Set up the hosts (/etc/hosts)
 127.0.0.1	sangwapo.dev		www.sangwapo.dev
 
 Setup deployment references:
 git remote add production Sangwapo.co.zm:/var/Repositories/Git/Sangwapo.git
-git remote add virtual rails.vm:/var/Repositories/Git/Sangwapo.git
+git remote add virtual sangwapo.virtual:/var/Repositories/Git/Sangwapo.git
 
 
 
@@ -25,8 +19,8 @@ Testing
 =======
 
 # Guard for testing
-gem cleanup
 bundle update
+gem cleanup
 rake db:drop
 rake db:setup
 rake db:test:prepare
@@ -50,6 +44,18 @@ gem list | cut -d" " -f1 | xargs gem uninstall -aIx
 
 Application Deployment
 ======================
+# Capistrano steps for initial deployment to the:
+# Virtual machine
+git checkout master
+git merge work
+git push
+git push virtual
+cap deploy:setup        # Update configuration files and create the database after this
+cap deploy:check
+cap deploy:update       # May require verifying the host key.
+cap deploy:migrate
+cap db:seed
+cap deploy:start
 
 # Capistrano for non-initial deployment
 # STAGING DEPLOYMENT

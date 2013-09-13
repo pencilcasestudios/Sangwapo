@@ -79,8 +79,8 @@ require "rvm/capistrano"
 # Multi-stage deployment
 # https://github.com/capistrano/capistrano/wiki/2.x-Multistage-Extension
 #set :deploy_env, "production"
-set :stages, [DEPLOYMENT_CONFIG["stage_name_virtual"], DEPLOYMENT_CONFIG["stage_name_staging"], DEPLOYMENT_CONFIG["stage_name_production"]]
-set :default_stage, DEPLOYMENT_CONFIG["stage_name_virtual"]
+set :stages, [DEPLOYMENT_CONFIG["virtual_stage_name"], DEPLOYMENT_CONFIG["staging_stage_name"], DEPLOYMENT_CONFIG["production_stage_name"]]
+set :default_stage, DEPLOYMENT_CONFIG["virtual_stage_name"]
 
 set :rails_env, "production" # Added for delayed job
 
@@ -122,11 +122,6 @@ set :use_sudo, false
 
 
 set :scm, :git
-# Don't forget to make this repo on the server
-set :repository_server_name, DEPLOYMENT_CONFIG["repository_server_name"]
-set :repository, "#{user}@#{repository_server_name}:/var/Repositories/Git/#{application}.git"
-# Don't forget to make this branch in the repository
-set :branch, DEPLOYMENT_CONFIG["repository_deployment_branch"]
 
 
 
