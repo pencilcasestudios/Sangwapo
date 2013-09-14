@@ -8,6 +8,10 @@ defaults: &defaults
   ruby_version: ruby-2.0.0-p247
   user: deploy
 
+  miniumum_version_of_bundler: 1.3.5
+  miniumum_version_of_rake: 10.1.0
+
+
   # Multi-stage recipe settings
   # Virtual deployment
   virtual_deployment_path: virtual
