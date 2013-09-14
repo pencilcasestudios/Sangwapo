@@ -98,8 +98,8 @@ set :rvm_ruby_string, "#{rvm_ruby_gemset}"                          # Select the
 
 
 
-depend :remote, :gem, "bundler", ">=#{DEPLOYMENT_CONFIG["miniumum_version_of_bundler"}"
-depend :remote, :gem, "rake", ">=#{DEPLOYMENT_CONFIG["miniumum_version_of_rake"}"
+depend :remote, :gem, "bundler", ">=#{DEPLOYMENT_CONFIG["miniumum_version_of_bundler"]}"
+depend :remote, :gem, "rake", ">=#{DEPLOYMENT_CONFIG["miniumum_version_of_rake"]}"
 
 
 
