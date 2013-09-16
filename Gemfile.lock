@@ -301,7 +301,7 @@ DEPENDENCIES
   pcs_tablesorter
   prawn_rails
   rack_session_access
-  rails
+  rails (~> 3.2.14)
   rake
   rb-fsevent
   rb-inotify
