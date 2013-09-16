@@ -73,7 +73,9 @@ end
 
 
 # Email exceptions when they occur
-Sangwapo::Application.config.middleware.use ExceptionNotifier,
+# Ref: https://github.com/smartinez87/exception_notification
+Sangwapo::Application.config.middleware.use ExceptionNotification::Rack, :email => {
   :email_prefix => "[Exception - Sangwapo] ",
   :sender_address => %{"exception_notifier" <exception_notifier@sangwapo.com>},
   :exception_recipients => %w{exceptions_group@sangwapo.com}
+}
