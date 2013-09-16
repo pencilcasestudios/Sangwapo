@@ -1,5 +1,8 @@
 Setting up the application to run the first time
 ================================================
+
+Local machine development
+-------------------------
 cp config/examples/database.yml config # Setup the database
 cp config/examples/config.yml config # Setup the configuration files
 cp config/examples/deploy.rb config # Setup the capistrano deployment recipe
@@ -12,6 +15,19 @@ Setup deployment references:
 git remote add production Sangwapo.co.zm:/var/Repositories/Git/Sangwapo.git
 git remote add virtual sangwapo.virtual:/var/Repositories/Git/Sangwapo.git
 
+
+Virtual machine testing
+-----------------------
+Need:
+Git
+ImageMagick
+MySQL
+nginx
+SSH
+
+Set up the deployment user (deploy)
+Set up the nginx virtual host
+Set up the MySQL database
 
 
 
@@ -54,7 +70,6 @@ cap deploy:setup        # Update configuration files and create the database aft
 cap deploy:check
 cap deploy:update       # May require verifying the host key.
 cap deploy:migrate
-cap db:seed
 cap deploy:start
 
 # Capistrano for non-initial deployment
