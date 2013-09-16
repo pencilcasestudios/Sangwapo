@@ -44,8 +44,8 @@ gem list | cut -d" " -f1 | xargs gem uninstall -aIx
 
 Application Deployment
 ======================
-# Capistrano steps for initial deployment to the:
-# Virtual machine
+# Capistrano steps for initial deployment
+# VIRTUAL MACHINE DEPLOYMENT
 git checkout master
 git merge work
 git push
