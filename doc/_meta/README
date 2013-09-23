@@ -25,9 +25,17 @@ MySQL
 nginx
 SSH
 
-Set up the deployment user (deploy)
+Set up the non-sudo, deployment user (deploy)
 Set up the nginx virtual host
 Set up the MySQL database
+Create the application gemset
+Create the application deployment path
+Create the application repository
+Add a "loopback" to /etc/hosts
+Host key verification
+SSH-keygen
+Password-less SSH
+
 
 
 
