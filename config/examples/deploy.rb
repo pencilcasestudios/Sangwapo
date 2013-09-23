@@ -182,8 +182,8 @@ end
 
 # http://beginrescueend.com/integration/capistrano/
 # RVM-Capistrano
-before "deploy:setup", "rvm:install_rvm"
-after "deploy:setup", "rvm:create_gemset"
+before "deploy:setup", "rvm:create_gemset"
+before "deploy:setup", "rvm:install_rvm" # Get the latest RVM
 
 before "deploy", "rvm:install_rvm"
 
