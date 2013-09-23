@@ -183,7 +183,10 @@ end
 # http://beginrescueend.com/integration/capistrano/
 # RVM-Capistrano
 before "deploy:setup", "rvm:install_rvm"
+after "deploy:setup", "rvm:create_gemset"
+
 before "deploy", "rvm:install_rvm"
+
 
 after "deploy", "deploy:cleanup" # keeps only last 5 releases
 after "deploy:setup", "deploy:setup_shared"
