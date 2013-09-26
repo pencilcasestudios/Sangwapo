@@ -21,8 +21,9 @@ Virtual machine testing
 Need:
 Git
 ImageMagick
-MySQL
+MySQL # Remember to install libmysqlclient-dev (for the mysql2 gem to work)
 nginx
+nodejs # JavaScript runtime
 SSH
 
 Set up the non-sudo, deployment user (deploy)
