@@ -31,6 +31,7 @@ Set up the nginx virtual host
 Set up the MySQL database
 Create the application deployment path
 Create the application repository
+Set permissions on the application repository
 Add a "loopback" to /etc/hosts
 Host key verification
 SSH-keygen
