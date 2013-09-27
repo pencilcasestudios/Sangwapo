@@ -13,7 +13,23 @@ server {
 		rewrite  ^/(.*)$  http://sangwapo.virtual/$1  permanent;
 	}
 
+	# Ref: http://guides.rubyonrails.org/asset_pipeline.html
+	location ~ ^/assets/ {
+		expires 1y;
+		add_header Cache-Control public;
+
+		add_header ETag "";
+		break;
+	}
+
+	# Ref: http://guides.rubyonrails.org/asset_pipeline.html
+	location ~ ^/(assets)/  {
+		root /var/Apps/Sangwapo/virtual/current/public;
+		gzip_static on; # to serve pre-gzipped version
+		expires max;
+		add_header Cache-Control public;
+	}
+
 	root /var/Apps/Sangwapo/virtual/current/public;
 	passenger_enabled on;
 }
-
