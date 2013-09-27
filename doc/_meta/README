@@ -74,7 +74,7 @@ Application Deployment
 git checkout master
 git merge work
 git push
-git push virtual
+git push virtual				# May need to 'git push virtual master'
 cap deploy:setup        # Update configuration files and create the database after this
 cap deploy:check
 cap deploy:update       # May require verifying the host key.
