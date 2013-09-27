@@ -1,0 +1,19 @@
+server {
+	listen 80;
+	server_name	sangwapo.virtual
+			www.sangwapo.virtual
+			;
+
+	access_log  logs/sangwapo.virtual.access.log;
+	error_log  logs/sangwapo.virtual.error.log;
+
+	# Redirect 'www' to non-www
+	# Ref: http://b.lesseverything.com/2008/4/9/redirect-from-www-to-non-www-using-nginx
+	if ($host = 'www.sangwapo.virtual' ) {
+		rewrite  ^/(.*)$  http://sangwapo.virtual/$1  permanent;
+	}
+
+	root /var/Apps/Sangwapo/virtual/current/public;
+	passenger_enabled on;
+}
+
