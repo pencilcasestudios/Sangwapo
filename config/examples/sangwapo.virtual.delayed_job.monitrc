@@ -1,5 +1,10 @@
 # Ref: https://github.com/collectiveidea/delayed_job/blob/master/contrib/delayed_job.monitrc?source=cc
+# Ref: http://channaly.wordpress.com/2011/12/26/using-monit-to-monitor-delayed_job-in-rails-3/
+# Ref: https://gist.github.com/Empact/1788684/raw/ee893474060e6b5c721fe10b977877706f37c123/RAILS_ROOTscriptdelayed_job.monitrc.example
+# Ref: https://github.com/collectiveidea/delayed_job/blob/master/contrib/delayed_job.monitrc?source=cc
+# Ref: https://github.com/collectiveidea/delayed_job/blob/master/contrib/delayed_job.monitrc?source=cc
 
-check process delayed_job with pidfile /var/Apps/Sangwapo/virtual/shared/pids/delayed_job.pid
-	start program = "/usr/bin/env RAILS_ENV=production /var/Apps/Sangwapo/virtual/current/script/delayed_job start"
-	stop program = "/usr/bin/env RAILS_ENV=production /var/Apps/Sangwapo/virtual/current/script/delayed_job stop"
+check process sangwapo_delayed_job with pidfile /var/Apps/Sangwapo/virtual/shared/pids/delayed_job.pid
+	start program = "/bin/su - deploy -c 'cd /var/Apps/Sangwapo/virtual/current; RAILS_ENV=production script/delayed_job start'"
+	stop program = "/bin/su - deploy -c 'cd /var/Apps/Sangwapo/virtual/current; RAILS_ENV=production script/delayed_job stop'"
+
