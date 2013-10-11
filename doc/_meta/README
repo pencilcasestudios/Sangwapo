@@ -17,6 +17,16 @@ git remote add production sangwapo.com:/var/Repositories/Git/Sangwapo.git
 
 Virtual machine setup
 ---------------------
+Need:
+Git
+ImageMagick
+MySQL					# Remember to install libmysqlclient-dev (for the mysql2 gem to work)
+nginx
+nodejs				# JavaScript runtime
+RVM
+SSH
+
+
 Test SSH access:
 ssh deploy@sangwapo.virtual
 ssh vladimir@sangwapo.virtual
