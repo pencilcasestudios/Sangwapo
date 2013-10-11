@@ -1,8 +1,8 @@
 Setting up the application to run the first time
 ================================================
-
-Local machine development
--------------------------
+Local machine setup
+-------------------
+cd ~/Projects/Rails/Sangwapo
 cp config/examples/database.yml config # Setup the database
 cp config/examples/config.yml config # Setup the configuration files
 cp config/examples/deploy.rb config # Setup the capistrano deployment recipe
@@ -12,51 +12,123 @@ Set up the hosts (/etc/hosts)
 127.0.0.1	sangwapo.dev		www.sangwapo.dev
 
 Setup deployment references:
-git remote add production Sangwapo.co.zm:/var/Repositories/Git/Sangwapo.git
 git remote add virtual sangwapo.virtual:/var/Repositories/Git/Sangwapo.git
+git remote add production sangwapo.com:/var/Repositories/Git/Sangwapo.git
+
+Virtual machine setup
+---------------------
+Test SSH access:
+ssh deploy@sangwapo.virtual
+ssh vladimir@sangwapo.virtual
+
+Set up the hosts (/etc/hosts):
+ssh vladimir@sangwapo.virtual
+127.0.0.1 sangwapo.virtual 	www.sangwapo.virtual
+
+Check that SSH "loops back" on the virtual machine (host key verification):
+# On the local development machine
+ssh deploy@rails.vm
+
+# On the virtual machine
+ssh sangwapo.virtual
+
+Create the Git repository:
+ssh deploy@sangwapo.virtual
+cd /var/Repositories/Git/
+mkdir Sangwapo.git
+cd Sangwapo.git
+git init --bare
+cd ..
+chown -R deploy:deployers Sangwapo.git/
+
+Push to the Git repository:
+# From the development machine:
+cd ~/Projects/Rails/Sangwapo
+git push virtual master
+
+Configure nginx:
+ssh vladimir@sangwapo.virtual
+cd /opt/nginx/conf/sites-available/
+# Set up the nginx configuration
+cd /opt/nginx/conf/sites-enabled/
+sudo ln -s /opt/nginx/conf/sites-available/sangwapo.virtual.conf sangwapo.virtual
+
+Generate an SSL certificate and key:
+cd /opt/nginx/ssl
+sudo mkdir Sangwapo
+cd Sangwapo
+sudo openssl genrsa -des3 -out sangwapo.virtual.key 1024
+sudo openssl req -new -key sangwapo.virtual.key -out sangwapo.virtual.csr
+sudo cp sangwapo.virtual.key sangwapo.virtual.key.original
+sudo openssl rsa -in sangwapo.virtual.key.original -out sangwapo.virtual.key
+sudo openssl x509 -req -days 365 -in sangwapo.virtual.csr -signkey sangwapo.virtual.key -out sangwapo.virtual.crt
+
+Test the nginx configuration:
+sudo /opt/nginx/sbin/nginx -t
+
+If all is well, load the new nginx configuration:
+sudo /etc/init.d/nginx reload
+
+Setup the MySQL database user:
+ssh vladimir@rails.vm
+mysql -u root -p
+create user 'sangwapo'@'localhost' identified by 'VirtualSangwapoPassword';
+grant all on Sangwapo_virtual.* to 'sangwapo'@'localhost';
+
+Setup the MySQL database:
+mysql -u sangwapo -p
+create database Sangwapo_virtual;
+
+Setup the Monit scripts:
+# From the development machine
+cd ~/Projects/Rails/Sangwapo/config/examples
+scp delayed_job.sangwapo.virtual.monitrc vladimir@rails.vm:~
+ssh vladimir@rails.vm
+
+# From the virtual machine
+sudo mv ~/delayed_job.sangwapo.virtual.monitrc /etc/monit/conf.d/
+sudo /etc/init.d/monit syntax
+
+Setup the YAML configuration files:
+# From the development machine
+cd ~/Projects/Rails/Sangwapo/config/examples
+scp config.virtual.yml deploy@rails.vm:~/config.yml
+scp database.virtual.yml deploy@rails.vm:~/database.yml
+ssh deploy@rails.vm
+
+# From the virtual machine
+mkdir -p ~/Projects/Configurations/Sangwapo/virtual
+mv database.yml ~/Projects/Configurations/Sangwapo/virtual/
+mv config.yml ~/Projects/Configurations/Sangwapo/virtual/
+
+# After running cap deploy:setup
+cd ~/Projects/Configurations/Sangwapo/virtual
+cp *.yml /var/Apps/Sangwapo/virtual/shared/config/
+
+# After deploying the app
+# From the virtual machine
+sudo /etc/init.d/monit reload
 
 
-Virtual machine testing
------------------------
-Need:
-Git
-ImageMagick
-MySQL # Remember to install libmysqlclient-dev (for the mysql2 gem to work)
-nginx
-nodejs # JavaScript runtime
-SSH
-
-Set up the non-sudo, deployment user (deploy)
-Set up the nginx virtual host
-Set up the MySQL database
-Create the application deployment path
-Create the application repository
-Set permissions on the application repository
-Add a "loopback" to /etc/hosts
-Host key verification
-SSH-keygen
-Password-less SSH
 
 
 
 
 Testing
 =======
-
 # Guard for testing
 bundle update
 gem cleanup
 rake db:drop
 rake db:setup
 rake db:test:prepare
-bundle exec guard
+guard
 
 
 
 
 Gem management
 ==============
-
 MAINTAIN GEM BUNDLE
 bundle update
 gem cleanup
@@ -77,7 +149,7 @@ git push
 git push virtual				# May need to 'git push virtual master'
 cap deploy:setup        # Update configuration files and create the database after this
 cap deploy:check
-cap deploy:update       # May require verifying the host key.
+cap deploy:update
 cap deploy:migrate
 cap deploy:start
 
@@ -97,3 +169,11 @@ git push
 git push production
 cap production deploy
 git tag "`date +published_%Y-%m-%d_%H%M%S`"
+
+
+
+
+Running the Application
+=======================
+rails server # In one terminal window - to run the application
+rake jobs:work # In another terminal window - to run delayed job

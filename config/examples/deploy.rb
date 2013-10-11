@@ -8,58 +8,6 @@
 
 
 
-# Basic steps to setup
-# ON THE SERVER
-
-# Create the MySQL database
-
-# Create the repository:
-# $ mkdir /var/Repositories/Git/#{application}.git
-# $ cd /var/Repositories/Git/#{application}.git
-# $ git init --bare
-
-# Create the remotes to the production environment in the development repository
-# $ git remote add production #{user}@#{server_name}:/var/Repositories/Git/#{application}.git
-
-# Push to the repository on the server
-# $ git push production master
-
-# Create the RVM gemset
-# $ rvm gemset create <<whatever-gemset-you-require>>
-
-# Install bundler and rake in the RVM gemset
-# $ rvm use <<whatever-gemset-you-required>>
-# $ gem install bundler rake
-
-
-
-
-# ON THE DEVELOPMENT MACHINE
-# STAGING DEPLOYMENT
-# $ git checkout master
-# $ git merge work
-# $ git push production
-# $ cap deploy:setup        # Update configuration files and create the database after this
-# $ cap deploy:check
-# $ cap deploy:update       # May require verifying the host key.
-# $ cap deploy:migrate
-# $ cap db:seed
-# $ cap deploy:start
-
-# PRODUCTION DEPLOYMENT
-# $ git checkout master
-# $ git merge work
-# $ git push production
-# $ cap production deploy:setup        # Update configuration files and create the database after this
-# $ cap production deploy:check
-# $ cap production deploy:update       # May require verifying the host key.
-# $ cap production deploy:migrate
-# $ cap production db:seed
-# $ cap production deploy:start
-# $ git tag "`date +published_%Y-%m-%d_%H%M%S`"
-
-
-
 
 # https://github.com/capistrano/capistrano/wiki/2.x-Multistage-Extension
 require "capistrano/ext/multistage"
@@ -98,9 +46,8 @@ set :rvm_ruby_string, "#{rvm_ruby_gemset}"                          # Select the
 
 
 
-depend :remote, :gem, "bundler", ">=#{DEPLOYMENT_CONFIG["miniumum_version_of_bundler"]}"
-depend :remote, :gem, "rake", ">=#{DEPLOYMENT_CONFIG["miniumum_version_of_rake"]}"
-
+depend :remote, :gem, "bundler", "#{DEPLOYMENT_CONFIG["miniumum_version_of_bundler"]}"
+depend :remote, :gem, "rake", "#{DEPLOYMENT_CONFIG["miniumum_version_of_rake"]}"
 
 
 
