@@ -35,6 +35,7 @@ defaults: &defaults
   # Email settings
   email_address: "smtp.gmail.com"
   email_domain: "gmail.com"
+  email_enable_starttls_auto: false
   email_password: "password" # Update this in production
   email_port: 587
   email_user_name: "hello@sangwapo.com"
