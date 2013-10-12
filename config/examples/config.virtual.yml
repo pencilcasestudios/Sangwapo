@@ -33,8 +33,8 @@ defaults: &defaults
 
 
   # Email settings
-  email_address: "lacalhost"
-  email_domain: ""
+  email_address: "localhost"
+  email_domain: "localhost"
   email_password: "" # Update this in production
   email_port: 25
   email_user_name: "hello@sangwapo.com"
