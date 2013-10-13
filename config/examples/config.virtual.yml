@@ -34,11 +34,13 @@ defaults: &defaults
 
   # Email settings
   email_address: "localhost"
+  email_authentication: "plain"
   email_domain: "localhost"
-  email_enable_starttls_auto: false
-  email_password: "" # Update this in production
+  email_enable_starttls_auto: "true"
+  email_openssl_verify_mode: "none" # https://rails.lighthouseapp.com/projects/8994/tickets/6508-undocumented-actionmailer-openssl_verify_mode-option
+  email_password: "password" # Update this in production
   email_port: 25
-  email_user_name: "hello@sangwapo.com"
+  email_user_name: "user@domain.tld"
 
   # ActionMailer settings
   application_server_name: "sangwapo.virtual"
