@@ -36,10 +36,10 @@ defaults: &defaults
   email_address: "localhost"
   email_authentication: "plain"
   email_domain: "localhost"
-  email_enable_starttls_auto: "true"
+  email_enable_starttls_auto: "false"
   email_openssl_verify_mode: "none" # https://rails.lighthouseapp.com/projects/8994/tickets/6508-undocumented-actionmailer-openssl_verify_mode-option
   email_password: "password" # Update this in production
-  email_port: 465
+  email_port: 25
   email_user_name: "user@domain.tld"
 
   # ActionMailer settings
