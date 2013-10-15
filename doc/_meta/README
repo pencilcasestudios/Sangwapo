@@ -93,6 +93,7 @@ Setup the Monit scripts:
 # From the development machine
 cd ~/Projects/Rails/Sangwapo/config/examples
 scp delayed_job.sangwapo.virtual.monitrc vladimir@rails.vm:~
+cd ~/Projects/Rails/Sangwapo
 ssh vladimir@rails.vm
 
 # From the virtual machine
