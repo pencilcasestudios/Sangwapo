@@ -1,5 +1,5 @@
 class Emailer < ActionMailer::Base
-  default from: "#{I18n.t("application.name")} <#{AppConfig.email_user_name}>"
+  default from: "#{I18n.t("application.name")} <#{AppConfig.email_user_name || AppConfig.email_from_address_fallback}>"
 
   def registration_confirmation(user)
     @user = user

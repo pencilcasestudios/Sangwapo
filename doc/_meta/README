@@ -105,6 +105,7 @@ Setup the YAML configuration files:
 cd ~/Projects/Rails/Sangwapo/config/examples
 scp config.virtual.yml deploy@rails.vm:~/config.yml
 scp database.virtual.yml deploy@rails.vm:~/database.yml
+cd ~/Projects/Rails/Sangwapo/
 ssh deploy@rails.vm
 
 # From the virtual machine
