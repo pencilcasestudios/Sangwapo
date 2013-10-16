@@ -36,7 +36,7 @@ defaults: &defaults
   email_address: "localhost"
   email_authentication: "plain"
   email_domain: "localhost"
-  email_enable_starttls_auto: "false"
+  email_enable_starttls_auto: true
   email_from_address: "hello@sangwapo.com"
   email_openssl_verify_mode: "none" # https://rails.lighthouseapp.com/projects/8994/tickets/6508-undocumented-actionmailer-openssl_verify_mode-option
   email_password: nil # Update this in production

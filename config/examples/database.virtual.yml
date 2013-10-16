@@ -4,6 +4,6 @@ production:
   reconnect: false
   database: Sangwapo_virtual
   pool: 5
-  username: Sangwapo
+  username: sangwapo
   password: VirtualSangwapoPassword
   host: localhost
