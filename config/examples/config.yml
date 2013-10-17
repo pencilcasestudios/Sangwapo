@@ -43,6 +43,11 @@ defaults: &defaults
   email_port: 587
   email_user_name: "hello@sangwapo.com"
 
+  # Email delivery mode
+  # virtual: user postfix on the virtual machine
+  # physical: actually delivery the email (development email is intercepted by letter_opener)
+  email_delivery_mode: physical
+
   # ActionMailer settings
   application_server_name: "sangwapo.clientcase.net"
 
