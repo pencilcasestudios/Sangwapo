@@ -7,9 +7,6 @@ class Emailer < ActionMailer::Base
       subject: t("mailers.emailer.registration_confirmation.subject", application_name: t("application.name")),
       to: "#{user.first_name} <#{user.email}>",
     )
-
-    Delayed::Worker.logger.debug "\nUser attributes #{user.inspect}"
-    Delayed::Worker.logger.debug "\nMail attributes #{mail.to_s}"
   end
 
   def payment_received_confirmation(payment)
