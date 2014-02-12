@@ -4,7 +4,7 @@ source "http://rubygems.org"
 
 
 # Our foundation
-gem "rails", "~> 3.2.14"
+gem "rails", "~> 3.2.16"
 
 
 
