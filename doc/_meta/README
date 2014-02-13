@@ -104,10 +104,14 @@ ssh vladimir@rails.vm
 mysql -u root -p
 create user 'sangwapo'@'localhost' identified by 'VirtualSangwapoPassword';
 grant all on Sangwapo_virtual.* to 'sangwapo'@'localhost';
+grant all on Sangwapo_virtual_development.* to 'sangwapo'@'localhost';
+grant all on Sangwapo_virtual_test.* to 'sangwapo'@'localhost';
 
 Setup the MySQL database:
 mysql -u sangwapo -p
 create database Sangwapo_virtual;
+create database Sangwapo_virtual_development;
+create database Sangwapo_virtual_test;
 
 Setup the Monit scripts:
 # From the development machine
