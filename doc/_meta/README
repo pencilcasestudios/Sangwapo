@@ -12,8 +12,9 @@ Set up the hosts (/etc/hosts)
 127.0.0.1	sangwapo.dev		www.sangwapo.dev
 
 Setup deployment references:
-git remote add virtual sangwapo.virtual:/var/Repositories/Git/Sangwapo.git
-git remote add production sangwapo.com:/var/Repositories/Git/Sangwapo.git
+git remote add virtual deploy@rails.vm:/var/Repositories/Git/Sangwapo.git
+git remote add preview deploy@genesis.vps:/var/Repositories/Git/Sangwapo.git
+git remote add production deploy@genesis.vps:/var/Repositories/Git/Sangwapo.git
 
 Virtual machine setup
 ---------------------
@@ -28,11 +29,11 @@ SSH
 
 
 Test SSH access:
-ssh deploy@sangwapo.virtual
-ssh vladimir@sangwapo.virtual
+ssh deploy@rails.vm
+ssh vladimir@rails.vm
 
 Set up the hosts (/etc/hosts):
-ssh vladimir@sangwapo.virtual
+ssh vladimir@rails.vm
 127.0.0.1 sangwapo.virtual 	www.sangwapo.virtual
 
 Check that SSH "loops back" on the virtual machine (host key verification):
@@ -40,10 +41,10 @@ Check that SSH "loops back" on the virtual machine (host key verification):
 ssh deploy@rails.vm
 
 # On the virtual machine
-ssh sangwapo.virtual
+ssh deploy@rails.vm
 
 Create the Git repository:
-ssh deploy@sangwapo.virtual
+ssh deploy@rails.vm
 cd /var/Repositories/Git/
 mkdir Sangwapo.git
 cd Sangwapo.git
@@ -57,7 +58,7 @@ cd ~/Projects/Rails/Sangwapo
 git push virtual master
 
 Configure nginx:
-ssh vladimir@sangwapo.virtual
+ssh vladimir@rails.vm
 cd /opt/nginx/conf/sites-available/
 # Set up the nginx configuration
 cd /opt/nginx/conf/sites-enabled/
