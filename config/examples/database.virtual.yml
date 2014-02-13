@@ -4,7 +4,7 @@ development:
   reconnect: false
   database: Sangwapo_virtual_development
   pool: 5
-  username: galaunia
+  username: sangwapo
   password: VirtualSangwapoPassword
   host: localhost
 
@@ -14,7 +14,7 @@ test:
   reconnect: false
   database: Sangwapo_virtual_test
   pool: 5
-  username: galaunia
+  username: sangwapo
   password: VirtualSangwapoPassword
   host: localhost
 
@@ -24,6 +24,6 @@ production:
   reconnect: false
   database: Sangwapo_virtual
   pool: 5
-  username: galaunia
+  username: sangwapo
   password: VirtualSangwapoPassword
   host: localhost
