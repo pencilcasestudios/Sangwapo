@@ -129,12 +129,13 @@ sudo /etc/init.d/monit reload
 Testing
 =======
 # Guard for testing
+cd ~/Projects/Clients/Sangwapo
 bundle update
 gem cleanup
 rake db:drop
 rake db:setup
 rake db:test:prepare
-guard
+bundle exec guard
 
 
 
