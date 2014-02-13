@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  #http_basic_authenticate_with :name => AppConfig.http_basic_name, :password => AppConfig.http_basic_password unless Rails.env == "test"
+  unless AppConfig.http_basic_access_mode == "open"
+    http_basic_authenticate_with name: AppConfig.http_basic_name, password: AppConfig.http_basic_password unless Rails.env == "test"
+  end
 
   check_authorization # CanCan Ref: https://github.com/ryanb/cancan/wiki/Ensure-Authorization
 
@@ -32,7 +34,7 @@ private
       return false
     end
   end
-  
+
   def sign_out_required
     if current_user
       #store_location
