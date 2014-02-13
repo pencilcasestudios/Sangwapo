@@ -19,18 +19,26 @@ defaults: &defaults
   # Virtual deployment
   virtual_deployment_path: virtual
   virtual_repository_deployment_branch: master
-  virtual_server_name: sangwapo.virtual
+  virtual_server_name: rails.vm
   virtual_stage_name: virtual
 
   # Staging deployment
-  server_name_staging: sangwapo.clientcase.net
-  deployment_path_staging: staging
-  stage_name_staging: staging
+  staging_deployment_path: staging
+  staging_repository_deployment_branch: master
+  staging_server_name: genesis.vps
+  staging_stage_name: virtual
+  #server_name_staging: sangwapo.clientcase.net
+  #deployment_path_staging: staging
+  #stage_name_staging: staging
 
   # Production deployment
-  server_name_production: sangwapo.com
-  deployment_path_production: production
-  stage_name_production: production
+  production_deployment_path: production
+  production_repository_deployment_branch: master
+  production_server_name: genesis.vps
+  production_stage_name: production
+  #server_name_production: sangwapo.com
+  #deployment_path_production: production
+  #stage_name_production: production
 
 
 
