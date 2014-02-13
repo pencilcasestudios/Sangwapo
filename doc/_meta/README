@@ -13,7 +13,7 @@ Set up the hosts (/etc/hosts)
 
 Setup deployment references:
 git remote add virtual deploy@rails.vm:/var/Repositories/Git/Sangwapo.git
-git remote add preview deploy@genesis.vps:/var/Repositories/Git/Sangwapo.git
+git remote add staging deploy@genesis.vps:/var/Repositories/Git/Sangwapo.git
 git remote add production deploy@genesis.vps:/var/Repositories/Git/Sangwapo.git
 
 Virtual machine setup
@@ -49,8 +49,6 @@ cd /var/Repositories/Git/
 mkdir Sangwapo.git
 cd Sangwapo.git
 git init --bare
-cd ..
-chown -R deploy:deployers Sangwapo.git/
 
 Push to the Git repository:
 # From the development machine:
@@ -59,13 +57,13 @@ git push virtual master
 
 Configure nginx:
 ssh vladimir@rails.vm
-cd /opt/nginx/conf/sites-available/
+cd /etc/nginx/sites-available/
 # Set up the nginx configuration
-cd /opt/nginx/conf/sites-enabled/
-sudo ln -s /opt/nginx/conf/sites-available/sangwapo.virtual.conf sangwapo.virtual
+cd /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/sangwapo.virtual.conf sangwapo.virtual
 
 Generate an SSL certificate and key:
-cd /opt/nginx/ssl
+cd /etc/nginx/ssl
 sudo mkdir Sangwapo
 cd Sangwapo
 sudo openssl genrsa -des3 -out sangwapo.virtual.key 1024
@@ -75,7 +73,7 @@ sudo openssl rsa -in sangwapo.virtual.key.original -out sangwapo.virtual.key
 sudo openssl x509 -req -days 365 -in sangwapo.virtual.csr -signkey sangwapo.virtual.key -out sangwapo.virtual.crt
 
 Test the nginx configuration:
-sudo /opt/nginx/sbin/nginx -t
+sudo /etc/nginx/sbin/nginx -t
 
 If all is well, load the new nginx configuration:
 sudo /etc/init.d/nginx reload
