@@ -56,21 +56,42 @@ cd ~/Projects/Rails/Sangwapo
 git push virtual master
 
 Configure nginx:
-ssh vladimir@rails.vm
-cd /etc/nginx/sites-available/
+cd ~/Projects/Rails/Sangwapo/config/examples/nginx
+scp nginx.sangwapo.virtual.conf vladimir@rails.vm:~/sangwapo.virtual.conf
+
+
 # Set up the nginx configuration
-cd /etc/nginx/sites-enabled/
-sudo ln -s /etc/nginx/sites-available/sangwapo.virtual.conf sangwapo.virtual
+ssh vladimir@rails.vm
+
+sudo mv ~/sangwapo.virtual.conf /etc/nginx/sites-available
+sudo ln -nfs /etc/nginx/sites-available/sangwapo.virtual.conf /etc/nginx/sites-enabled/sangwapo.virtual
+
 
 Generate an SSL certificate and key:
+sudo mkdir -p /etc/nginx/ssl
 cd /etc/nginx/ssl
-sudo mkdir Sangwapo
+sudo mkdir -p Sangwapo
 cd Sangwapo
 sudo openssl genrsa -des3 -out sangwapo.virtual.key 1024
+
+		pass phrase: sangwapo
+
 sudo openssl req -new -key sangwapo.virtual.key -out sangwapo.virtual.csr
+
+		Country Name: ZM
+		Province: Lusaka Province
+		Locality Name: Lusaka
+		Organisation Name: Sangwapo Online Classifieds
+		Orgnisational Unit Name: <Blank>
+		Common Name: sangwapo.virtual.
+		Email: itsupport@pencilcasestudios.com
+		Challenge password: <Blank>
+		Optional Company Name: <Blank>
+
 sudo cp sangwapo.virtual.key sangwapo.virtual.key.original
 sudo openssl rsa -in sangwapo.virtual.key.original -out sangwapo.virtual.key
 sudo openssl x509 -req -days 365 -in sangwapo.virtual.csr -signkey sangwapo.virtual.key -out sangwapo.virtual.crt
+
 
 Test the nginx configuration:
 sudo /etc/nginx/sbin/nginx -t
