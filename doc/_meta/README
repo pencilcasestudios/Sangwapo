@@ -143,7 +143,7 @@ mv config.yml ~/Projects/Configurations/Sangwapo/virtual/
 # Capistrano steps for initial deployment
 # VIRTUAL MACHINE DEPLOYMENT
 git checkout master
-git merge work
+git merge dev
 git push
 git push virtual # May need to 'git push virtual master'
 cap deploy:setup # Update configuration files and create the database after this
@@ -204,7 +204,7 @@ Application Deployment
 # Capistrano steps for initial deployment
 # VIRTUAL MACHINE DEPLOYMENT
 git checkout master
-git merge work
+git merge dev
 git push
 git push virtual				# May need to 'git push virtual master'
 cap deploy:setup        # Update configuration files and create the database after this
@@ -216,7 +216,7 @@ cap deploy:start
 # Capistrano for non-initial deployment
 # STAGING DEPLOYMENT
 git checkout master
-git merge work
+git merge dev
 git push
 git push production
 cap deploy
@@ -224,7 +224,7 @@ cap deploy
 # Capistrano for non-initial deployment
 # PRODUCTION DEPLOYMENT
 git checkout master
-git merge work
+git merge dev
 git push
 git push production
 cap production deploy
