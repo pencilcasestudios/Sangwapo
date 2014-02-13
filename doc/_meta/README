@@ -124,6 +124,7 @@ ssh vladimir@rails.vm
 sudo mv ~/delayed_job.sangwapo.virtual.monitrc /etc/monit/conf.d/
 sudo /etc/init.d/monit syntax
 
+
 Setup the YAML configuration files:
 # From the development machine
 cd ~/Projects/Rails/Sangwapo/config/examples
@@ -132,18 +133,40 @@ scp database.virtual.yml deploy@rails.vm:~/database.yml
 cd ~/Projects/Rails/Sangwapo/
 ssh deploy@rails.vm
 
-# From the virtual machine
+# From the virtual machine (as the deploy user)
+cd ~
 mkdir -p ~/Projects/Configurations/Sangwapo/virtual
 mv database.yml ~/Projects/Configurations/Sangwapo/virtual/
 mv config.yml ~/Projects/Configurations/Sangwapo/virtual/
 
+# From the development machine
+# Capistrano steps for initial deployment
+# VIRTUAL MACHINE DEPLOYMENT
+git checkout master
+git merge work
+git push
+git push virtual # May need to 'git push virtual master'
+cap deploy:setup # Update configuration files and create the database after this
+
+# From the virtual machine (as the deploy user)
 # After running cap deploy:setup
 cd ~/Projects/Configurations/Sangwapo/virtual
 cp *.yml /var/Apps/Sangwapo/virtual/shared/config/
 
+cap deploy:check
+cap deploy:update
+# Create databases
+cap deploy:migrate
+cap db:seed
+cap deploy:start
+
+
 # After deploying the app
 # From the virtual machine
 sudo /etc/init.d/monit reload
+
+
+
 
 
 
