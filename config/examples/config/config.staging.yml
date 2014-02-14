@@ -1,0 +1,106 @@
+defaults: &defaults
+  # HTTP access mode:
+  # 1. closed - Authenticate with HTTP basic
+  # 2. open - Don't authenticate with HTTP basic
+  http_basic_access_mode: closed
+  http_basic_name: preview
+  http_basic_password: virtual
+  test_user_password: password
+
+  application_name: "Sangwapo"
+  gemset_name: "sangwapo-rails.3.2.x"
+  ruby_version: ruby-2.1.0
+  user: deploy
+
+  miniumum_version_of_bundler: ">=1.5.2"
+  miniumum_version_of_rake: ">=10.1.0"
+
+  # Multi-stage recipe settings
+  # Virtual deployment
+  virtual_deployment_path: virtual
+  virtual_repository_deployment_branch: master
+  virtual_server_name: rails.vm
+  virtual_stage_name: virtual
+
+  # Staging deployment
+  staging_deployment_path: staging
+  staging_repository_deployment_branch: master
+  staging_server_name: genesis.vps
+  staging_stage_name: virtual
+  #server_name_staging: sangwapo.clientcase.net
+  #deployment_path_staging: staging
+  #stage_name_staging: staging
+
+  # Production deployment
+  production_deployment_path: production
+  production_repository_deployment_branch: master
+  production_server_name: genesis.vps
+  production_stage_name: production
+  #server_name_production: sangwapo.com
+  #deployment_path_production: production
+  #stage_name_production: production
+
+
+
+
+  # Email settings
+  email_address: "smtp.gmail.com"
+  email_authentication: "plain"
+  email_domain: "gmail.com"
+  email_enable_starttls_auto: true
+  email_from_address: "hello@sangwapo.com"
+  email_openssl_verify_mode: "peer" # https://rails.lighthouseapp.com/projects/8994/tickets/6508-undocumented-actionmailer-openssl_verify_mode-option
+  email_password: "password" # Update this in production
+  email_port: 587
+  email_user_name: "hello@sangwapo.com"
+
+  # Email delivery mode
+  # virtual: user postfix on the virtual machine
+  # physical: actually delivery the email (development email is intercepted by letter_opener)
+  email_delivery_mode: physical
+
+  # ActionMailer settings
+  application_server_name: "sangwapo.clientcase.net"
+
+  # Mobile "gateway"
+  application_sim_cards:
+    airtel:
+      "0970000000": "0970000000"
+      "0970000001": "0970000001"
+      "0970000002": "0970000002"
+    mtn:
+      "0960000000": "0960000000"
+      "0960000001": "0960000001"
+      "0960000002": "0960000002"
+    zamtel:
+      "0950000000": "0950000000"
+      "0950000001": "0950000001"
+      "0950000002": "0950000002"
+
+  # Business rules
+  refund_percentage: 80
+
+  # Public contact information
+  public_contact_email_address: hello@sangwapo.com
+
+development:
+  <<: *defaults
+
+  server_name: "0.0.0.0:3002"
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
+
+  http_basic_access_mode: closed
+
+  # Mobile "gateway"
+  application_sim_cards:
+    airtel:
+      "0971746967": "0971746967"
+    mtn:
+      "0969126829": "0969126829"
+    zamtel:
+      "0950930425": "0950930425"

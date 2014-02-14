@@ -203,11 +203,11 @@ Set up the hosts (/etc/hosts):
 ssh silumesii@genesis.vps
 127.0.0.1 genesis.vps
 
-Check that SSH "loops back" on the virtual machine (host key verification):
+Check that SSH "loops back" on the staging machine (host key verification):
 # On the local development machine
 ssh deploy@genesis.vps
 
-# On the virtual machine
+# On the staging machine
 ssh deploy@genesis.vps
 
 Create the Git repository:
@@ -220,18 +220,18 @@ git init --bare
 Push to the Git repository:
 # From the development machine:
 cd ~/Projects/Rails/Sangwapo
-git push virtual master
+git push staging master
 
 Configure nginx:
 cd ~/Projects/Rails/Sangwapo/config/examples/nginx
-scp nginx.sangwapo.virtual.conf silumesii@genesis.vpsconf
+scp nginx.sangwapo.clientcase.net.conf silumesii@genesis.vps:~
 
 
 # Set up the nginx configuration
 ssh silumesii@genesis.vps
 
-sudo mv ~/sangwapo.virtual.conf /etc/nginx/sites-available
-sudo ln -nfs /etc/nginx/sites-available/sangwapo.virtual.conf /etc/nginx/sites-enabled/sangwapo.virtual
+sudo mv ~/sangwapo.clientcase.net.conf /etc/nginx/sites-available
+sudo ln -nfs /etc/nginx/sites-available/sangwapo.clientcase.net.conf /etc/nginx/sites-enabled/sangwapo.clientcase.net
 
 
 Generate an SSL certificate and key:
@@ -239,25 +239,25 @@ sudo mkdir -p /etc/nginx/ssl
 cd /etc/nginx/ssl
 sudo mkdir -p Sangwapo
 cd Sangwapo
-sudo openssl genrsa -des3 -out sangwapo.virtual.key 1024
+sudo openssl genrsa -des3 -out sangwapo.clientcase.net.key 1024
 
 		pass phrase: sangwapo
 
-sudo openssl req -new -key sangwapo.virtual.key -out sangwapo.virtual.csr
+sudo openssl req -new -key sangwapo.clientcase.net.key -out sangwapo.clientcase.net.csr
 
 		Country Name: ZM
 		Province: Lusaka Province
 		Locality Name: Lusaka
 		Organisation Name: Sangwapo Online Classifieds
 		Orgnisational Unit Name: <Blank>
-		Common Name: sangwapo.virtual.
+		Common Name: sangwapo.clientcase.net.
 		Email: itsupport@pencilcasestudios.com
 		Challenge password: <Blank>
 		Optional Company Name: <Blank>
 
-sudo cp sangwapo.virtual.key sangwapo.virtual.key.original
-sudo openssl rsa -in sangwapo.virtual.key.original -out sangwapo.virtual.key
-sudo openssl x509 -req -days 365 -in sangwapo.virtual.csr -signkey sangwapo.virtual.key -out sangwapo.virtual.crt
+sudo cp sangwapo.clientcase.net.key sangwapo.clientcase.net.key.original
+sudo openssl rsa -in sangwapo.clientcase.net.key.original -out sangwapo.clientcase.net.key
+sudo openssl x509 -req -days 365 -in sangwapo.clientcase.net.csr -signkey sangwapo.clientcase.net.key -out sangwapo.clientcase.net.crt
 
 
 Test the nginx configuration:
@@ -270,41 +270,41 @@ Setup the MySQL database user:
 ssh silumesii@genesis.vps
 mysql -u root -p
 create user 'sangwapo'@'localhost' identified by 'VirtualSangwapoPassword';
-grant all on Sangwapo_virtual.* to 'sangwapo'@'localhost';
-grant all on Sangwapo_virtual_development.* to 'sangwapo'@'localhost';
-grant all on Sangwapo_virtual_test.* to 'sangwapo'@'localhost';
+grant all on Sangwapo_staging.* to 'sangwapo'@'localhost';
+grant all on Sangwapo_staging_development.* to 'sangwapo'@'localhost';
+grant all on Sangwapo_staging_test.* to 'sangwapo'@'localhost';
 
 Setup the MySQL database:
 mysql -u sangwapo -p
-create database Sangwapo_virtual;
-create database Sangwapo_virtual_development;
-create database Sangwapo_virtual_test;
+create database Sangwapo_staging;
+create database Sangwapo_staging_development;
+create database Sangwapo_staging_test;
 
 Setup the Monit scripts:
 # From the development machine
 cd ~/Projects/Rails/Sangwapo/config/examples
-scp delayed_job.sangwapo.virtual.monitrc silumesii@genesis.vps
+scp delayed_job.sangwapo.staging.monitrc silumesii@genesis.vps
 cd ~/Projects/Rails/Sangwapo
 ssh silumesii@genesis.vps
 
-# From the virtual machine
-sudo mv ~/delayed_job.sangwapo.virtual.monitrc /etc/monit/conf.d/
+# From the staging machine
+sudo mv ~/delayed_job.sangwapo.clientcase.net.monitrc /etc/monit/conf.d/
 sudo /etc/init.d/monit syntax
 
 
 Setup the YAML configuration files:
 # From the development machine
 cd ~/Projects/Rails/Sangwapo/config/examples
-scp config.virtual.yml deploy@genesis.vps:~/config.yml
-scp database.virtual.yml deploy@genesis.vps:~/database.yml
+scp config.staging.yml deploy@genesis.vps:~/config.yml
+scp database.staging.yml deploy@genesis.vps:~/database.yml
 cd ~/Projects/Rails/Sangwapo/
 ssh deploy@genesis.vps
 
-# From the virtual machine (as the deploy user)
+# From the staging machine (as the deploy user)
 cd ~
-mkdir -p ~/Projects/Configurations/Sangwapo/virtual
-mv database.yml ~/Projects/Configurations/Sangwapo/virtual/
-mv config.yml ~/Projects/Configurations/Sangwapo/virtual/
+mkdir -p ~/Projects/Configurations/Sangwapo/staging
+mv database.yml ~/Projects/Configurations/Sangwapo/staging/
+mv config.yml ~/Projects/Configurations/Sangwapo/staging/
 
 # From the development machine
 # Capistrano steps for initial deployment
@@ -312,13 +312,13 @@ mv config.yml ~/Projects/Configurations/Sangwapo/virtual/
 git checkout master
 git merge dev
 git push
-git push virtual # May need to 'git push virtual master'
+git push staging # May need to 'git push staging master'
 cap deploy:setup # Update configuration files and create the database after this
 
-# From the virtual machine (as the deploy user)
+# From the staging machine (as the deploy user)
 # After running cap deploy:setup
-cd ~/Projects/Configurations/Sangwapo/virtual
-cp *.yml /var/Apps/Sangwapo/virtual/shared/config/
+cd ~/Projects/Configurations/Sangwapo/staging
+cp *.yml /var/Apps/Sangwapo/staging/shared/config/
 
 cap deploy:check
 cap deploy:update
@@ -329,7 +329,7 @@ cap deploy:start
 
 
 # After deploying the app
-# From the virtual machine
+# From the staging machine
 sudo /etc/init.d/monit reload
 
 
