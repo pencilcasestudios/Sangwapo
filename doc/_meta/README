@@ -30,7 +30,7 @@ Virtual setup
 Need:
 Git
 ImageMagick
-MySQL					# Remember to install libmysqlclient-dev (for the mysql2 gem to work)
+MySQL					# Remember to install libmariadbclient-dev (for the mysql2 gem to work)
 nginx
 nodejs				# JavaScript runtime
 RVM
