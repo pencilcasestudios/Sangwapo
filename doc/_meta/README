@@ -40,7 +40,10 @@ bundle exec guard
 
 Running the Application
 =======================
+cd ~/Projects/Clients/Sangwapo
 rails server # In one terminal window - to run the application
+
+cd ~/Projects/Clients/Sangwapo
 rake jobs:work # In another terminal window - to run delayed job
 
 
