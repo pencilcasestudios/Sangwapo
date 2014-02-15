@@ -46,6 +46,24 @@ rails server # In one terminal window - to run the application
 cd ~/Projects/Clients/Sangwapo
 rake jobs:work # In another terminal window - to run delayed job
 
+cd ~/Projects/Clients/Sangwapo
+rails console # In another terminal window - to set up admins
+
+
+
+
+Administration
+==============
+Creating an administrator
+# In the Rails console, select the user:
+u = User.first
+u.admin?
+
+# Promote the user to administrator
+u.promote
+u.save
+u.admin?
+
 
 
 
