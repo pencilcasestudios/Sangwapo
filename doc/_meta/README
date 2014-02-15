@@ -1,7 +1,6 @@
-Setting up the application to run the first time
-================================================
-Local machine setup
--------------------
+----------------------------------------------------------------------Development setup
+Setting up the development environment after a fresh repository clone
+----------------------------------------------------------------------
 cd ~/Projects/Rails/Sangwapo
 cp config/examples/database.yml config # Setup the database
 cp config/examples/config.yml config # Setup the configuration files
@@ -331,7 +330,7 @@ cap deploy:start
 # After deploying the app
 # From the staging machine
 sudo /etc/init.d/monit reload
-
+h
 
 
 
