@@ -224,6 +224,7 @@ create database Sangwapo_virtual;
 create database Sangwapo_virtual_development;
 create database Sangwapo_virtual_test;
 
+
 # Setup the Monit scripts:
 # From the development machine
 cd ~/Projects/Clients/Sangwapo/config/examples/monit
