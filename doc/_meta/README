@@ -238,14 +238,15 @@ sudo /etc/init.d/monit syntax
 
 Setup the YAML configuration files:
 # From the development machine
-cd ~/Projects/Clients/Sangwapo/config/examples
+cd ~/Projects/Clients/Sangwapo/config/examples/config
 scp config.virtual.yml deploy@rails.vm:~/config.yml
+cd ~/Projects/Clients/Sangwapo/config/examples/database
 scp database.virtual.yml deploy@rails.vm:~/database.yml
 cd ~/Projects/Clients/Sangwapo/
 ssh deploy@rails.vm
 
 # From the virtual machine (as the deploy user)
-cd ~
+cd
 mkdir -p ~/Projects/Configurations/Sangwapo/virtual
 mv database.yml ~/Projects/Configurations/Sangwapo/virtual/
 mv config.yml ~/Projects/Configurations/Sangwapo/virtual/
