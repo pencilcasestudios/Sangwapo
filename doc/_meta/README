@@ -302,7 +302,7 @@ Staging setup
 Need:
 Git
 ImageMagick
-MariaDB					# Remember to install  libmariadbclient-dev (for the mysql2 gem to work)
+MariaDB					# Remember to install libmariadbclient-dev (for the mysql2 gem to work)
 nginx
 nodejs				# JavaScript runtime
 RVM
@@ -315,6 +315,7 @@ ssh silumesii@genesis.vps
 
 Set up the hosts (/etc/hosts):
 ssh silumesii@genesis.vps
+Make sure the following line is in /etc/hosts:
 127.0.0.1 genesis.vps
 
 Check that SSH "loops back" on the staging machine (host key verification):
@@ -336,16 +337,18 @@ Push to the Git repository:
 cd ~/Projects/Clients/Sangwapo
 git push staging master
 
-Configure nginx:
+
+# Configure nginx
+# On the development machine
 cd ~/Projects/Clients/Sangwapo/config/examples/nginx
-scp nginx.sangwapo.clientcase.net.conf silumesii@genesis.vps:~
+scp nginx.sangwapo.staging.conf silumesii@genesis.vps:~/sangwapo.staging.conf
 
 
+# On the staging machine
 # Set up the nginx configuration
 ssh silumesii@genesis.vps
-
-sudo mv ~/sangwapo.clientcase.net.conf /etc/nginx/sites-available
-sudo ln -nfs /etc/nginx/sites-available/sangwapo.clientcase.net.conf /etc/nginx/sites-enabled/sangwapo.clientcase.net
+sudo mv ~/sangwapo.staging.conf /etc/nginx/sites-available
+sudo ln -nfs /etc/nginx/sites-available/sangwapo.staging.conf /etc/nginx/sites-enabled/sangwapo.staging
 
 
 Generate an SSL certificate and key:
@@ -353,25 +356,25 @@ sudo mkdir -p /etc/nginx/ssl
 cd /etc/nginx/ssl
 sudo mkdir -p Sangwapo
 cd Sangwapo
-sudo openssl genrsa -des3 -out sangwapo.clientcase.net.key 1024
+sudo openssl genrsa -des3 -out sangwapo.staging.key 1024
 
 		pass phrase: sangwapo
 
-sudo openssl req -new -key sangwapo.clientcase.net.key -out sangwapo.clientcase.net.csr
+sudo openssl req -new -key sangwapo.staging.key -out sangwapo.staging.csr
 
 		Country Name: ZM
 		Province: Lusaka Province
 		Locality Name: Lusaka
 		Organisation Name: Sangwapo Online Classifieds
 		Orgnisational Unit Name: <Blank>
-		Common Name: sangwapo.clientcase.net.
+		Common Name: sangwapo.staging.
 		Email: itsupport@pencilcasestudios.com
 		Challenge password: <Blank>
 		Optional Company Name: <Blank>
 
-sudo cp sangwapo.clientcase.net.key sangwapo.clientcase.net.key.original
-sudo openssl rsa -in sangwapo.clientcase.net.key.original -out sangwapo.clientcase.net.key
-sudo openssl x509 -req -days 365 -in sangwapo.clientcase.net.csr -signkey sangwapo.clientcase.net.key -out sangwapo.clientcase.net.crt
+sudo cp sangwapo.staging.key sangwapo.staging.key.original
+sudo openssl rsa -in sangwapo.staging.key.original -out sangwapo.staging.key
+sudo openssl x509 -req -days 365 -in sangwapo.staging.csr -signkey sangwapo.staging.key -out sangwapo.staging.crt
 
 
 Test the nginx configuration:
@@ -383,7 +386,7 @@ sudo /etc/init.d/nginx reload
 Setup the MariaDB database user:
 ssh silumesii@genesis.vps
 mysql -u root -p
-create user 'sangwapo'@'localhost' identified by 'VirtualSangwapoPassword';
+create user 'sangwapo'@'localhost' identified by 'StagingSangwapoPassword';
 grant all on Sangwapo_staging.* to 'sangwapo'@'localhost';
 grant all on Sangwapo_staging_development.* to 'sangwapo'@'localhost';
 grant all on Sangwapo_staging_test.* to 'sangwapo'@'localhost';
@@ -394,28 +397,30 @@ create database Sangwapo_staging;
 create database Sangwapo_staging_development;
 create database Sangwapo_staging_test;
 
-Setup the Monit scripts:
+
+# Setup the Monit scripts:
 # From the development machine
-cd ~/Projects/Clients/Sangwapo/config/examples
-scp delayed_job.sangwapo.staging.monitrc silumesii@genesis.vps
+cd ~/Projects/Clients/Sangwapo/config/examples/monit
+scp delayed_job.sangwapo.staging.monitrc silumesii@genesis.vps:~
 cd ~/Projects/Clients/Sangwapo
 ssh silumesii@genesis.vps
 
 # From the staging machine
-sudo mv ~/delayed_job.sangwapo.clientcase.net.monitrc /etc/monit/conf.d/
+sudo mv ~/delayed_job.sangwapo.staging.monitrc /etc/monit/conf.d/
 sudo /etc/init.d/monit syntax
 
 
 Setup the YAML configuration files:
 # From the development machine
-cd ~/Projects/Clients/Sangwapo/config/examples
+cd ~/Projects/Clients/Sangwapo/config/examples/config
 scp config.staging.yml deploy@genesis.vps:~/config.yml
+cd ~/Projects/Clients/Sangwapo/config/examples/database
 scp database.staging.yml deploy@genesis.vps:~/database.yml
 cd ~/Projects/Clients/Sangwapo/
 ssh deploy@genesis.vps
 
 # From the staging machine (as the deploy user)
-cd ~
+cd
 mkdir -p ~/Projects/Configurations/Sangwapo/staging
 mv database.yml ~/Projects/Configurations/Sangwapo/staging/
 mv config.yml ~/Projects/Configurations/Sangwapo/staging/
@@ -427,19 +432,19 @@ git checkout master
 git merge dev
 git push
 git push staging # May need to 'git push staging master'
-cap virtual deploy:setup # Update configuration files and create the database after this
+cap staging deploy:setup # Update configuration files and create the database after this
 
 # From the staging machine (as the deploy user)
-# After running cap virtual deploy:setup
+# After running cap staging deploy:setup
 cd ~/Projects/Configurations/Sangwapo/staging
 cp *.yml /var/Apps/Sangwapo/staging/shared/config/
 
-cap virtual deploy:check
-cap virtual deploy:update
+cap staging deploy:check
+cap staging deploy:update
 # Create databases
-cap virtual deploy:migrate
-cap virtual db:seed
-cap virtual deploy:start
+cap staging deploy:migrate
+cap staging db:seed
+cap staging deploy:start
 
 
 # After deploying the app
