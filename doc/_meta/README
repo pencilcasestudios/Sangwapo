@@ -1,4 +1,5 @@
-----------------------------------------------------------------------Development setup
+----------------------------------------------------------------------
+Development setup
 Setting up the development environment after a fresh repository clone
 ----------------------------------------------------------------------
 cd ~/Projects/Rails/Sangwapo
@@ -14,6 +15,84 @@ Setup deployment references:
 git remote add virtual deploy@rails.vm:/var/Repositories/Git/Sangwapo.git
 git remote add staging deploy@genesis.vps:/var/Repositories/Git/Sangwapo.git
 git remote add production deploy@genesis.vps:/var/Repositories/Git/Sangwapo.git
+
+
+
+
+Tests
+=====
+# Git
+git push virtual
+git push staging
+git push production
+
+# Guard for testing
+cd ~/Projects/Clients/Sangwapo
+bundle update
+gem cleanup
+rake db:drop
+rake db:setup
+rake db:test:prepare
+bundle exec guard
+
+
+
+
+Running the Application
+=======================
+rails server # In one terminal window - to run the application
+rake jobs:work # In another terminal window - to run delayed job
+
+
+
+
+Gem management
+==============
+MAINTAIN GEM BUNDLE
+bundle update
+gem cleanup
+
+DELETE ALL INSTALLED GEMS
+gem list | cut -d" " -f1 | xargs gem uninstall -aIx
+
+
+
+
+Continuous Application Deployment
+=================================
+# VIRTUAL
+git checkout master
+git merge dev
+git push
+git push virtual
+cap virtual deploy
+git tag "`date +virtual_%Y-%m-%d_%H%M%S`"
+
+# STAGING
+git checkout master
+git merge dev
+git push
+git push staging
+cap staging deploy
+git tag "`date +staging_%m-%d_%H%M%S`"
+
+# PRODUCTION
+git checkout master
+git merge dev
+git push
+git push production
+cap production deploy
+git tag "`date +production_%Y-%m-%d_%H%M%S`"
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -181,6 +260,16 @@ sudo /etc/init.d/monit reload
 
 
 
+
+
+
+
+
+
+
+
+
+
 ----------------------------------------------------------------------
 Staging setup
 ----------------------------------------------------------------------
@@ -330,76 +419,3 @@ cap deploy:start
 # After deploying the app
 # From the staging machine
 sudo /etc/init.d/monit reload
-h
-
-
-
-
-
-
-
-
-Testing
-=======
-# Guard for testing
-cd ~/Projects/Clients/Sangwapo
-bundle update
-gem cleanup
-rake db:drop
-rake db:setup
-rake db:test:prepare
-bundle exec guard
-
-
-
-
-Gem management
-==============
-MAINTAIN GEM BUNDLE
-bundle update
-gem cleanup
-
-DELETE ALL INSTALLED GEMS
-gem list | cut -d" " -f1 | xargs gem uninstall -aIx
-
-
-
-
-Application Deployment
-======================
-# Capistrano steps for initial deployment
-# VIRTUAL MACHINE DEPLOYMENT
-git checkout master
-git merge dev
-git push
-git push virtual				# May need to 'git push virtual master'
-cap deploy:setup        # Update configuration files and create the database after this
-cap deploy:check
-cap deploy:update
-cap deploy:migrate
-cap deploy:start
-
-# Capistrano for non-initial deployment
-# STAGING DEPLOYMENT
-git checkout master
-git merge dev
-git push
-git push production
-cap deploy
-
-# Capistrano for non-initial deployment
-# PRODUCTION DEPLOYMENT
-git checkout master
-git merge dev
-git push
-git push production
-cap production deploy
-git tag "`date +published_%Y-%m-%d_%H%M%S`"
-
-
-
-
-Running the Application
-=======================
-rails server # In one terminal window - to run the application
-rake jobs:work # In another terminal window - to run delayed job
