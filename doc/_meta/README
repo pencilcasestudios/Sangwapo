@@ -258,19 +258,19 @@ git checkout master
 git merge dev
 git push
 git push virtual # May need to 'git push virtual master'
-cap deploy:setup # Update configuration files and create the database after this
+cap virtual deploy:setup # Update configuration files and create the database after this
 
 # From the virtual machine (as the deploy user)
-# After running cap deploy:setup
+# After running cap virtual deploy:setup
 cd ~/Projects/Configurations/Sangwapo/virtual
 cp *.yml /var/Apps/Sangwapo/virtual/shared/config/
 
-cap deploy:check
-cap deploy:update
+cap virtual deploy:check
+cap virtual deploy:update
 # Create databases
-cap deploy:migrate
-cap db:seed
-cap deploy:start
+cap virtual deploy:migrate
+cap virtual db:seed
+cap virtual deploy:start
 
 
 # After deploying the app
@@ -426,19 +426,19 @@ git checkout master
 git merge dev
 git push
 git push staging # May need to 'git push staging master'
-cap deploy:setup # Update configuration files and create the database after this
+cap virtual deploy:setup # Update configuration files and create the database after this
 
 # From the staging machine (as the deploy user)
-# After running cap deploy:setup
+# After running cap virtual deploy:setup
 cd ~/Projects/Configurations/Sangwapo/staging
 cp *.yml /var/Apps/Sangwapo/staging/shared/config/
 
-cap deploy:check
-cap deploy:update
+cap virtual deploy:check
+cap virtual deploy:update
 # Create databases
-cap deploy:migrate
-cap db:seed
-cap deploy:start
+cap virtual deploy:migrate
+cap virtual db:seed
+cap virtual deploy:start
 
 
 # After deploying the app
