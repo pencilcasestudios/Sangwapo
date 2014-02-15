@@ -2,8 +2,8 @@
 Setting up the development environment after a fresh repository clone
 ----------------------------------------------------------------------
 cd ~/Projects/Rails/Sangwapo
-cp config/examples/database.yml config # Setup the database
-cp config/examples/config.yml config # Setup the configuration files
+cp config/examples/database/database.yml config # Setup the database
+cp config/examples/config/config.yml config # Setup the configuration files
 cp config/examples/deploy.rb config # Setup the capistrano deployment recipe
 cp config/examples/deploy/*.rb config/deploy # Setup deployment stage configuration
 
