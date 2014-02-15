@@ -1,7 +1,7 @@
 defaults: &defaults
   # HTTP access mode:
-  # 1. closed    - Authenticate with HTTP basic
-  # 2. open  - Don't authenticate with HTTP basic
+  # 1. closed - Authenticate with HTTP basic
+  # 2. open - Don't authenticate with HTTP basic
   http_basic_access_mode: closed
   http_basic_name: preview
   http_basic_password: dev
@@ -95,9 +95,9 @@ production:
   <<: *defaults
 
   # HTTP access mode:
-  # 1. open    - Authenticate with HTTP basic
-  # 2. closed  - Don't authenticate with HTTP basic
-  http_basic_access_mode: open
+  # 1. closed - Authenticate with HTTP basic
+  # 2. open - Don't authenticate with HTTP basic
+  http_basic_access_mode: closed
 
   # Mobile "gateway"
   application_sim_cards:
