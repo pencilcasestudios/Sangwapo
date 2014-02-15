@@ -129,7 +129,7 @@ Virtual setup
 Need:
 Git
 ImageMagick
-MySQL					# Remember to install libmariadbclient-dev (for the mysql2 gem to work)
+MariaDB					# Remember to install libmariadbclient-dev (for the mysql2 gem to work)
 nginx
 nodejs				# JavaScript runtime
 RVM
@@ -207,7 +207,7 @@ sudo nginx -t
 If all is well, load the new nginx configuration:
 sudo /etc/init.d/nginx reload
 
-Setup the MySQL database user:
+Setup the MariaDB database user:
 ssh vladimir@rails.vm
 mysql -u root -p
 create user 'sangwapo'@'localhost' identified by 'VirtualSangwapoPassword';
@@ -215,7 +215,7 @@ grant all on Sangwapo_virtual.* to 'sangwapo'@'localhost';
 grant all on Sangwapo_virtual_development.* to 'sangwapo'@'localhost';
 grant all on Sangwapo_virtual_test.* to 'sangwapo'@'localhost';
 
-Setup the MySQL database:
+Setup the MariaDB database:
 mysql -u sangwapo -p
 create database Sangwapo_virtual;
 create database Sangwapo_virtual_development;
@@ -297,7 +297,7 @@ Staging setup
 Need:
 Git
 ImageMagick
-MySQL					# Remember to install  libmariadbclient-dev (for the mysql2 gem to work)
+MariaDB					# Remember to install  libmariadbclient-dev (for the mysql2 gem to work)
 nginx
 nodejs				# JavaScript runtime
 RVM
@@ -375,7 +375,7 @@ sudo nginx -t
 If all is well, load the new nginx configuration:
 sudo /etc/init.d/nginx reload
 
-Setup the MySQL database user:
+Setup the MariaDB database user:
 ssh silumesii@genesis.vps
 mysql -u root -p
 create user 'sangwapo'@'localhost' identified by 'VirtualSangwapoPassword';
@@ -383,7 +383,7 @@ grant all on Sangwapo_staging.* to 'sangwapo'@'localhost';
 grant all on Sangwapo_staging_development.* to 'sangwapo'@'localhost';
 grant all on Sangwapo_staging_test.* to 'sangwapo'@'localhost';
 
-Setup the MySQL database:
+Setup the MariaDB database:
 mysql -u sangwapo -p
 create database Sangwapo_staging;
 create database Sangwapo_staging_development;
