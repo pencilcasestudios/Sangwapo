@@ -615,6 +615,7 @@ cd
 mkdir -p ~/Projects/Configurations/Sangwapo/production
 mv database.yml ~/Projects/Configurations/Sangwapo/production/
 mv config.yml ~/Projects/Configurations/Sangwapo/production/
+# After this, update the production database password
 
 # From the development machine
 # Capistrano steps for initial deployment
