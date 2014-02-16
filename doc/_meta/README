@@ -577,13 +577,13 @@ sudo service nginx reload
 Setup the MariaDB database user:
 ssh silumesii@genesis.vps
 mysql -u root -p
-create user 'sangwapo'@'localhost' identified by 'ProductionSangwapoPassword';
-grant all on Sangwapo_production.* to 'sangwapo'@'localhost';
-grant all on Sangwapo_production_development.* to 'sangwapo'@'localhost';
-grant all on Sangwapo_production_test.* to 'sangwapo'@'localhost';
+create user 'sangwapo_production'@'localhost' identified by 'ProductionSangwapoPassword';
+grant all on Sangwapo_production.* to 'sangwapo_production'@'localhost';
+grant all on Sangwapo_production_development.* to 'sangwapo_production'@'localhost';
+grant all on Sangwapo_production_test.* to 'sangwapo_production'@'localhost';
 
 Setup the MariaDB database:
-mysql -u sangwapo -p
+mysql -u sangwapo_production -p
 create database Sangwapo_production;
 create database Sangwapo_production_development;
 create database Sangwapo_production_test;
