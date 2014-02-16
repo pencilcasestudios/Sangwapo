@@ -462,3 +462,16 @@ cap staging deploy:start
 # After deploying the app
 # From the staging machine
 sudo /etc/init.d/monit reload
+
+
+
+
+Hints
+=====
+Working with gemsets:
+rvm @global do gem cleanup
+
+
+Links
+=====
+https://rvm.io/gemsets/global
