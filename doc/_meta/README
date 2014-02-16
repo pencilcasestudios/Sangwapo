@@ -341,7 +341,7 @@ git push staging # or git push staging master
 # Configure nginx
 # On the development machine
 cd ~/Projects/Clients/Sangwapo/config/examples/nginx
-scp nginx.sangwapo.staging.conf silumesii@genesis.vps:~/sangwapo.staging.conf
+scp nginx.sangwapo.clientcase.net.conf silumesii@genesis.vps:~/sangwapo.staging.conf
 
 
 # On the staging machine
