@@ -208,7 +208,7 @@ Test the nginx configuration:
 sudo nginx -t
 
 If all is well, load the new nginx configuration:
-sudo /etc/init.d/nginx reload
+sudo service nginx reload
 
 Setup the MariaDB database user:
 ssh vladimir@rails.vm
@@ -381,7 +381,7 @@ Test the nginx configuration:
 sudo nginx -t
 
 If all is well, load the new nginx configuration:
-sudo /etc/init.d/nginx reload
+sudo service nginx reload
 
 Setup the MariaDB database user:
 ssh silumesii@genesis.vps
