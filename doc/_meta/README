@@ -234,7 +234,7 @@ ssh vladimir@rails.vm
 
 # From the virtual machine
 sudo mv ~/delayed_job.sangwapo.virtual.monitrc /etc/monit/conf.d/
-sudo /etc/init.d/monit syntax
+sudo service monit syntax
 
 
 Setup the YAML configuration files:
@@ -407,7 +407,7 @@ ssh silumesii@genesis.vps
 
 # From the staging machine
 sudo mv ~/delayed_job.sangwapo.clientcase.net.monitrc /etc/monit/conf.d/
-sudo /etc/init.d/monit syntax
+sudo service monit syntax
 
 
 Setup the YAML configuration files:

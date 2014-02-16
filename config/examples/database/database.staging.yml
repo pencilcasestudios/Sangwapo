@@ -2,28 +2,28 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: Sangwapo_virtual_development
+  database: Sangwapo_staging_development
   pool: 5
   username: sangwapo
-  password: VirtualSangwapoPassword
+  password: StagingSangwapoPassword
   host: localhost
 
 test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: Sangwapo_virtual_test
+  database: Sangwapo_staging_test
   pool: 5
   username: sangwapo
-  password: VirtualSangwapoPassword
+  password: StagingSangwapoPassword
   host: localhost
 
 production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: Sangwapo_virtual
+  database: Sangwapo_staging
   pool: 5
   username: sangwapo
-  password: VirtualSangwapoPassword
+  password: StagingSangwapoPassword
   host: localhost
