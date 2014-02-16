@@ -4,7 +4,7 @@ defaults: &defaults
   # 2. open - Don't authenticate with HTTP basic
   http_basic_access_mode: closed
   http_basic_name: preview
-  http_basic_password: virtual
+  http_basic_password: dev
   test_user_password: password
 
   application_name: "Sangwapo"
@@ -94,7 +94,10 @@ test:
 production:
   <<: *defaults
 
-  http_basic_access_mode: closed
+  # HTTP access mode:
+  # 1. closed - Authenticate with HTTP basic
+  # 2. open - Don't authenticate with HTTP basic
+  http_basic_access_mode: open
 
   # Mobile "gateway"
   application_sim_cards:
