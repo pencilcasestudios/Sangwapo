@@ -162,7 +162,7 @@ git init --bare
 Push to the Git repository:
 # From the development machine:
 cd ~/Projects/Clients/Sangwapo
-git push virtual master
+git push virtual # or git push virtual master
 
 
 # Configure nginx
@@ -335,7 +335,7 @@ git init --bare
 Push to the Git repository:
 # From the development machine:
 cd ~/Projects/Clients/Sangwapo
-git push staging master
+git push staging # or git push staging master
 
 
 # Configure nginx
