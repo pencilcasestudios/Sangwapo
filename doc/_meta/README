@@ -401,12 +401,12 @@ create database Sangwapo_staging_test;
 # Setup the Monit scripts:
 # From the development machine
 cd ~/Projects/Clients/Sangwapo/config/examples/monit
-scp delayed_job.sangwapo.staging.monitrc silumesii@genesis.vps:~
+scp delayed_job.sangwapo.clientcase.net.monitrc silumesii@genesis.vps:~
 cd ~/Projects/Clients/Sangwapo
 ssh silumesii@genesis.vps
 
 # From the staging machine
-sudo mv ~/delayed_job.sangwapo.staging.monitrc /etc/monit/conf.d/
+sudo mv ~/delayed_job.sangwapo.clientcase.net.monitrc /etc/monit/conf.d/
 sudo /etc/init.d/monit syntax
 
 
