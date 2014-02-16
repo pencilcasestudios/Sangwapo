@@ -165,6 +165,12 @@ cd ~/Projects/Clients/Sangwapo
 git push virtual # or git push virtual master
 
 
+Set up the Apps folder
+ssh silumesii@rails.vm
+sudo mkdir -p /var/Apps
+sudo chown -R deploy:deploy /var/Apps
+
+
 # Configure nginx
 # On the development machine
 cd ~/Projects/Clients/Sangwapo/config/examples/nginx
@@ -336,6 +342,12 @@ Push to the Git repository:
 # From the development machine:
 cd ~/Projects/Clients/Sangwapo
 git push staging # or git push staging master
+
+
+Set up the Apps folder
+ssh silumesii@rails.vm
+sudo mkdir -p /var/Apps
+sudo chown -R deploy:deploy /var/Apps
 
 
 # Configure nginx
