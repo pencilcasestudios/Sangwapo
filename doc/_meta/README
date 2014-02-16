@@ -466,6 +466,200 @@ sudo /etc/init.d/monit reload
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------
+Production setup
+----------------------------------------------------------------------
+Need:
+Git
+ImageMagick
+MariaDB					# Remember to install libmariadbclient-dev (for the mysql2 gem to work)
+nginx
+nodejs				# JavaScript runtime
+RVM
+SSH
+
+
+Test SSH access:
+ssh deploy@genesis.vps
+ssh silumesii@genesis.vps
+
+Set up the hosts (/etc/hosts):
+ssh silumesii@genesis.vps
+Make sure the following line is in /etc/hosts:
+127.0.0.1 genesis.vps
+
+Check that SSH "loops back" on the production machine (host key verification):
+# On the local development machine
+ssh deploy@genesis.vps
+
+# On the production machine
+ssh deploy@genesis.vps
+
+Create the Git repository:
+ssh deploy@genesis.vps
+cd /var/Repositories/Git/
+mkdir Sangwapo.git
+cd Sangwapo.git
+git init --bare
+
+Push to the Git repository:
+# From the development machine:
+cd ~/Projects/Clients/Sangwapo
+git push production # or git push production master
+
+
+Set up the Apps folder
+ssh silumesii@rails.vm
+sudo mkdir -p /var/Apps
+sudo chown -R deploy:deploy /var/Apps
+
+
+# Configure nginx
+# On the development machine
+cd ~/Projects/Clients/Sangwapo/config/examples/nginx
+scp nginx.sangwapo.com.conf silumesii@genesis.vps:~/sangwapo.com.conf
+
+
+# On the production machine
+# Set up the nginx configuration
+ssh silumesii@genesis.vps
+sudo mv ~/sangwapo.com.conf /etc/nginx/sites-available
+sudo ln -nfs /etc/nginx/sites-available/sangwapo.com.conf /etc/nginx/sites-enabled/sangwapo.com
+
+
+Generate an SSL certificate and key:
+sudo mkdir -p /etc/nginx/ssl
+cd /etc/nginx/ssl
+sudo mkdir -p Sangwapo
+cd Sangwapo
+sudo openssl genrsa -des3 -out sangwapo.com.key 1024
+
+		pass phrase: sangwapo
+
+sudo openssl req -new -key sangwapo.com.key -out sangwapo.com.csr
+
+		Country Name: ZM
+		Province: Lusaka Province
+		Locality Name: Lusaka
+		Organisation Name: Sangwapo Online Classifieds
+		Orgnisational Unit Name: <Blank>
+		Common Name: sangwapo.com.
+		Email: itsupport@pencilcasestudios.com
+		Challenge password: <Blank>
+		Optional Company Name: <Blank>
+
+sudo cp sangwapo.com.key sangwapo.com.key.original
+sudo openssl rsa -in sangwapo.com.key.original -out sangwapo.com.key
+sudo openssl x509 -req -days 365 -in sangwapo.com.csr -signkey sangwapo.com.key -out sangwapo.com.crt
+
+
+Test the nginx configuration:
+sudo nginx -t
+
+If all is well, load the new nginx configuration:
+sudo service nginx reload
+
+Setup the MariaDB database user:
+ssh silumesii@genesis.vps
+mysql -u root -p
+create user 'sangwapo'@'localhost' identified by 'ProductionSangwapoPassword';
+grant all on Sangwapo_production.* to 'sangwapo'@'localhost';
+grant all on Sangwapo_production_development.* to 'sangwapo'@'localhost';
+grant all on Sangwapo_production_test.* to 'sangwapo'@'localhost';
+
+Setup the MariaDB database:
+mysql -u sangwapo -p
+create database Sangwapo_production;
+create database Sangwapo_production_development;
+create database Sangwapo_production_test;
+
+
+# Setup the Monit scripts:
+# From the development machine
+cd ~/Projects/Clients/Sangwapo/config/examples/monit
+scp delayed_job.sangwapo.com.monitrc silumesii@genesis.vps:~
+cd ~/Projects/Clients/Sangwapo
+ssh silumesii@genesis.vps
+
+# From the production machine
+sudo mv ~/delayed_job.sangwapo.com.monitrc /etc/monit/conf.d/
+sudo service monit syntax
+
+
+Setup the YAML configuration files:
+# From the development machine
+cd ~/Projects/Clients/Sangwapo/config/examples/config
+scp config.production.yml deploy@genesis.vps:~/config.yml
+cd ~/Projects/Clients/Sangwapo/config/examples/database
+scp database.production.yml deploy@genesis.vps:~/database.yml
+cd ~/Projects/Clients/Sangwapo/
+ssh deploy@genesis.vps
+
+# From the production machine (as the deploy user)
+cd
+mkdir -p ~/Projects/Configurations/Sangwapo/production
+mv database.yml ~/Projects/Configurations/Sangwapo/production/
+mv config.yml ~/Projects/Configurations/Sangwapo/production/
+
+# From the development machine
+# Capistrano steps for initial deployment
+# PRODUCTION MACHINE DEPLOYMENT
+git checkout master
+git merge dev
+git push
+git push production # May need to 'git push production master'
+cap production deploy:setup # Update configuration files and create the database after this
+
+# From the production machine (as the deploy user)
+# After running cap production deploy:setup
+cd ~/Projects/Configurations/Sangwapo/production
+cp *.yml /var/Apps/Sangwapo/production/shared/config/
+
+cap production deploy:check
+cap production deploy:update
+# Create databases
+cap production deploy:migrate
+cap production db:seed
+cap production deploy:start
+
+
+# After deploying the app
+# From the production machine
+sudo /etc/init.d/monit reload
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Hints
 =====
 Working with gemsets:
