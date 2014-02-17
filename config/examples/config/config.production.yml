@@ -34,7 +34,7 @@ defaults: &defaults
   # Production deployment
   production_deployment_path: production
   production_repository_deployment_branch: master
-  production_server_name: genesis.vps
+  production_server_name: deuteronomy.vps
   production_stage_name: production
   #server_name_production: sangwapo.com
   #deployment_path_production: production
