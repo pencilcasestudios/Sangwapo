@@ -563,7 +563,7 @@ git push production # or git push production master
 
 
 Set up the Apps folder
-ssh vladimir@rails.vm
+ssh silumesii@deuteronomy.vps
 sudo mkdir -p /var/Apps
 sudo chown -R deploy:deploy /var/Apps
 
