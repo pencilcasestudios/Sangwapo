@@ -670,5 +670,5 @@ rvm @global do gem cleanup
 Links
 =====
 http://gorails.com/deploy/ubuntu/12.04
-http://www.modrails.com/documentation/Users%20guide%20Nginx.html
+http://www.modrails.com/documentation/Users%20guide%20Nginx.html (Note the "RVM helper tool" section)
 https://rvm.io/gemsets/global
