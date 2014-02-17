@@ -14,7 +14,7 @@ Set up the hosts (/etc/hosts)
 Setup deployment references:
 git remote add virtual deploy@rails.vm:/var/Repositories/Git/Sangwapo.git
 git remote add staging deploy@genesis.vps:/var/Repositories/Git/Sangwapo.git
-git remote add production deploy@genesis.vps:/var/Repositories/Git/Sangwapo.git
+git remote add production deploy@deuteronomy.vps:/var/Repositories/Git/Sangwapo.git
 
 
 
