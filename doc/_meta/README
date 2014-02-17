@@ -152,6 +152,18 @@ ssh deploy@rails.vm
 # On the virtual machine
 ssh deploy@rails.vm
 
+Or
+
+If the "loop back" fails:
+ssh-keygen
+ssh-copy-id deploy@rails.vm
+
+
+Set up the Repository folder
+ssh vladimir@rails.vm
+sudo mkdir -p /var/Repositories/Git
+sudo chown -R deploy:deploy /var/Repositories/Git
+
 Create the Git repository:
 ssh deploy@rails.vm
 cd /var/Repositories/Git/
@@ -166,7 +178,7 @@ git push virtual # or git push virtual master
 
 
 Set up the Apps folder
-ssh silumesii@rails.vm
+ssh vladimir@rails.vm
 sudo mkdir -p /var/Apps
 sudo chown -R deploy:deploy /var/Apps
 
@@ -331,6 +343,18 @@ ssh deploy@genesis.vps
 # On the staging machine
 ssh deploy@genesis.vps
 
+Or
+
+If the "loop back" fails:
+ssh-keygen
+ssh-copy-id deploy@genesis.vps
+
+
+Set up the Repository folder
+ssh vladimir@rails.vm
+sudo mkdir -p /var/Repositories/Git
+sudo chown -R deploy:deploy /var/Repositories/Git
+
 Create the Git repository:
 ssh deploy@genesis.vps
 cd /var/Repositories/Git/
@@ -345,7 +369,7 @@ git push staging # or git push staging master
 
 
 Set up the Apps folder
-ssh silumesii@rails.vm
+ssh vladimir@rails.vm
 sudo mkdir -p /var/Apps
 sudo chown -R deploy:deploy /var/Apps
 
@@ -521,7 +545,7 @@ ssh-copy-id deploy@deuteronomy.vps
 
 
 Set up the Repository folder
-ssh silumesii@rails.vm
+ssh vladimir@rails.vm
 sudo mkdir -p /var/Repositories/Git
 sudo chown -R deploy:deploy /var/Repositories/Git
 
@@ -539,7 +563,7 @@ git push production # or git push production master
 
 
 Set up the Apps folder
-ssh silumesii@rails.vm
+ssh vladimir@rails.vm
 sudo mkdir -p /var/Apps
 sudo chown -R deploy:deploy /var/Apps
 
