@@ -282,7 +282,7 @@ cap virtual deploy:start
 
 # After deploying the app
 # From the virtual machine
-sudo /etc/init.d/monit reload
+sudo service monit reload
 
 
 
@@ -436,6 +436,9 @@ cd
 mkdir -p ~/Projects/Configurations/Sangwapo/staging
 mv database.yml ~/Projects/Configurations/Sangwapo/staging/
 mv config.yml ~/Projects/Configurations/Sangwapo/staging/
+# After this, update:
+# 1. the production database password
+# 2. the production email password
 
 # From the development machine
 # Capistrano steps for initial deployment
@@ -461,7 +464,7 @@ cap staging deploy:start
 
 # After deploying the app
 # From the staging machine
-sudo /etc/init.d/monit reload
+sudo service monit reload
 
 
 
@@ -615,7 +618,9 @@ cd
 mkdir -p ~/Projects/Configurations/Sangwapo/production
 mv database.yml ~/Projects/Configurations/Sangwapo/production/
 mv config.yml ~/Projects/Configurations/Sangwapo/production/
-# After this, update the production database password
+# After this, update:
+# 1. the production database password
+# 2. the production email password
 
 # From the development machine
 # Capistrano steps for initial deployment
@@ -641,7 +646,7 @@ cap production deploy:start
 
 # After deploying the app
 # From the production machine
-sudo /etc/init.d/monit reload
+sudo service monit reload
 
 
 
@@ -666,9 +671,28 @@ Hints
 Working with gemsets:
 rvm @global do gem cleanup
 
+Database export:
+mysqldump -u USERNAME -p DATABASE_NAME > ~/OUTPUTFILE.EXTENSION
+The EXTENSION can be something like "sql"
+
+Database import:
+
+gzip:
+gzip database.sql
+
+
+
+
+
+
+
+
 
 Links
 =====
 http://gorails.com/deploy/ubuntu/12.04
 http://www.modrails.com/documentation/Users%20guide%20Nginx.html (Note the "RVM helper tool" section)
 https://rvm.io/gemsets/global
+https://dev.mysql.com/doc/refman/5.1/en/mysqldump.html
+http://stackoverflow.com/questions/3031412/how-to-export-a-mysql-database-using-command-prompt
+http://webcheatsheet.com/SQL/mysql_backup_restore.php
