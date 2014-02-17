@@ -513,10 +513,17 @@ ssh deploy@deuteronomy.vps
 # On the production machine
 ssh deploy@deuteronomy.vps
 
+Or
+
 If the "loop back" fails:
 ssh-keygen
 ssh-copy-id deploy@deuteronomy.vps
 
+
+Set up the Repository folder
+ssh silumesii@rails.vm
+sudo mkdir -p /var/Repositories/Git
+sudo chown -R deploy:deploy /var/Repositories/Git
 
 Create the Git repository:
 ssh deploy@deuteronomy.vps
