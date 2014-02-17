@@ -728,8 +728,9 @@ gzip database.sql
 Links
 =====
 http://gorails.com/deploy/ubuntu/12.04
-http://www.modrails.com/documentation/Users%20guide%20Nginx.html (Note the "RVM helper tool" section)
-https://rvm.io/gemsets/global
-https://dev.mysql.com/doc/refman/5.1/en/mysqldump.html
 http://stackoverflow.com/questions/3031412/how-to-export-a-mysql-database-using-command-prompt
 http://webcheatsheet.com/SQL/mysql_backup_restore.php
+http://www.modrails.com/documentation/Users%20guide%20Nginx.html (Note the "RVM helper tool" section)
+https://dev.mysql.com/doc/refman/5.0/en/set-password.html
+https://dev.mysql.com/doc/refman/5.1/en/mysqldump.html
+https://rvm.io/gemsets/global
