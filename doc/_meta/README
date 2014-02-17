@@ -513,6 +513,11 @@ ssh deploy@deuteronomy.vps
 # On the production machine
 ssh deploy@deuteronomy.vps
 
+If the "loop back" fails:
+ssh-keygen
+ssh-copy-id deploy@deuteronomy.vps
+
+
 Create the Git repository:
 ssh deploy@deuteronomy.vps
 cd /var/Repositories/Git/
