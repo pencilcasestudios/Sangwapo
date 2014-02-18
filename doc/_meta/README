@@ -708,11 +708,14 @@ Working with gemsets:
 rvm @global do gem update
 rvm @global do gem cleanup
 
-Database export:
-mysqldump -u USERNAME -p DATABASE_NAME > ~/OUTPUTFILE.EXTENSION
-The EXTENSION can be something like "sql"
 
-Database import:
+# Database export:
+# The EXTENSION can be something like "sql"
+mysqldump -u USERNAME -p DATABASE_NAME > ~/OUTPUTFILE.EXTENSION
+
+# Database import:
+mysql -u USERNAME -p DATABASE_NAME < BACKUPFILE
+
 
 gzip:
 gzip database.sql
