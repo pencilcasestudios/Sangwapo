@@ -352,7 +352,7 @@ ssh-copy-id deploy@genesis.vps
 
 
 Set up the Repository folder
-ssh vladimir@rails.vm
+ssh silumesii@genesis.vps
 sudo mkdir -p /var/Repositories/Git
 sudo chown -R deploy:deploy /var/Repositories/Git
 
@@ -370,7 +370,7 @@ git push staging # or git push staging master
 
 
 Set up the Apps folder
-ssh vladimir@rails.vm
+ssh silumesii@genesis.vps
 sudo mkdir -p /var/Apps
 sudo chown -R deploy:deploy /var/Apps
 
@@ -429,6 +429,7 @@ grant all on Sangwapo_staging_development.* to 'sangwapo'@'localhost';
 grant all on Sangwapo_staging_test.* to 'sangwapo'@'localhost';
 
 Setup the MariaDB database:
+ssh deploy@genesis.vps
 mysql -u sangwapo -p
 create database Sangwapo_staging;
 create database Sangwapo_staging_development;
