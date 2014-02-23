@@ -706,7 +706,7 @@ sudo service monit reload
 
 Hints
 =====
-Working with gemsets:
+# Working with gemsets:
 rvm @global do gem update
 rvm @global do gem cleanup
 
@@ -719,7 +719,7 @@ mysqldump -u USERNAME -p DATABASE_NAME > ~/OUTPUTFILE.EXTENSION
 mysql -u USERNAME -p DATABASE_NAME < BACKUPFILE
 
 
-gzip:
+# gzip
 gzip database.sql
 
 
