@@ -706,11 +706,18 @@ sudo service monit reload
 
 Hints
 =====
+# Gem
+# To fix warning: Insecure world writable dir /home/deploy/.rvm/gems/ruby-2.1.0@sangwapo-rails.3.2.x
+chmod go-w OFFENDING_PATH
+
+
+# RVM
 # Working with gemsets:
 rvm @global do gem update
 rvm @global do gem cleanup
 
 
+# MariaDB
 # Database export:
 # The EXTENSION can be something like "sql"
 mysqldump -u USERNAME -p DATABASE_NAME > ~/OUTPUTFILE.EXTENSION
@@ -719,6 +726,7 @@ mysqldump -u USERNAME -p DATABASE_NAME > ~/OUTPUTFILE.EXTENSION
 mysql -u USERNAME -p DATABASE_NAME < BACKUPFILE
 
 
+# Ubuntu
 # gzip
 gzip database.sql
 
