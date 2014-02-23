@@ -237,6 +237,7 @@ grant all on Sangwapo_virtual_development.* to 'sangwapo'@'localhost';
 grant all on Sangwapo_virtual_test.* to 'sangwapo'@'localhost';
 
 Setup the MariaDB database:
+ssh deploy@rails.vm
 mysql -u sangwapo -p
 create database Sangwapo_virtual;
 create database Sangwapo_virtual_development;
