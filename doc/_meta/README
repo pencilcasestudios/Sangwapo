@@ -256,7 +256,7 @@ sudo mv ~/delayed_job.sangwapo.virtual.monitrc /etc/monit/conf.d/
 sudo service monit syntax
 
 
-Setup the YAML configuration files:
+# Setup the YAML configuration files:
 # From the development machine
 cd ~/Projects/Clients/Sangwapo/config/examples/config
 scp config.virtual.yml deploy@rails.vm:~/config.yml
@@ -448,7 +448,7 @@ sudo mv ~/delayed_job.sangwapo.clientcase.net.monitrc /etc/monit/conf.d/
 sudo service monit syntax
 
 
-Setup the YAML configuration files:
+# Setup the YAML configuration files:
 # From the development machine
 cd ~/Projects/Clients/Sangwapo/config/examples/config
 scp config.staging.yml deploy@genesis.vps:~/config.yml
@@ -642,7 +642,7 @@ sudo mv ~/delayed_job.sangwapo.com.monitrc /etc/monit/conf.d/
 sudo service monit syntax
 
 
-Setup the YAML configuration files:
+# Setup the YAML configuration files:
 # From the development machine
 cd ~/Projects/Clients/Sangwapo/config/examples/config
 scp config.production.yml deploy@deuteronomy.vps:~/config.yml
