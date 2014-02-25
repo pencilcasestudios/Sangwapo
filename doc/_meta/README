@@ -708,6 +708,7 @@ Hints
 =====
 # Gem
 # To fix warning: Insecure world writable dir /home/deploy/.rvm/gems/ruby-2.1.0@sangwapo-rails.3.2.x
+# Ref: http://stackoverflow.com/questions/5380671/getting-the-warning-insecure-world-writable-dir-home-chance-in-path-mode-04
 chmod go-w OFFENDING_PATH
 
 
