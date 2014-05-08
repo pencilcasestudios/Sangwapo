@@ -82,6 +82,7 @@ gem list | cut -d" " -f1 | xargs gem uninstall -aIx
 Continuous Application Deployment
 =================================
 # VIRTUAL
+cd ~/Projects/Clients/Sangwapo
 git checkout master
 git merge dev
 git push
@@ -90,6 +91,7 @@ cap virtual deploy
 git tag "`date +virtual_%Y-%m-%d_%H%M%S`"
 
 # STAGING
+cd ~/Projects/Clients/Sangwapo
 git checkout master
 git merge dev
 git push
@@ -98,6 +100,7 @@ cap staging deploy
 git tag "`date +staging_%m-%d_%H%M%S`"
 
 # PRODUCTION
+cd ~/Projects/Clients/Sangwapo
 git checkout master
 git merge dev
 git push
