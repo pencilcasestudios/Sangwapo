@@ -1,12 +1,15 @@
-# Guardfile
-# Ref: https://github.com/guard/guard#readme
-
-
-
-
 # Configuration variables
 wait_time = 180
 port_number = 6011
+
+
+
+
+guard 'bundler', cmd: "rspec --drb --drb-port #{port_number}" do
+  watch('Gemfile')
+  # Uncomment next line if Gemfile contain `gemspec' command
+  # watch(/^.+\.gemspec/)
+end
 
 
 
@@ -20,15 +23,6 @@ guard 'spork', cucumber: false, test_unit: false, rspec_env: { 'RAILS_ENV' => 't
   watch('Gemfile.lock')
   watch('spec/spec_helper.rb')
   watch('test/test_helper.rb')
-end
-
-
-
-
-guard 'bundler', cmd: "rspec --drb --drb-port #{port_number}" do
-  watch('Gemfile')
-  # Uncomment next line if Gemfile contain `gemspec' command
-  # watch(/^.+\.gemspec/)
 end
 
 
@@ -56,3 +50,18 @@ guard 'rspec', cmd: "rspec --drb --drb-port #{port_number}", all_on_start: true,
 	# Locales
 	watch(%r{^config/locales/.+\.yml})  								{ "spec/requests" }
 end
+
+
+
+
+# Notifications
+# Ref: https://github.com/guard/guard/wiki/System-notifications
+notification :tmux,
+  display_message: true,
+  timeout: 5, # in seconds
+  default_message_format: '%s >> %s',
+  # the first %s will show the title, the second the message
+  # Alternately you can also configure *success_message_format*,
+  # *pending_message_format*, *failed_message_format*
+  line_separator: ' > ', # since we are single line we need a separator
+  color_location: 'status-left-bg' # to customize which tmux element will change color
