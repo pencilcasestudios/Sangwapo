@@ -9,7 +9,7 @@
 	</p>
 	<p>
 		<small>
-			&copy; <%= Time.now.year %> <%= link_to t("application.developer.name"), t("application.developer.url") %><%= t("views.application.copy.full_stop") %>
+			&copy; <%= RomanNumerals.to_roman(Time.zone.now.year) %> <%= link_to t("application.developer.name"), t("application.developer.url") %><%= t("views.application.copy.full_stop") %>
 		</small>
 	</p>
 </footer>
