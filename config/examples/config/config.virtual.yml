@@ -9,7 +9,7 @@ defaults: &defaults
 
   application_name: "Sangwapo"
   gemset_name: "sangwapo-rails.3.2.x"
-  ruby_version: ruby-2.1.0
+  ruby_version: ruby-2.1.5
   user: deploy
 
   miniumum_version_of_bundler: ">=1.5.2"
