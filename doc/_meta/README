@@ -2,7 +2,7 @@
 Development setup
 Setting up the development environment after a fresh repository clone
 ----------------------------------------------------------------------
-cd ~/Projects/Clients/Sangwapo
+cd ~/Code/Sangwapo
 cp config/examples/database/database.yml config # Setup the database
 cp config/examples/config/config.yml config # Setup the configuration files
 cp config/examples/deploy.rb config # Setup the capistrano deployment recipe
@@ -27,7 +27,7 @@ git push staging
 git push production
 
 # Guard for testing
-cd ~/Projects/Clients/Sangwapo
+cd ~/Code/Sangwapo
 bundle update
 gem cleanup
 rake db:drop
@@ -40,13 +40,13 @@ bundle exec guard
 
 Running the Application
 =======================
-cd ~/Projects/Clients/Sangwapo
+cd ~/Code/Sangwapo
 rails server # In one terminal window - to run the application
 
-cd ~/Projects/Clients/Sangwapo
+cd ~/Code/Sangwapo
 rake jobs:work # In another terminal window - to run delayed job
 
-cd ~/Projects/Clients/Sangwapo
+cd ~/Code/Sangwapo
 rails console # In another terminal window - to set up admins
 
 
@@ -82,7 +82,7 @@ gem list | cut -d" " -f1 | xargs gem uninstall -aIx
 Continuous Application Deployment
 =================================
 # VIRTUAL
-cd ~/Projects/Clients/Sangwapo
+cd ~/Code/Sangwapo
 git checkout master
 git merge dev
 git push
@@ -91,7 +91,7 @@ cap virtual deploy
 git tag "`date +virtual_%Y-%m-%d_%H%M%S`"
 
 # STAGING
-cd ~/Projects/Clients/Sangwapo
+cd ~/Code/Sangwapo
 git checkout master
 git merge dev
 git push
@@ -100,7 +100,7 @@ cap staging deploy
 git tag "`date +staging_%m-%d_%H%M%S`"
 
 # PRODUCTION
-cd ~/Projects/Clients/Sangwapo
+cd ~/Code/Sangwapo
 git checkout master
 git merge dev
 git push
@@ -176,7 +176,7 @@ git init --bare
 
 Push to the Git repository:
 # From the development machine:
-cd ~/Projects/Clients/Sangwapo
+cd ~/Code/Sangwapo
 git push virtual # or git push virtual master
 
 
@@ -188,7 +188,7 @@ sudo chown -R deploy:deploy /var/Apps
 
 # Configure nginx
 # On the development machine
-cd ~/Projects/Clients/Sangwapo/config/examples/nginx
+cd ~/Code/Sangwapo/config/examples/nginx
 scp nginx.sangwapo.virtual.conf vladimir@rails.vm:~/sangwapo.virtual.conf
 
 
@@ -249,9 +249,9 @@ create database Sangwapo_virtual_test;
 
 # Setup the Monit scripts:
 # From the development machine
-cd ~/Projects/Clients/Sangwapo/config/examples/monit
+cd ~/Code/Sangwapo/config/examples/monit
 scp delayed_job.sangwapo.virtual.monitrc vladimir@rails.vm:~
-cd ~/Projects/Clients/Sangwapo
+cd ~/Code/Sangwapo
 ssh vladimir@rails.vm
 
 # From the virtual machine
@@ -261,11 +261,11 @@ sudo service monit syntax
 
 # Setup the YAML configuration files:
 # From the development machine
-cd ~/Projects/Clients/Sangwapo/config/examples/config
+cd ~/Code/Sangwapo/config/examples/config
 scp config.virtual.yml deploy@rails.vm:~/config.yml
-cd ~/Projects/Clients/Sangwapo/config/examples/database
+cd ~/Code/Sangwapo/config/examples/database
 scp database.virtual.yml deploy@rails.vm:~/database.yml
-cd ~/Projects/Clients/Sangwapo/
+cd ~/Code/Sangwapo/
 ssh deploy@rails.vm
 
 # From the virtual machine (as the deploy user)
@@ -368,7 +368,7 @@ git init --bare
 
 Push to the Git repository:
 # From the development machine:
-cd ~/Projects/Clients/Sangwapo
+cd ~/Code/Sangwapo
 git push staging # or git push staging master
 
 
@@ -380,7 +380,7 @@ sudo chown -R deploy:deploy /var/Apps
 
 # Configure nginx
 # On the development machine
-cd ~/Projects/Clients/Sangwapo/config/examples/nginx
+cd ~/Code/Sangwapo/config/examples/nginx
 scp nginx.sangwapo.clientcase.net.conf silumesii@genesis.vps:~/sangwapo.clientcase.net.conf
 
 
@@ -441,9 +441,9 @@ create database Sangwapo_staging_test;
 
 # Setup the Monit scripts:
 # From the development machine
-cd ~/Projects/Clients/Sangwapo/config/examples/monit
+cd ~/Code/Sangwapo/config/examples/monit
 scp delayed_job.sangwapo.clientcase.net.monitrc silumesii@genesis.vps:~
-cd ~/Projects/Clients/Sangwapo
+cd ~/Code/Sangwapo
 ssh silumesii@genesis.vps
 
 # From the staging machine
@@ -453,11 +453,11 @@ sudo service monit syntax
 
 # Setup the YAML configuration files:
 # From the development machine
-cd ~/Projects/Clients/Sangwapo/config/examples/config
+cd ~/Code/Sangwapo/config/examples/config
 scp config.staging.yml deploy@genesis.vps:~/config.yml
-cd ~/Projects/Clients/Sangwapo/config/examples/database
+cd ~/Code/Sangwapo/config/examples/database
 scp database.staging.yml deploy@genesis.vps:~/database.yml
-cd ~/Projects/Clients/Sangwapo/
+cd ~/Code/Sangwapo/
 ssh deploy@genesis.vps
 
 # From the staging machine (as the deploy user)
@@ -563,7 +563,7 @@ git init --bare
 
 Push to the Git repository:
 # From the development machine:
-cd ~/Projects/Clients/Sangwapo
+cd ~/Code/Sangwapo
 git push production # or git push production master
 
 
@@ -575,7 +575,7 @@ sudo chown -R deploy:deploy /var/Apps
 
 # Configure nginx
 # On the development machine
-cd ~/Projects/Clients/Sangwapo/config/examples/nginx
+cd ~/Code/Sangwapo/config/examples/nginx
 scp nginx.sangwapo.com.conf silumesii@deuteronomy.vps:~/sangwapo.com.conf
 
 
@@ -635,9 +635,9 @@ create database Sangwapo_production_test;
 
 # Setup the Monit scripts:
 # From the development machine
-cd ~/Projects/Clients/Sangwapo/config/examples/monit
+cd ~/Code/Sangwapo/config/examples/monit
 scp delayed_job.sangwapo.com.monitrc silumesii@deuteronomy.vps:~
-cd ~/Projects/Clients/Sangwapo
+cd ~/Code/Sangwapo
 ssh silumesii@deuteronomy.vps
 
 # From the production machine
@@ -647,11 +647,11 @@ sudo service monit syntax
 
 # Setup the YAML configuration files:
 # From the development machine
-cd ~/Projects/Clients/Sangwapo/config/examples/config
+cd ~/Code/Sangwapo/config/examples/config
 scp config.production.yml deploy@deuteronomy.vps:~/config.yml
-cd ~/Projects/Clients/Sangwapo/config/examples/database
+cd ~/Code/Sangwapo/config/examples/database
 scp database.production.yml deploy@deuteronomy.vps:~/database.yml
-cd ~/Projects/Clients/Sangwapo/
+cd ~/Code/Sangwapo/
 ssh deploy@deuteronomy.vps
 
 # From the production machine (as the deploy user)
