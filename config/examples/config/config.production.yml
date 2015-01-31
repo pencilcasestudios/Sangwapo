@@ -25,7 +25,7 @@ defaults: &defaults
   # Staging deployment
   staging_deployment_path: staging
   staging_repository_deployment_branch: master
-  staging_server_name: genesis.vps
+  staging_server_name: asher.vps
   staging_stage_name: virtual
   #server_name_staging: sangwapo.clientcase.net
   #deployment_path_staging: staging
@@ -34,7 +34,7 @@ defaults: &defaults
   # Production deployment
   production_deployment_path: production
   production_repository_deployment_branch: master
-  production_server_name: deuteronomy.vps
+  production_server_name: gad.vps
   production_stage_name: production
   #server_name_production: sangwapo.com
   #deployment_path_production: production
