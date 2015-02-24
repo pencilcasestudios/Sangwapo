@@ -26,10 +26,17 @@ git push virtual
 git push staging
 git push production
 
-# Guard for testing
+# Update bundled gems
 cd ~/Code/Sangwapo
 bundle update
 gem cleanup
+
+# Install gems
+cd ~/Code/Sangwapo
+bundle install
+
+# Guard for testing
+cd ~/Code/Sangwapo
 rake db:drop
 rake db:setup
 rake db:test:prepare
