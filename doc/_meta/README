@@ -173,7 +173,7 @@ ssh-copy-id deploy@rails.vm
 # Set up the Repository folder
 ssh vladimir@rails.vm
 sudo mkdir -p /var/Repositories/Git
-sudo chown -R deploy:deploy /var/Repositories/Git
+sudo chown deploy:deploy /var/Repositories/Git
 
 # Create the Git repository:
 ssh deploy@rails.vm
@@ -185,13 +185,14 @@ git init --bare
 # Push to the Git repository:
 # From the development machine:
 cd ~/Code/Sangwapo
-git push virtual # or git push virtual master
+git remote add virtual deploy@rails.vm:/var/Repositories/Git/Sangwapo.git
+git push virtual master # or git push virtual
 
 
 # Set up the Apps folder
 ssh vladimir@rails.vm
 sudo mkdir -p /var/Apps
-sudo chown -R deploy:deploy /var/Apps
+sudo chown deploy:deploy /var/Apps
 
 
 # Configure nginx
@@ -221,7 +222,7 @@ sudo openssl req -new -key sangwapo.virtual.key -out sangwapo.virtual.csr
 # Country Name: ZM
 # Province: Lusaka Province
 # Locality Name: Lusaka
-# Organisation Name: Sangwapo Online Classifieds
+# Organisation Name: Sangwapo Classifieds
 # Orgnisational Unit Name: <Blank>
 # Common Name: sangwapo.virtual.
 # Email: itsupport@pencilcasestudios.com
@@ -230,11 +231,11 @@ sudo openssl req -new -key sangwapo.virtual.key -out sangwapo.virtual.csr
 
 sudo cp sangwapo.virtual.key sangwapo.virtual.key.original
 sudo openssl rsa -in sangwapo.virtual.key.original -out sangwapo.virtual.key
+
 sudo openssl x509 -req -days 365 -in sangwapo.virtual.csr -signkey sangwapo.virtual.key -out sangwapo.virtual.crt
 
-
 # Test the nginx configuration:
-sudo nginx -t
+sudo service nginx configtest
 
 # If all is well, load the new nginx configuration:
 sudo service nginx reload
@@ -365,7 +366,7 @@ ssh-copy-id deploy@asher.vps
 Set up the Repository folder
 ssh silumesii@asher.vps
 sudo mkdir -p /var/Repositories/Git
-sudo chown -R deploy:deploy /var/Repositories/Git
+sudo chown deploy:deploy /var/Repositories/Git
 
 Create the Git repository:
 ssh deploy@asher.vps
@@ -383,7 +384,7 @@ git push staging # or git push staging master
 Set up the Apps folder
 ssh silumesii@asher.vps
 sudo mkdir -p /var/Apps
-sudo chown -R deploy:deploy /var/Apps
+sudo chown deploy:deploy /var/Apps
 
 
 # Configure nginx
@@ -413,7 +414,7 @@ sudo openssl req -new -key sangwapo.clientcase.net.key -out sangwapo.clientcase.
 		Country Name: ZM
 		Province: Lusaka Province
 		Locality Name: Lusaka
-		Organisation Name: Sangwapo Online Classifieds
+		Organisation Name: Sangwapo Classifieds
 		Orgnisational Unit Name: <Blank>
 		Common Name: sangwapo.clientcase.net.
 		Email: itsupport@pencilcasestudios.com
@@ -426,7 +427,7 @@ sudo openssl x509 -req -days 365 -in sangwapo.clientcase.net.csr -signkey sangwa
 
 
 Test the nginx configuration:
-sudo nginx -t
+sudo service nginx configtest
 
 If all is well, load the new nginx configuration:
 sudo service nginx reload
@@ -560,7 +561,7 @@ ssh-copy-id deploy@gad.vps
 Set up the Repository folder
 ssh vladimir@rails.vm
 sudo mkdir -p /var/Repositories/Git
-sudo chown -R deploy:deploy /var/Repositories/Git
+sudo chown deploy:deploy /var/Repositories/Git
 
 Create the Git repository:
 ssh deploy@gad.vps
@@ -578,7 +579,7 @@ git push production # or git push production master
 Set up the Apps folder
 ssh silumesii@gad.vps
 sudo mkdir -p /var/Apps
-sudo chown -R deploy:deploy /var/Apps
+sudo chown deploy:deploy /var/Apps
 
 
 # Configure nginx
@@ -608,7 +609,7 @@ sudo openssl req -new -key sangwapo.com.key -out sangwapo.com.csr
 		Country Name: ZM
 		Province: Lusaka Province
 		Locality Name: Lusaka
-		Organisation Name: Sangwapo Online Classifieds
+		Organisation Name: Sangwapo Classifieds
 		Orgnisational Unit Name: <Blank>
 		Common Name: sangwapo.com.
 		Email: itsupport@pencilcasestudios.com
@@ -621,7 +622,7 @@ sudo openssl x509 -req -days 365 -in sangwapo.com.csr -signkey sangwapo.com.key 
 
 
 Test the nginx configuration:
-sudo nginx -t
+sudo service nginx configtest
 
 If all is well, load the new nginx configuration:
 sudo service nginx reload
