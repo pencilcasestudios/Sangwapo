@@ -133,61 +133,62 @@ git tag "`date +production_%Y-%m-%d_%H%M%S`"
 
 
 
-----------------------------------------------------------------------
-Virtual setup
-----------------------------------------------------------------------
-Need:
-Git
-ImageMagick
-MariaDB					# Remember to install libmariadbclient-dev (for the mysql2 gem to work)
-nginx
-nodejs				# JavaScript runtime
-RVM
-SSH
+#----------------------------------------------------------------------
+#	Virtual setup
+#----------------------------------------------------------------------
+# Need:
+# Git
+# ImageMagick
+# MariaDB					# Remember to install libmariadbclient-dev (for the mysql2 gem to work)
+# nginx
+# nodejs				# JavaScript runtime
+# RVM
+# SSH
 
 
-Test SSH access:
+# Test SSH access:
 ssh deploy@rails.vm
 ssh vladimir@rails.vm
 
-Set up the hosts (/etc/hosts):
+# Set up the hosts (/etc/hosts):
 ssh vladimir@rails.vm
-Make sure the following line is in /etc/hosts:
+
+# Make sure the following line is in /etc/hosts:
 127.0.0.1 rails.vm
 
-Check that SSH "loops back" on the virtual machine (host key verification):
+# Check that SSH "loops back" on the virtual machine (host key verification):
 # On the local development machine
 ssh deploy@rails.vm
 
 # On the virtual machine
 ssh deploy@rails.vm
 
-Or
+# Or
 
-If the "loop back" fails:
+# If the "loop back" fails:
 ssh-keygen
 ssh-copy-id deploy@rails.vm
 
 
-Set up the Repository folder
+# Set up the Repository folder
 ssh vladimir@rails.vm
 sudo mkdir -p /var/Repositories/Git
 sudo chown -R deploy:deploy /var/Repositories/Git
 
-Create the Git repository:
+# Create the Git repository:
 ssh deploy@rails.vm
 cd /var/Repositories/Git/
 mkdir Sangwapo.git
 cd Sangwapo.git
 git init --bare
 
-Push to the Git repository:
+# Push to the Git repository:
 # From the development machine:
 cd ~/Code/Sangwapo
 git push virtual # or git push virtual master
 
 
-Set up the Apps folder
+# Set up the Apps folder
 ssh vladimir@rails.vm
 sudo mkdir -p /var/Apps
 sudo chown -R deploy:deploy /var/Apps
@@ -206,39 +207,39 @@ sudo mv ~/sangwapo.virtual.conf /etc/nginx/sites-available
 sudo ln -nfs /etc/nginx/sites-available/sangwapo.virtual.conf /etc/nginx/sites-enabled/sangwapo.virtual
 
 
-Generate an SSL certificate and key:
+# Generate an SSL certificate and key:
 sudo mkdir -p /etc/nginx/ssl
 cd /etc/nginx/ssl
 sudo mkdir -p Sangwapo
 cd Sangwapo
 sudo openssl genrsa -des3 -out sangwapo.virtual.key 1024
 
-		pass phrase: sangwapo
+# pass phrase: sangwapo
 
 sudo openssl req -new -key sangwapo.virtual.key -out sangwapo.virtual.csr
 
-		Country Name: ZM
-		Province: Lusaka Province
-		Locality Name: Lusaka
-		Organisation Name: Sangwapo Online Classifieds
-		Orgnisational Unit Name: <Blank>
-		Common Name: sangwapo.virtual.
-		Email: itsupport@pencilcasestudios.com
-		Challenge password: <Blank>
-		Optional Company Name: <Blank>
+# Country Name: ZM
+# Province: Lusaka Province
+# Locality Name: Lusaka
+# Organisation Name: Sangwapo Online Classifieds
+# Orgnisational Unit Name: <Blank>
+# Common Name: sangwapo.virtual.
+# Email: itsupport@pencilcasestudios.com
+# Challenge password: <Blank>
+# Optional Company Name: <Blank>
 
 sudo cp sangwapo.virtual.key sangwapo.virtual.key.original
 sudo openssl rsa -in sangwapo.virtual.key.original -out sangwapo.virtual.key
 sudo openssl x509 -req -days 365 -in sangwapo.virtual.csr -signkey sangwapo.virtual.key -out sangwapo.virtual.crt
 
 
-Test the nginx configuration:
+# Test the nginx configuration:
 sudo nginx -t
 
-If all is well, load the new nginx configuration:
+# If all is well, load the new nginx configuration:
 sudo service nginx reload
 
-Setup the MariaDB database user:
+# Setup the MariaDB database user:
 ssh vladimir@rails.vm
 mysql -u root -p
 create user 'sangwapo'@'localhost' identified by 'VirtualSangwapoPassword';
@@ -246,7 +247,7 @@ grant all on Sangwapo_virtual.* to 'sangwapo'@'localhost';
 grant all on Sangwapo_virtual_development.* to 'sangwapo'@'localhost';
 grant all on Sangwapo_virtual_test.* to 'sangwapo'@'localhost';
 
-Setup the MariaDB database:
+# Setup the MariaDB database:
 ssh deploy@rails.vm
 mysql -u sangwapo -p
 create database Sangwapo_virtual;
