@@ -286,6 +286,7 @@ mv config.yml ~/Projects/Configurations/Sangwapo/virtual/
 # From the development machine
 # Capistrano steps for initial deployment
 # VIRTUAL MACHINE DEPLOYMENT
+cd ~/Code/Sangwapo
 git checkout master
 git merge dev
 git push
