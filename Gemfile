@@ -73,7 +73,7 @@ group :development do
   gem "capistrano"
   gem "capistrano-ext"
   gem "letter_opener"
-  gem "rvm-capistrano"
+  gem "rvm-capistrano", require: false
 end
 
 
