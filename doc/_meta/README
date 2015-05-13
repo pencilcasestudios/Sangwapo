@@ -393,10 +393,11 @@ mkdir Sangwapo.git
 cd Sangwapo.git
 git init --bare
 
-Push to the Git repository:
+# Push to the Git repository:
 # From the development machine:
 cd ~/Code/Rails/Sangwapo
-git push staging # or git push staging master
+git remote add staging deploy@asher.vps:/var/Repositories/Git/Sangwapo.git
+git push staging master # or git push virtual
 
 
 Set up the Apps folder
@@ -418,39 +419,39 @@ sudo mv ~/sangwapo.clientcase.net.conf /etc/nginx/sites-available
 sudo ln -nfs /etc/nginx/sites-available/sangwapo.clientcase.net.conf /etc/nginx/sites-enabled/sangwapo.clientcase.net
 
 
-Generate an SSL certificate and key:
+# Generate an SSL certificate and key:
 sudo mkdir -p /etc/nginx/ssl
 cd /etc/nginx/ssl
 sudo mkdir -p Sangwapo
 cd Sangwapo
 sudo openssl genrsa -des3 -out sangwapo.clientcase.net.key 1024
-
-		pass phrase: sangwapo
+# pass phrase: sangwapo
 
 sudo openssl req -new -key sangwapo.clientcase.net.key -out sangwapo.clientcase.net.csr
 
-		Country Name: ZM
-		Province: Lusaka Province
-		Locality Name: Lusaka
-		Organisation Name: Sangwapo Classifieds
-		Orgnisational Unit Name: <Blank>
-		Common Name: sangwapo.clientcase.net.
-		Email: itsupport@pencilcasestudios.com
-		Challenge password: <Blank>
-		Optional Company Name: <Blank>
+# Country Name: ZM
+# Province: Lusaka Province
+# Locality Name: Lusaka
+# Organisation Name: Sangwapo Classifieds
+# Orgnisational Unit Name: <Blank>
+# Common Name: sangwapo.clientcase.net.
+# Email: itsupport@pencilcasestudios.com
+# Challenge password: <Blank>
+# Optional Company Name: <Blank>
 
 sudo cp sangwapo.clientcase.net.key sangwapo.clientcase.net.key.original
 sudo openssl rsa -in sangwapo.clientcase.net.key.original -out sangwapo.clientcase.net.key
+
 sudo openssl x509 -req -days 365 -in sangwapo.clientcase.net.csr -signkey sangwapo.clientcase.net.key -out sangwapo.clientcase.net.crt
 
 
-Test the nginx configuration:
+# Test the nginx configuration:
 sudo service nginx configtest
 
-If all is well, load the new nginx configuration:
+# If all is well, load the new nginx configuration:
 sudo service nginx reload
 
-Setup the MariaDB database user:
+# Setup the MariaDB database user:
 ssh silumesii@asher.vps
 mysql -u root -p
 create user 'sangwapo'@'localhost' identified by 'StagingSangwapoPassword';
@@ -458,7 +459,7 @@ grant all on Sangwapo_staging.* to 'sangwapo'@'localhost';
 grant all on Sangwapo_staging_development.* to 'sangwapo'@'localhost';
 grant all on Sangwapo_staging_test.* to 'sangwapo'@'localhost';
 
-Setup the MariaDB database:
+# Setup the MariaDB database:
 ssh deploy@asher.vps
 mysql -u sangwapo -p
 create database Sangwapo_staging;
@@ -499,6 +500,7 @@ mv config.yml ~/Projects/Configurations/Sangwapo/staging/
 # From the development machine
 # Capistrano steps for initial deployment
 # STAGING MACHINE DEPLOYMENT
+cd ~/Code/Rails/Sangwapo/
 git checkout master
 git merge dev
 git push
@@ -507,9 +509,12 @@ cap staging deploy:setup # Update configuration files and create the database af
 
 # From the staging machine (as the deploy user)
 # After running cap staging deploy:setup
+ssh deploy@asher.vps
 cd ~/Projects/Configurations/Sangwapo/staging
 cp *.yml /var/Apps/Sangwapo/staging/shared/config/
+exit
 
+cd ~/Code/Rails/Sangwapo/
 cap staging deploy:check
 cap staging deploy:update
 # Create databases
@@ -520,6 +525,8 @@ cap staging deploy:start
 
 # After deploying the app
 # From the staging machine
+cd ~/Code/Rails/Sangwapo
+ssh silumesii@asher.vps
 sudo service monit reload
 
 
@@ -577,7 +584,7 @@ ssh-copy-id deploy@gad.vps
 
 
 Set up the Repository folder
-ssh vladimir@rails.vm
+ssh silumesii@gad.vps
 sudo mkdir -p /var/Repositories/Git
 sudo chown deploy:deploy /var/Repositories/Git
 
@@ -588,10 +595,11 @@ mkdir Sangwapo.git
 cd Sangwapo.git
 git init --bare
 
-Push to the Git repository:
+# Push to the Git repository:
 # From the development machine:
 cd ~/Code/Rails/Sangwapo
-git push production # or git push production master
+git remote add production deploy@gad.vps:/var/Repositories/Git/Sangwapo.git
+git push production master # or git push virtual
 
 
 Set up the Apps folder
@@ -603,58 +611,59 @@ sudo chown deploy:deploy /var/Apps
 # Configure nginx
 # On the development machine
 cd ~/Code/Rails/Sangwapo/config/examples/nginx
-scp nginx.sangwapo.com.conf silumesii@gad.vps:~/sangwapo.com.conf
+scp nginx.sangwapo.clientcase.net.conf silumesii@gad.vps:~/sangwapo.clientcase.net.conf
 
 
 # On the production machine
 # Set up the nginx configuration
 ssh silumesii@gad.vps
-sudo mv ~/sangwapo.com.conf /etc/nginx/sites-available
-sudo ln -nfs /etc/nginx/sites-available/sangwapo.com.conf /etc/nginx/sites-enabled/sangwapo.com
+sudo mv ~/sangwapo.clientcase.net.conf /etc/nginx/sites-available
+sudo ln -nfs /etc/nginx/sites-available/sangwapo.clientcase.net.conf /etc/nginx/sites-enabled/sangwapo.clientcase.net
 
 
-Generate an SSL certificate and key:
+# Generate an SSL certificate and key:
 sudo mkdir -p /etc/nginx/ssl
 cd /etc/nginx/ssl
 sudo mkdir -p Sangwapo
 cd Sangwapo
-sudo openssl genrsa -des3 -out sangwapo.com.key 1024
+sudo openssl genrsa -des3 -out sangwapo.clientcase.net.key 1024
+# pass phrase: sangwapo
 
-		pass phrase: sangwapo
+sudo openssl req -new -key sangwapo.clientcase.net.key -out sangwapo.clientcase.net.csr
 
-sudo openssl req -new -key sangwapo.com.key -out sangwapo.com.csr
+# Country Name: ZM
+# Province: Lusaka Province
+# Locality Name: Lusaka
+# Organisation Name: Sangwapo Classifieds
+# Orgnisational Unit Name: <Blank>
+# Common Name: sangwapo.clientcase.net.
+# Email: itsupport@pencilcasestudios.com
+# Challenge password: <Blank>
+# Optional Company Name: <Blank>
 
-		Country Name: ZM
-		Province: Lusaka Province
-		Locality Name: Lusaka
-		Organisation Name: Sangwapo Classifieds
-		Orgnisational Unit Name: <Blank>
-		Common Name: sangwapo.com.
-		Email: itsupport@pencilcasestudios.com
-		Challenge password: <Blank>
-		Optional Company Name: <Blank>
+sudo cp sangwapo.clientcase.net.key sangwapo.clientcase.net.key.original
+sudo openssl rsa -in sangwapo.clientcase.net.key.original -out sangwapo.clientcase.net.key
 
-sudo cp sangwapo.com.key sangwapo.com.key.original
-sudo openssl rsa -in sangwapo.com.key.original -out sangwapo.com.key
-sudo openssl x509 -req -days 365 -in sangwapo.com.csr -signkey sangwapo.com.key -out sangwapo.com.crt
+sudo openssl x509 -req -days 365 -in sangwapo.clientcase.net.csr -signkey sangwapo.clientcase.net.key -out sangwapo.clientcase.net.crt
 
 
-Test the nginx configuration:
+# Test the nginx configuration:
 sudo service nginx configtest
 
-If all is well, load the new nginx configuration:
+# If all is well, load the new nginx configuration:
 sudo service nginx reload
 
-Setup the MariaDB database user:
+# Setup the MariaDB database user:
 ssh silumesii@gad.vps
 mysql -u root -p
-create user 'sangwapo_production'@'localhost' identified by 'ProductionSangwapoPassword';
-grant all on Sangwapo_production.* to 'sangwapo_production'@'localhost';
-grant all on Sangwapo_production_development.* to 'sangwapo_production'@'localhost';
-grant all on Sangwapo_production_test.* to 'sangwapo_production'@'localhost';
+create user 'sangwapo'@'localhost' identified by 'ProductionSangwapoPassword';
+grant all on Sangwapo_production.* to 'sangwapo'@'localhost';
+grant all on Sangwapo_production_development.* to 'sangwapo'@'localhost';
+grant all on Sangwapo_production_test.* to 'sangwapo'@'localhost';
 
-Setup the MariaDB database:
-mysql -u sangwapo_production -p
+# Setup the MariaDB database:
+ssh deploy@gad.vps
+mysql -u sangwapo -p
 create database Sangwapo_production;
 create database Sangwapo_production_development;
 create database Sangwapo_production_test;
@@ -663,12 +672,12 @@ create database Sangwapo_production_test;
 # Setup the Monit scripts:
 # From the development machine
 cd ~/Code/Rails/Sangwapo/config/examples/monit
-scp delayed_job.sangwapo.com.monitrc silumesii@gad.vps:~
+scp delayed_job.sangwapo.clientcase.net.monitrc silumesii@gad.vps:~
 cd ~/Code/Rails/Sangwapo
 ssh silumesii@gad.vps
 
 # From the production machine
-sudo mv ~/delayed_job.sangwapo.com.monitrc /etc/monit/conf.d/
+sudo mv ~/delayed_job.sangwapo.clientcase.net.monitrc /etc/monit/conf.d/
 sudo service monit syntax
 
 
@@ -692,7 +701,8 @@ mv config.yml ~/Projects/Configurations/Sangwapo/production/
 
 # From the development machine
 # Capistrano steps for initial deployment
-# PRODUCTION MACHINE DEPLOYMENT
+# STAGING MACHINE DEPLOYMENT
+cd ~/Code/Rails/Sangwapo/
 git checkout master
 git merge dev
 git push
@@ -701,9 +711,12 @@ cap production deploy:setup # Update configuration files and create the database
 
 # From the production machine (as the deploy user)
 # After running cap production deploy:setup
+ssh deploy@gad.vps
 cd ~/Projects/Configurations/Sangwapo/production
 cp *.yml /var/Apps/Sangwapo/production/shared/config/
+exit
 
+cd ~/Code/Rails/Sangwapo/
 cap production deploy:check
 cap production deploy:update
 # Create databases
@@ -714,6 +727,8 @@ cap production deploy:start
 
 # After deploying the app
 # From the production machine
+cd ~/Code/Rails/Sangwapo
+ssh silumesii@gad.vps
 sudo service monit reload
 
 
