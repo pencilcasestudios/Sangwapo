@@ -345,29 +345,29 @@ sudo service monit reload
 
 
 
-----------------------------------------------------------------------
-Staging setup
-----------------------------------------------------------------------
-Need:
-Git
-ImageMagick
-MariaDB					# Remember to install libmariadbclient-dev (for the mysql2 gem to work)
-nginx
-nodejs				# JavaScript runtime
-RVM
-SSH
+#----------------------------------------------------------------------
+# Staging setup
+#----------------------------------------------------------------------
+# Need:
+# Git
+# ImageMagick
+# MariaDB				# Remember to install libmariadbclient-dev (for the mysql2 gem to work)
+# nginx
+# nodejs				# JavaScript runtime
+# RVM
+# SSH
 
 
-Test SSH access:
+# Test SSH access:
 ssh deploy@asher.vps
 ssh silumesii@asher.vps
 
-Set up the hosts (/etc/hosts):
+# Set up the hosts (/etc/hosts):
 ssh silumesii@asher.vps
 Make sure the following line is in /etc/hosts:
 127.0.0.1 asher.vps
 
-Check that SSH "loops back" on the staging machine (host key verification):
+# Check that SSH "loops back" on the staging machine (host key verification):
 # On the local development machine
 ssh deploy@asher.vps
 
@@ -376,17 +376,17 @@ ssh deploy@asher.vps
 
 Or
 
-If the "loop back" fails:
+# If the "loop back" fails:
 ssh-keygen
 ssh-copy-id deploy@asher.vps
 
 
-Set up the Repository folder
+# Set up the Repository folder
 ssh silumesii@asher.vps
 sudo mkdir -p /var/Repositories/Git
 sudo chown deploy:deploy /var/Repositories/Git
 
-Create the Git repository:
+# Create the Git repository:
 ssh deploy@asher.vps
 cd /var/Repositories/Git/
 mkdir Sangwapo.git
@@ -400,7 +400,7 @@ git remote add staging deploy@asher.vps:/var/Repositories/Git/Sangwapo.git
 git push staging master # or git push virtual
 
 
-Set up the Apps folder
+# Set up the Apps folder
 ssh silumesii@asher.vps
 sudo mkdir -p /var/Apps
 sudo chown deploy:deploy /var/Apps
@@ -547,29 +547,29 @@ sudo service monit reload
 
 
 
-----------------------------------------------------------------------
-Production setup
-----------------------------------------------------------------------
-Need:
-Git
-ImageMagick
-MariaDB					# Remember to install libmariadbclient-dev (for the mysql2 gem to work)
-nginx
-nodejs				# JavaScript runtime
-RVM
-SSH
+#----------------------------------------------------------------------
+# Production setup
+#----------------------------------------------------------------------
+# Need:
+# Git
+# ImageMagick
+# MariaDB				# Remember to install libmariadbclient-dev (for the mysql2 gem to work)
+# nginx
+# nodejs				# JavaScript runtime
+# RVM
+# SSH
 
 
-Test SSH access:
+# Test SSH access:
 ssh deploy@gad.vps
 ssh silumesii@gad.vps
 
-Set up the hosts (/etc/hosts):
+# Set up the hosts (/etc/hosts):
 ssh silumesii@gad.vps
-Make sure the following line is in /etc/hosts:
+# Make sure the following line is in /etc/hosts:
 127.0.0.1 gad.vps
 
-Check that SSH "loops back" on the production machine (host key verification):
+# Check that SSH "loops back" on the production machine (host key verification):
 # On the local development machine
 ssh deploy@gad.vps
 
@@ -578,17 +578,17 @@ ssh deploy@gad.vps
 
 Or
 
-If the "loop back" fails:
+# If the "loop back" fails:
 ssh-keygen
 ssh-copy-id deploy@gad.vps
 
 
-Set up the Repository folder
+# Set up the Repository folder
 ssh silumesii@gad.vps
 sudo mkdir -p /var/Repositories/Git
 sudo chown deploy:deploy /var/Repositories/Git
 
-Create the Git repository:
+# Create the Git repository:
 ssh deploy@gad.vps
 cd /var/Repositories/Git/
 mkdir Sangwapo.git
@@ -602,7 +602,7 @@ git remote add production deploy@gad.vps:/var/Repositories/Git/Sangwapo.git
 git push production master # or git push virtual
 
 
-Set up the Apps folder
+# Set up the Apps folder
 ssh silumesii@gad.vps
 sudo mkdir -p /var/Apps
 sudo chown deploy:deploy /var/Apps
