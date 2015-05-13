@@ -1,17 +1,17 @@
-----------------------------------------------------------------------
-Development setup
-Setting up the development environment after a fresh repository clone
-----------------------------------------------------------------------
+#----------------------------------------------------------------------
+# Development setup
+# Setting up the development environment after a fresh repository clone
+#----------------------------------------------------------------------
 cd ~/Code/Rails/Sangwapo
 cp config/examples/database/database.yml config # Setup the database
 cp config/examples/config/config.yml config # Setup the configuration files
 cp config/examples/deploy.rb config # Setup the capistrano deployment recipe
 cp config/examples/deploy/*.rb config/deploy # Setup deployment stage configuration
 
-Set up the hosts (/etc/hosts)
+# Set up the hosts (/etc/hosts)
 127.0.0.1	sangwapo.dev		www.sangwapo.dev
 
-Setup deployment references:
+# Setup deployment references:
 git remote add virtual deploy@rails.vm:/var/Repositories/Git/Sangwapo.git
 git remote add staging deploy@asher.vps:/var/Repositories/Git/Sangwapo.git
 git remote add production deploy@gad.vps:/var/Repositories/Git/Sangwapo.git
@@ -19,8 +19,8 @@ git remote add production deploy@gad.vps:/var/Repositories/Git/Sangwapo.git
 
 
 
-Tests
-=====
+# Tests
+#+=====
 # Git
 git push virtual
 git push staging
@@ -45,8 +45,8 @@ bundle exec guard
 
 
 
-Running the Application
-=======================
+# Running the Application
+#========================
 cd ~/Code/Rails/Sangwapo
 rails server # In one terminal window - to run the application
 
@@ -59,9 +59,9 @@ rails console # In another terminal window - to set up admins
 
 
 
-Administration
-==============
-Creating an administrator
+# Administration
+#===============
+# Creating an administrator
 # In the Rails console, select the user:
 u = User.first
 u.admin?
@@ -74,20 +74,20 @@ u.admin?
 
 
 
-Gem management
-==============
-MAINTAIN GEM BUNDLE
+# Gem management
+#===============
+# MAINTAIN GEM BUNDLE
 bundle update
 gem cleanup
 
-DELETE ALL INSTALLED GEMS
+# DELETE ALL INSTALLED GEMS
 gem list | cut -d" " -f1 | xargs gem uninstall -aIx
 
 
 
 
-Continuous Application Deployment
-=================================
+# Continuous Application Deployment
+#==================================
 # VIRTUAL
 cd ~/Code/Rails/Sangwapo
 git checkout master
