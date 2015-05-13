@@ -733,6 +733,7 @@ mv config.yml ~/Projects/Configurations/Sangwapo/production/
 # After this, update:
 # 1. the production database password
 # 2. the production email password
+exit
 
 # From the development machine
 # Capistrano steps for initial deployment
