@@ -646,14 +646,14 @@ sudo chown deploy:deploy /var/Apps
 # Configure nginx
 # On the development machine
 cd ~/Code/Rails/Sangwapo/config/examples/nginx
-scp nginx.sangwapo.clientcase.net.conf silumesii@gad.vps:~/sangwapo.clientcase.net.conf
+scp nginx.sangwapo.com.conf silumesii@gad.vps:~/sangwapo.com.conf
 
 
 # On the production machine
 # Set up the nginx configuration
 ssh silumesii@gad.vps
-sudo mv ~/sangwapo.clientcase.net.conf /etc/nginx/sites-available
-sudo ln -nfs /etc/nginx/sites-available/sangwapo.clientcase.net.conf /etc/nginx/sites-enabled/sangwapo.clientcase.net
+sudo mv ~/sangwapo.com.conf /etc/nginx/sites-available
+sudo ln -nfs /etc/nginx/sites-available/sangwapo.com.conf /etc/nginx/sites-enabled/sangwapo.com
 
 
 # Generate an SSL certificate and key:
@@ -661,25 +661,25 @@ sudo mkdir -p /etc/nginx/ssl
 cd /etc/nginx/ssl
 sudo mkdir -p Sangwapo
 cd Sangwapo
-sudo openssl genrsa -des3 -out sangwapo.clientcase.net.key 1024
+sudo openssl genrsa -des3 -out sangwapo.com.key 1024
 # pass phrase: sangwapo
 
-sudo openssl req -new -key sangwapo.clientcase.net.key -out sangwapo.clientcase.net.csr
+sudo openssl req -new -key sangwapo.com.key -out sangwapo.com.csr
 
 # Country Name: ZM
 # Province: Lusaka Province
 # Locality Name: Lusaka
 # Organisation Name: Sangwapo Classifieds
 # Orgnisational Unit Name: <Blank>
-# Common Name: sangwapo.clientcase.net.
+# Common Name: sangwapo.com.
 # Email: itsupport@pencilcasestudios.com
 # Challenge password: <Blank>
 # Optional Company Name: <Blank>
 
-sudo cp sangwapo.clientcase.net.key sangwapo.clientcase.net.key.original
-sudo openssl rsa -in sangwapo.clientcase.net.key.original -out sangwapo.clientcase.net.key
+sudo cp sangwapo.com.key sangwapo.com.key.original
+sudo openssl rsa -in sangwapo.com.key.original -out sangwapo.com.key
 
-sudo openssl x509 -req -days 365 -in sangwapo.clientcase.net.csr -signkey sangwapo.clientcase.net.key -out sangwapo.clientcase.net.crt
+sudo openssl x509 -req -days 365 -in sangwapo.com.csr -signkey sangwapo.com.key -out sangwapo.com.crt
 
 
 # Test the nginx configuration:
@@ -707,12 +707,12 @@ create database Sangwapo_production_test;
 # Setup the Monit scripts:
 # From the development machine
 cd ~/Code/Rails/Sangwapo/config/examples/monit
-scp delayed_job.sangwapo.clientcase.net.monitrc silumesii@gad.vps:~
+scp delayed_job.sangwapo.com.monitrc silumesii@gad.vps:~
 cd ~/Code/Rails/Sangwapo
 ssh silumesii@gad.vps
 
 # From the production machine
-sudo mv ~/delayed_job.sangwapo.clientcase.net.monitrc /etc/monit/conf.d/
+sudo mv ~/delayed_job.sangwapo.com.monitrc /etc/monit/conf.d/
 sudo service monit syntax
 
 
