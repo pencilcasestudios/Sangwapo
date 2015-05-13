@@ -530,6 +530,41 @@ ssh silumesii@asher.vps
 sudo service monit reload
 
 
+# Setup database backup to Amazon S3
+ssh deploy@asher.vps
+mkdir -p ~/bin/scripts
+cd ~/bin/scripts
+git clone https://github.com/pencilcasestudios/db-backup.git
+
+# We use s3cmd to interface with Amazon S3
+# Ref: http://s3tools.org/s3cmd-howto
+# To set up the tool for the first time run:
+s3cmd --configure
+
+# Access Key: AKIAI6TLAG6OEYQSGPBA
+# Secret Key: Zfw4IOhP4Ip0gW44hhZMb0bytfZUkViCi7XoRJyG
+# Encryption password: Amazon.S3.Encryption.Password
+# Use HTTPs: Yes
+
+# Verify and Test settings e.g.
+# New settings:
+#		Access Key: AKIAI6TLAG6OEYQSGPBA
+#		Secret Key: Zfw4IOhP4Ip0gW44hhZMb0bytfZUkViCi7XoRJyG
+#		Encryption password: Amazon.S3.Encryption.Password
+#		Path to GPG program: /usr/bin/gpg
+#		Use HTTPS protocol: True
+#		HTTP Proxy server name:
+#		HTTP Proxy server port: 0
+
+# Update crontab:
+crontab -e
+
+# E.g. Add a line like:
+@hourly	/home/deploy/.rvm/wrappers/ruby-2.2.1/ruby /home/deploy/bin/scripts/db-backup/db-backup.rb sangwapo Sangwapo_staging StagingSangwapoPassword pencilcasestudiosdatabases
+
+# Note: The RVM wrapper can be found in ~/.rvm/wrappers
+
+
 
 
 
@@ -730,6 +765,41 @@ cap production deploy:start
 cd ~/Code/Rails/Sangwapo
 ssh silumesii@gad.vps
 sudo service monit reload
+
+
+# Setup database backup to Amazon S3
+ssh deploy@asher.vps
+mkdir -p ~/bin/scripts
+cd ~/bin/scripts
+git clone https://github.com/pencilcasestudios/db-backup.git
+
+# We use s3cmd to interface with Amazon S3
+# Ref: http://s3tools.org/s3cmd-howto
+# To set up the tool for the first time run:
+s3cmd --configure
+
+# Access Key: AKIAI6TLAG6OEYQSGPBA
+# Secret Key: Zfw4IOhP4Ip0gW44hhZMb0bytfZUkViCi7XoRJyG
+# Encryption password: Amazon.S3.Encryption.Password
+# Use HTTPs: Yes
+
+# Verify and Test settings e.g.
+# New settings:
+#		Access Key: AKIAI6TLAG6OEYQSGPBA
+#		Secret Key: Zfw4IOhP4Ip0gW44hhZMb0bytfZUkViCi7XoRJyG
+#		Encryption password: Amazon.S3.Encryption.Password
+#		Path to GPG program: /usr/bin/gpg
+#		Use HTTPS protocol: True
+#		HTTP Proxy server name:
+#		HTTP Proxy server port: 0
+
+# Update crontab:
+crontab -e
+
+# E.g. Add a line like:
+@hourly	/home/deploy/.rvm/wrappers/ruby-2.2.1/ruby /home/deploy/bin/scripts/db-backup/db-backup.rb sangwapo Sangwapo_staging StagingSangwapoPassword pencilcasestudiosdatabases
+
+# Note: The RVM wrapper can be found in ~/.rvm/wrappers
 
 
 
