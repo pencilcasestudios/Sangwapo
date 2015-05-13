@@ -768,7 +768,7 @@ sudo service monit reload
 
 
 # Setup database backup to Amazon S3
-ssh deploy@asher.vps
+ssh deploy@gad.vps
 mkdir -p ~/bin/scripts
 cd ~/bin/scripts
 git clone https://github.com/pencilcasestudios/db-backup.git
