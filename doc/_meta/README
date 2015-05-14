@@ -798,7 +798,7 @@ s3cmd --configure
 crontab -e
 
 # E.g. Add a line like:
-@hourly	/home/deploy/.rvm/wrappers/ruby-2.2.1/ruby /home/deploy/bin/scripts/db-backup/db-backup.rb sangwapo Sangwapo_staging StagingSangwapoPassword pencilcasestudiosdatabases
+@hourly	/home/deploy/.rvm/wrappers/ruby-2.2.1/ruby /home/deploy/bin/scripts/db-backup/db-backup.rb sangwapo Sangwapo_production ProductionSangwapoPassword pencilcasestudiosdatabases
 
 # Note: The RVM wrapper can be found in ~/.rvm/wrappers
 
